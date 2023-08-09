@@ -3,7 +3,7 @@
   <div class="container d-flex align-items-center">
     <h1 class="logo me-auto">
       <a href="/" class="logo me-auto"
-        ><img src="assets/img/logosipenafinal.png" alt="" class="img-fluid"
+        ><img src="/assets/img/logosipenafinal.png" alt="" class="img-fluid"
       /></a>
     </h1>
 

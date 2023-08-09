@@ -1,8 +1,28 @@
+
+<!-- Vendor CSS Files -->
+<link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+<link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+<link rel="stylesheet"
+  href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
 {{--  <!-- ======= Header ======= -->  --}}
 <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
         <h1 class="logo me-auto">
-            <a href="/" class="logo me-auto"><img src="assets/img/logosipenafinal.png" alt=""
+            <a href="/" class="logo me-auto"><img src="/assets/img/logosipenafinal.png" alt=""
                     class="img-fluid" /></a>
         </h1>
 

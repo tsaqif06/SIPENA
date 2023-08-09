@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RekapBayarController;
+use App\Http\Controllers\RuangController;
+use App\Http\Controllers\KetentuanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,12 +31,15 @@ Route::get('/', function () {
         'title' => 'Home',
         'role' => 'guest'
     ]);
-});
+})->middleware('guest');
+
+Route::redirect('/home', '/dashboard');
 
 Route::get('/dashboard', function () {
     return view('dashboard', [
         'title' => 'Dashboard',
-        'role' => Auth::user()->role
+        'role' => Auth::user()->role,
+        'user' => Auth::user()
     ]);
 })->middleware('auth');
 
@@ -43,14 +48,9 @@ Route::get('/pengguna', function () {
         'title' => 'Tabel Pengguna',
         'role' => 'user'
     ]);
-});
+})->middleware('auth');
 
-Route::get("/ketentuan", function () {
-    return view('ketentuan', [
-        'title' => 'Ketentuan',
-        'role' => 'user'
-    ]);
-});
-
+Route::get('/ketentuan', [KetentuanController::class, 'index']);
+Route::get('/ruang', [RuangController::class, 'index']);
 Route::get('/rekapbayar', [RekapBayarController::class, 'index'])->middleware('auth');
 Route::get('/pengguna', [PenggunaController::class, 'index'])->middleware('auth');
