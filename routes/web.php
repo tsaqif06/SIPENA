@@ -38,8 +38,8 @@ Route::get('/dashboard', function () {
     ]);
 })->middleware('auth');
 
-Route::get('/tabelpengguna', function () {
-    return view('tabelpengguna', [
+Route::get('/pengguna', function () {
+    return view('pengguna', [
         'title' => 'Tabel Pengguna',
         'role' => 'user'
     ]);
@@ -53,3 +53,4 @@ Route::get("/ketentuan", function () {
 });
 
 Route::get('/rekapbayar', [RekapBayarController::class, 'index'])->middleware('auth');
+Route::get('/pengguna', [PenggunaController::class, 'index'])->middleware('auth');

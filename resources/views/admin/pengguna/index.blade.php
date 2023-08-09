@@ -2,7 +2,7 @@
 
 @section('content')
     
-@if ($role == 'admin')
+{{-- @if ($role == 'admin') --}}
     
 <main id="main">
 
@@ -190,7 +190,7 @@
     </div>
   </main><!-- End #main -->
 
-@endif
+{{-- @endif --}}
 
 
 @endsection
