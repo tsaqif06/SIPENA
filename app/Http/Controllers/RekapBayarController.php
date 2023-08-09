@@ -20,7 +20,6 @@ class RekapBayarController extends Controller
             'title' => 'Rekap Bayar',
             'role' => $role
         ]);
-
     }
 
     /**
