@@ -5,6 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RekapBayarController;
+use App\Http\Controllers\RuangController;
+use App\Http\Controllers\KetentuanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,11 +50,6 @@ Route::get('/tabelpengguna', function () {
     ]);
 })->middleware('auth');
 
-Route::get("/ketentuan", function () {
-    return view('ketentuan', [
-        'title' => 'Ketentuan',
-        'role' => 'user'
-    ]);
-})->middleware('auth');
-
+Route::get('/ketentuan', [KetentuanController::class, 'index']);
+Route::get('/ruang', [RuangController::class, 'index']);
 Route::get('/rekapbayar', [RekapBayarController::class, 'index'])->middleware('auth');
