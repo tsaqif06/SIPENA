@@ -7,6 +7,7 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RekapBayarController;
 use App\Http\Controllers\RuangController;
 use App\Http\Controllers\KetentuanController;
+use App\Http\Controllers\PenggunaController;
 
 /*
 |--------------------------------------------------------------------------
