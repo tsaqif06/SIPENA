@@ -1,6 +1,6 @@
-@extends ('layouts.main')
+@extends('layouts.main')
 
-@section ('content')
+@section('content')
 
 <main id="main">
     <section class="featured-services section-bg">
