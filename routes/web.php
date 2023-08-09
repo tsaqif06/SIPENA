@@ -34,7 +34,8 @@ Route::get('/', function () {
 Route::get('/dashboard', function () {
     return view('dashboard', [
         'title' => 'Dashboard',
-        'role' => Auth::user()->role
+        'role' => Auth::user()->role,
+        'user' => Auth::user()
     ]);
 })->middleware('auth');
 
