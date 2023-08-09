@@ -7,12 +7,12 @@
     rel="stylesheet">
 
 <!-- Vendor CSS Files -->
-<link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-<link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-<link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-<link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-<link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+<link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+<link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+<link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+<link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
 <link rel="stylesheet"
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -26,11 +26,14 @@
     href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 
+<link rel="stylesheet" href="/assets/css/tablestyle.css">
+
 <!-- data table bootsrap -->
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
-<link rel="stylesheet" href="../assets/css/tablestyle.css">
-<link href="../assets/css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="/assets/css/tablestyle.css">
+<link href="/assets/css/style.css" rel="stylesheet">
+</style>
 </head>
 
 {{--  <!-- ======= Header ======= -->  --}}
@@ -44,30 +47,31 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li>
-                    <a class="nav-link active" href="/dashboard">Dasbor</a>
+                    <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">Dasbor</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/ruang">Rekap Ruang</a>
+                    <a class="nav-link {{ Request::is('ruang') ? 'active' : '' }}" href="/ruang">Rekap Ruang</a>
                 </li>
                 <li>
-                <li><a class="nav-link" href="/pembayaran/rekap">Rekap Pembayaran</a>
+                <li><a class="nav-link {{ Request::is('rekapbayar') ? 'active' : '' }}" href="/rekapbayar">Rekap
+                        Pembayaran</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/users">Tabel Pengguna</a>
+                    <a class="nav-link {{ Request::is('pengguna') ? 'active' : '' }}" href="/pengguna">Tabel
+                        Pengguna</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/penyewaan/rekap">Pengajuan Sewa</a>
+                    <a class="nav-link {{ Request::is('pengajuan') ? 'active' : '' }}" href="/pengajuan">Pengajuan
+                        Sewa</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/ketentuan">Ketentuan</a>
+                    <a class="nav-link {{ Request::is('ketentuan') ? 'active' : '' }}" href="/ketentuan">Ketentuan</a>
                 </li>
-                <li>
                 <li>
                     <form action="/logout" method="post">
                         @csrf
                         <button class="getstarted logout" type="submit">KELUAR</button>
                     </form>
-                </li>
                 </li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>

@@ -15,7 +15,7 @@ class RuangController extends Controller
     {
         $role = auth()->user()->role;
 
-        return view("{$role}.ruang.index", [
+        return view("$role.ruang.index", [
             'title' => 'Rekap Ruang',
             'role' => $role
         ]);

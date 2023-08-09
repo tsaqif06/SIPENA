@@ -126,8 +126,7 @@
                 </div>
             </div>
         </div>
-
-
     </section>
 
+    <script src="/assets/js/rekapbayar.js"></script>
 @stop

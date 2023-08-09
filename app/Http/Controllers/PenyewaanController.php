@@ -11,9 +11,11 @@ class PenyewaanController extends Controller
      */
     public function index()
     {
-        return view('user.pengajuan.index', [
-            'title' => 'Pengajuan Sewa',
-            'role' => auth()->user()->role
+        $role = auth()->user()->role;
+
+        return view("$role.rekapbayar.index", [
+            'title' => 'Rekap Bayar',
+            'role' => $role
         ]);
     }
 

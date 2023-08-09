@@ -78,11 +78,7 @@
                                                 class="form-control @error('tempatlahir') is-invalid @enderror"
                                                 placeholder="Tempat Lahir" name="tempatlahir">
                                         </div>
-                                        @error('tempatlahir')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
+                                       data
                                         <div class="col-md-12">
                                             <label class="labels">Tanggal Lahir</label>
                                             <input type="date"

@@ -9,6 +9,8 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\PembayaranController;
+use App\Http\Controllers\RekapBayarController;
+use App\Http\Controllers\KetentuanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -38,11 +40,14 @@ Route::get('/', function () {
     ]);
 })->middleware('guest');
 
+Route::redirect('/home', '/dashboard');
+
 // Dashboard //
 Route::get('/dashboard', function () {
     return view('dashboard', [
         'title' => 'Dashboard',
-        'role' => Auth::user()->role
+        'role' => Auth::user()->role,
+        'user' => Auth::user()
     ]);
 })->middleware('auth');
 
@@ -51,7 +56,9 @@ Route::get('/ruang', [RuangController::class, 'index'])->middleware('auth');
 
 // Pembayaran //
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->middleware(['auth', 'can:user']);
-Route::get('/pembayaran/rekap', [PembayaranController::class, 'rekap'])->middleware('auth');
+
+// Rekap Bayar //
+Route::get('/rekapbayar', [RekapBayarController::class, 'index'])->middleware('auth');
 
 // Users //
 Route::get('/users', [UsersController::class, 'index'])->middleware(['auth', 'can:admin']);
