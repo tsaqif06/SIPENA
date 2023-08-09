@@ -15,11 +15,14 @@
                     <a class="nav-link" href="/ruang">Rekap Ruang</a>
                 </li>
                 <li>
-                <li><a class="nav-link" href="/pembayaran">Pembayaran</a>
+                <li>
+                    <a class="nav-link" href="/pembayaran">Pembayaran</a>
                 </li>
-                <li><a class="nav-link" href="/rekapbayar">Rekap Pembayaran</a>
+                <li>
+                    <a class="nav-link" href="/pembayaran/rekap">Rekap Pembayaran</a>
                 </li>
-                <li><a class="nav-link" href="/penyewaaan">Penyewaan</a>
+                <li>
+                    <a class="nav-link" href="/penyewaan">Penyewaan</a>
                 </li>
                 <li>
                     <a class="nav-link" href="/ketentuan">Ketentuan</a>

@@ -31,7 +31,6 @@
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
 <link rel="stylesheet" href="../assets/css/tablestyle.css">
 <link href="../assets/css/style.css" rel="stylesheet">
-</style>
 </head>
 
 {{--  <!-- ======= Header ======= -->  --}}
@@ -48,16 +47,16 @@
                     <a class="nav-link active" href="/dashboard">Dasbor</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/tabelruangkosong">Rekap Ruang</a>
+                    <a class="nav-link" href="/ruang">Rekap Ruang</a>
                 </li>
                 <li>
-                <li><a class="nav-link" href="/rekapbayar">Rekap Pembayaran</a>
+                <li><a class="nav-link" href="/pembayaran/rekap">Rekap Pembayaran</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/tabelpengguna">Tabel Pengguna</a>
+                    <a class="nav-link" href="/users">Tabel Pengguna</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/tabelpengajuan">Pengajuan Sewa</a>
+                    <a class="nav-link" href="/penyewaan/rekap">Pengajuan Sewa</a>
                 </li>
                 <li>
                     <a class="nav-link" href="/ketentuan">Ketentuan</a>

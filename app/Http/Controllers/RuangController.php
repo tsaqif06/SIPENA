@@ -13,7 +13,12 @@ class RuangController extends Controller
      */
     public function index()
     {
-        //
+        $role = auth()->user()->role;
+
+        return view("{$role}.ruang.index", [
+            'title' => 'Rekap Ruang',
+            'role' => $role
+        ]);
     }
 
     /**

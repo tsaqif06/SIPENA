@@ -7,7 +7,7 @@
         {{--  <!-- ======= Top Bar ======= -->  --}}
         <section class="d-flex align-items-center background-animate">
             <div class="container d-flex justify-content-center justify-content-md-between">
-                <h2 class="text-white">Selamat Datang **** !</h2>
+                <h2 class="text-white">Selamat Datang {{ Auth::User()->nama }} !</h2>
             </div>
         </section>
 

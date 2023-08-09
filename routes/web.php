@@ -3,8 +3,12 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RuangController;
+use App\Http\Controllers\UsersController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\RekapBayarController;
+use App\Http\Controllers\PengajuanController;
+use App\Http\Controllers\PenyewaanController;
+use App\Http\Controllers\PembayaranController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,20 +21,24 @@ use App\Http\Controllers\RekapBayarController;
 |
 */
 
+// Login //
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'auth']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
+// Register //
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
 
+// Homepage //
 Route::get('/', function () {
     return view('homepage', [
         'title' => 'Home',
         'role' => 'guest'
     ]);
-});
+})->middleware('guest');
 
+// Dashboard //
 Route::get('/dashboard', function () {
     return view('dashboard', [
         'title' => 'Dashboard',
@@ -38,18 +46,24 @@ Route::get('/dashboard', function () {
     ]);
 })->middleware('auth');
 
-Route::get('/tabelpengguna', function () {
-    return view('tabelpengguna', [
-        'title' => 'Tabel Pengguna',
-        'role' => 'user'
-    ]);
-});
+// Ruang //
+Route::get('/ruang', [RuangController::class, 'index'])->middleware('auth');
 
+// Pembayaran //
+Route::get('/pembayaran', [PembayaranController::class, 'index'])->middleware(['auth', 'can:user']);
+Route::get('/pembayaran/rekap', [PembayaranController::class, 'rekap'])->middleware('auth');
+
+// Users //
+Route::get('/users', [UsersController::class, 'index'])->middleware(['auth', 'can:admin']);
+
+// Penyewaan //
+Route::get('/penyewaan', [PenyewaanController::class, 'index'])->middleware(['auth', 'can:user']);
+Route::get('/penyewaan/rekap', [PengajuanController::class, 'index'])->middleware(['auth', 'can:admin']);
+
+// Ketentuan //
 Route::get("/ketentuan", function () {
     return view('ketentuan', [
         'title' => 'Ketentuan',
-        'role' => 'user'
+        'role' => auth()->user()->role
     ]);
-});
-
-Route::get('/rekapbayar', [RekapBayarController::class, 'index'])->middleware('auth');
+})->middleware('auth');

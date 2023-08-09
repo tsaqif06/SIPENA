@@ -2,26 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use App\Models\RekapBayar;
-use App\Http\Requests\StoreRekapBayarRequest;
-use App\Http\Requests\UpdateRekapBayarRequest;
+use Illuminate\Http\Request;
 
-class RekapBayarController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        dd(Auth::user());
-        $role = auth()->user();
-
-        return view("$role.rekapbayar.index", [
-            'title' => 'Rekap Bayar',
-            'role' => $role
+        return view('admin.users.index', [
+            'title' => 'Tabel Pengguna',
+            'role' => auth()->user()->role
         ]);
-
     }
 
     /**
@@ -35,7 +28,7 @@ class RekapBayarController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRekapBayarRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -43,7 +36,7 @@ class RekapBayarController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(RekapBayar $rekapBayar)
+    public function show(string $id)
     {
         //
     }
@@ -51,7 +44,7 @@ class RekapBayarController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(RekapBayar $rekapBayar)
+    public function edit(string $id)
     {
         //
     }
@@ -59,7 +52,7 @@ class RekapBayarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRekapBayarRequest $request, RekapBayar $rekapBayar)
+    public function update(Request $request, string $id)
     {
         //
     }
@@ -67,7 +60,7 @@ class RekapBayarController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(RekapBayar $rekapBayar)
+    public function destroy(string $id)
     {
         //
     }
