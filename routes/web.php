@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\RekapBayarController;
+use App\Http\Controllers\RuangController;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,5 +52,7 @@ Route::get("/ketentuan", function () {
         'role' => 'user'
     ]);
 });
+
+Route::get('/ruang', [RuangController::class, 'index']);
 
 Route::get('/rekapbayar', [RekapBayarController::class, 'index'])->middleware('auth');
