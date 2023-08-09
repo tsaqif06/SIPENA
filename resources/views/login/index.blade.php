@@ -26,9 +26,15 @@
                 </div>
             @endif
 
-            @if (session()->has('failer'))
+            @if (session()->has('failed'))
                 <div class="alert alert-danger" role="alert">
-                    {{ session('failer') }}
+                    {{ session('failed') }}
+                </div>
+            @endif
+
+            @if (session()->has('error'))
+                <div class="alert alert-danger" role="alert">
+                    {{ session('error') }}
                 </div>
             @endif
             <div class="row justify-content-center">

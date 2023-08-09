@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\RekapBayar;
 use App\Http\Requests\StoreRekapBayarRequest;
 use App\Http\Requests\UpdateRekapBayarRequest;
@@ -13,18 +14,13 @@ class RekapBayarController extends Controller
      */
     public function index()
     {
-        return view('user.rekapbayar.index', [
-            'title' => 'Rekap Bayar',
-            'role' => 'user'
-        ]);
-    }
+        $role = Auth::user()->role;
 
-    public function admin()
-    {
-        return view('admin.rekapbayar.index', [
+        return view("$role.rekapbayar.index", [
             'title' => 'Rekap Bayar',
-            'role' => 'admin'
+            'role' => $role
         ]);
+
     }
 
     /**

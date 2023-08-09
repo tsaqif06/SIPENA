@@ -38,12 +38,12 @@ Route::get('/dashboard', function () {
 
 // Rute hanya dapat diakses oleh user
 Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::get('/rekapbayar', 'RekapBayarController@index');
+    Route::get('/rekapbayar', [RekapBayarController::class, 'index']);
     // ... definisi rute lain untuk user
 });
 
 // Rute hanya dapat diakses oleh admin
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/rekapbayar', 'RekapBayarController@admin');
+    Route::get('/rekapbayar', [RekapBayarController::class, 'admin']);
     // ... definisi rute lain untuk admin
 });
