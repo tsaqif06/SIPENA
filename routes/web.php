@@ -42,6 +42,11 @@ Route::get('/tabelpengguna', function(){
     ]);
 });
 
+Route::get("/ketentuan", function(){
+    return view('ketentuan', [
+        'role'=>'user'
+    ]);
+
 // Rute hanya dapat diakses oleh user
 Route::middleware(['auth', 'role:user'])->group(function () {
     Route::get('/rekapbayar', 'RekapBayarController@index');
@@ -52,4 +57,5 @@ Route::middleware(['auth', 'role:user'])->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/rekapbayar', 'RekapBayarController@admin');
     // ... definisi rute lain untuk admin
+
 });
