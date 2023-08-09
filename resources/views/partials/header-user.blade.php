@@ -9,20 +9,22 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li>
-                    <a class="nav-link active" href="/dashboard">Dasbor</a>
+                    <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">Dasbor</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/ruang">Rekap Ruang</a>
+                    <a class="nav-link {{ Request::is('ruang') ? 'active' : '' }}" href="/ruang">Rekap Ruang</a>
                 </li>
                 <li>
-                <li><a class="nav-link" href="/pembayaran">Pembayaran</a>
+                <li><a class="nav-link {{ Request::is('pembayaran') ? 'active' : '' }}"
+                        href="/pembayaran">Pembayaran</a>
                 </li>
-                <li><a class="nav-link" href="/rekapbayar">Rekap Pembayaran</a>
+                <li><a class="nav-link {{ Request::is('rekapbayar') ? 'active' : '' }}" href="/rekapbayar">Rekap
+                        Pembayaran</a>
                 </li>
-                <li><a class="nav-link" href="/penyewaaan">Penyewaan</a>
+                <li><a class="nav-link {{ Request::is('penyewaan') ? 'active' : '' }}" href="/penyewaaan">Penyewaan</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/ketentuan">Ketentuan</a>
+                    <a class="nav-link {{ Request::is('ketentuan') ? 'active' : '' }}" href="/ketentuan">Ketentuan</a>
                 </li>
                 <li>
                     <form action="/logout" method="post">
