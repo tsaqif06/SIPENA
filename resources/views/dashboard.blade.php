@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    \
+    
 
     @if ($role == 'user')
         {{--  <!-- ======= Top Bar ======= -->  --}}

@@ -27,6 +27,7 @@
             @endif
 
             @if (session()->has('failed'))
+                @dd(session('failed'))
                 <div class="alert alert-danger" role="alert">
                     {{ session('failed') }}
                 </div>
@@ -45,14 +46,26 @@
                         </div>
                         <h3 class="text-center mb-4">Sistem Informasi Pembayaran Sewa Rusunawa Kota Malang </h3>
                         <form action="/dashboard" class="login-form">
+                            @csrf
                             <div class="form-group">
-                                <input type="email" class="form-control rounded-left" name="email"
-                                    placeholder="Email" autofocus required>
+                                <input type="email"
+                                    class="form-control rounded-left @error('email') is-invalid @enderror"
+                                    name="email" placeholder="Email" autofocus required>
                             </div>
+                            @error('email')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                             <div class="form-group d-flex">
-                                <input type="password" class="form-control rounded-left" name="password"
-                                    placeholder="Password" required>
+                                <input type="password" class="form-control @error('email') is-invalid @enderror"
+                                    name="password" placeholder="Password" required>
                             </div>
+                            @error('password')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                             <div class="form-group d-md-flex">
                                 <div class="w-50">
                                     <label class="checkbox-wrap checkbox-primary" for="remember">Ingat Saya
@@ -81,3 +94,4 @@
 </body>
 
 </html>
+

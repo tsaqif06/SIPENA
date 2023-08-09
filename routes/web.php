@@ -1,8 +1,10 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\RekapBayarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,31 +33,23 @@ Route::get('/', function () {
 
 Route::get('/dashboard', function () {
     return view('dashboard', [
-        'role' => 'admin'
-    ]);
-});
-
-Route::get('/tabelpengguna', function(){
-    return view('tabelpengguna', [
         'title' => 'Dashboard',
+        'role' => Auth::user()->role
+    ]);
+})->middleware('auth');
+
+Route::get('/tabelpengguna', function () {
+    return view('tabelpengguna', [
+        'title' => 'Tabel Pengguna',
         'role' => 'user'
     ]);
 });
 
-Route::get("/ketentuan", function(){
+Route::get("/ketentuan", function () {
     return view('ketentuan', [
-        'role'=>'user'
+        'title' => 'Ketentuan',
+        'role' => 'user'
     ]);
-
-// Rute hanya dapat diakses oleh user
-Route::middleware(['auth', 'role:user'])->group(function () {
-    Route::get('/rekapbayar', [RekapBayarController::class, 'index']);
-    // ... definisi rute lain untuk user
 });
 
-// Rute hanya dapat diakses oleh admin
-Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/rekapbayar', [RekapBayarController::class, 'admin']);
-    // ... definisi rute lain untuk admin
-
-});
+Route::get('/rekapbayar', [RekapBayarController::class, 'index'])->middleware('auth');

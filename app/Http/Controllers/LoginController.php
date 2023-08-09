@@ -16,7 +16,7 @@ class LoginController extends Controller
     {
         $credentials = $request->validate([
             "email" => "required|email:dns",
-            "password" => "required"
+            "password" => "required|min:3|max:255"
         ]);
 
         $remember = $request->input('remember') === 'on';

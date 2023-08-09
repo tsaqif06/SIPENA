@@ -14,7 +14,8 @@ class RekapBayarController extends Controller
      */
     public function index()
     {
-        $role = Auth::user()->role;
+        dd(Auth::user());
+        $role = auth()->user();
 
         return view("$role.rekapbayar.index", [
             'title' => 'Rekap Bayar',
