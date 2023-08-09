@@ -45,30 +45,31 @@
         <nav id="navbar" class="navbar">
             <ul>
                 <li>
-                    <a class="nav-link active" href="/dashboard">Dasbor</a>
+                    <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">Dasbor</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/tabelruangkosong">Rekap Ruang</a>
+                    <a class="nav-link {{ Request::is('ruang') ? 'active' : '' }}" href="/ruang">Rekap Ruang</a>
                 </li>
                 <li>
-                <li><a class="nav-link" href="/rekapbayar">Rekap Pembayaran</a>
+                <li><a class="nav-link {{ Request::is('rekapbayar') ? 'active' : '' }}" href="/rekapbayar">Rekap
+                        Pembayaran</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/tabelpengguna">Tabel Pengguna</a>
+                    <a class="nav-link {{ Request::is('pengguna') ? 'active' : '' }}" href="/pengguna">Tabel
+                        Pengguna</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/tabelpengajuan">Pengajuan Sewa</a>
+                    <a class="nav-link {{ Request::is('pengajuan') ? 'active' : '' }}" href="/pengajuan">Pengajuan
+                        Sewa</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="/ketentuan">Ketentuan</a>
+                    <a class="nav-link {{ Request::is('ketentuan') ? 'active' : '' }}" href="/ketentuan">Ketentuan</a>
                 </li>
-                <li>
                 <li>
                     <form action="/logout" method="post">
                         @csrf
                         <button class="getstarted logout" type="submit">KELUAR</button>
                     </form>
-                </li>
                 </li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
