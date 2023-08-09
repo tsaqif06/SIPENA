@@ -27,7 +27,6 @@
             @endif
 
             @if (session()->has('failed'))
-                @dd(session('failed'))
                 <div class="alert alert-danger" role="alert">
                     {{ session('failed') }}
                 </div>
@@ -45,7 +44,7 @@
                             <img src="assets/img/logosipenafinal.png" alt="" class="img-fluid" />
                         </div>
                         <h3 class="text-center mb-4">Sistem Informasi Pembayaran Sewa Rusunawa Kota Malang </h3>
-                        <form action="/dashboard" class="login-form">
+                        <form action="/login" method="post" class="login-form">
                             @csrf
                             <div class="form-group">
                                 <input type="email"
