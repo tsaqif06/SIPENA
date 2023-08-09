@@ -29,7 +29,9 @@ Route::get('/', function () {
         'title' => 'Home',
         'role' => 'guest'
     ]);
-});
+})->middleware('guest');
+
+Route::redirect('/home', '/dashboard');
 
 Route::get('/dashboard', function () {
     return view('dashboard', [
@@ -44,13 +46,13 @@ Route::get('/tabelpengguna', function () {
         'title' => 'Tabel Pengguna',
         'role' => 'user'
     ]);
-});
+})->middleware('auth');
 
 Route::get("/ketentuan", function () {
     return view('ketentuan', [
         'title' => 'Ketentuan',
         'role' => 'user'
     ]);
-});
+})->middleware('auth');
 
 Route::get('/rekapbayar', [RekapBayarController::class, 'index'])->middleware('auth');
