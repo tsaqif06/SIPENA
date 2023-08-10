@@ -1,5 +1,6 @@
 @extends ('layouts.main')
 
+
 @section ('content')
 
 <main id="main">
@@ -53,15 +54,11 @@
                       @endforeach
                     </tbody>
                   </table>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+                                </div>
+                            </div>
+                        </div>
 
 
-    </section>
-  </main>
-
-  @endsection
+        </section>
+    </main>
+@endsection

@@ -8,12 +8,12 @@
     <link rel="icon" type="image/png" href="/assets/img/logofinal.png" />
 
     <link
-        href="/https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet" />
 
-    <link rel="stylesheet" href="/https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <link rel="stylesheet" href="/assets/loginasset/css/style.css">
+    <link rel="stylesheet" href="/assets/css/login.css">
 
 </head>
 
@@ -37,6 +37,7 @@
                     {{ session('error') }}
                 </div>
             @endif
+
             <div class="row justify-content-center">
                 <div class="col-md-6 col-lg-5">
                     <div class="login-wrap p-4 p-md-5">
@@ -85,12 +86,11 @@
         </div>
     </section>
 
-    <script src="./assets/loginasset/jquery.min.js"></script>
-    <script src="./assets/loginasset/js/popper.js"></script>
-    <script src="./assets/loginasset/js/bootstrap.min.js"></script>
-    <script src="./assets/loginasset/js/main.js"></script>
+    <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/popper.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/login.js"></script>
 
 </body>
 
 </html>
-
