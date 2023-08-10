@@ -47,7 +47,7 @@
                         <input class="form-check-input" type="radio" name="status" id="status1" value="option1"
                           checked>
                         <label class="form-check-label" for="status1">
-                          Tersedia
+                          Terisi
                         </label>
                       </div>
                       <div class="form-check">
@@ -98,11 +98,12 @@
                     </thead>
 
                     <tbody>
+                      @foreach ($data as $item)
                       <tr>
-                        <td> 1. </td>
-                        <td> <button type="button" class="btn btn-sm btn-success">Terisi</button> </td>
-                        <td>Imron</td>
-                        <td> F14</td>
+                        <td> {{ $loop->iteration }} </td>
+                        <td> <button type="button" class="btn btn-sm btn-{{ $item->is_dipakai == 0 ? "danger" : "success" }}">{{ $item->is_dipakai == 0 ? "Kosong" : "Terisi" }}</button> </td>
+                        <td>{{ $item->user->nama }}</td>
+                        <td>{{ $item->koderuang }}</td>
                         <td>
                           <button class="button-arounder">
                             <span class="material-symbols-outlined"> edit </span>
@@ -112,20 +113,7 @@
                           </button>
                         </td>
                       </tr>
-                      <tr>
-                        <td> 2. </td>
-                        <td> <button type="button" class="btn btn-sm btn-info">Tersedia</button> </td>
-                        <td>Hamdan</td>
-                        <td>L21</td>
-                        <td>
-                          <button class="button-arounder">
-                            <span class="material-symbols-outlined"> edit </span>
-                          </button>
-                          <button class="button-arounder" onclick="BtnDel(this)">
-                            <span class="material-symbols-outlined"> delete </span>
-                          </button>
-                        </td>
-                      </tr>
+                      @endforeach
                     </tbody>
                   </table>
                 </div>

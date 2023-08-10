@@ -17,7 +17,8 @@ class RuangController extends Controller
 
         return view("$role.ruang.index", [
             'title' => 'Rekap Ruang',
-            'role' => $role
+            'role' => $role,
+            'data' => Ruang::all()
         ]);
     }
 
