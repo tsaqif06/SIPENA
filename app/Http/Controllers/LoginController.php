@@ -9,7 +9,7 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('login.index');
+        return view('login');
     }
 
     public function auth(Request $request)
@@ -19,7 +19,7 @@ class LoginController extends Controller
             "password" => "required|min:3|max:255"
         ]);
 
-        $remember = $request->input('remember') === 'on';
+        $remember = $request->has('remember');
 
         if (Auth::attempt($credentials, $remember)) {
             $request->session()->regenerate();

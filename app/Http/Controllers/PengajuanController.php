@@ -13,7 +13,10 @@ class PengajuanController extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.rekapsewa.index', [
+            'title' => 'Pengajuan Sewa',
+            'role' => auth()->user()->role
+        ]);
     }
 
     /**
