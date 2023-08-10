@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Ruang;
 use App\Http\Requests\StoreRuangRequest;
 use App\Http\Requests\UpdateRuangRequest;
+use App\Models\User;
 
 class RuangController extends Controller
 {
@@ -27,7 +28,13 @@ class RuangController extends Controller
      */
     public function create()
     {
-        //
+
+        $role = auth()->user()->role;
+
+        return view('admin.ruang.create', [
+            'title' => 'Rekap Ruang',
+            'role' => $role
+        ]);
     }
 
     /**
@@ -35,7 +42,17 @@ class RuangController extends Controller
      */
     public function store(StoreRuangRequest $request)
     {
-        //
+        return $request;
+        $validatedData = $request->validate([
+            "nama" => "required|unique:user,nama",
+            "status" => "required",
+            "koderuang" => "required",
+        ]);
+        $validatedData['user_id'] = User::where('id', $validatedData['nama'])->get();
+        return $validatedData;
+
+        // Ruang::create($validatedData);
+        // return back();
     }
 
     /**

@@ -56,7 +56,12 @@ Route::get('/ruang', [RuangController::class, 'index'])->middleware('auth');
 // Pembayaran //
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->middleware(['auth', 'can:user']);
 
+
+Route::get('/ketentuan', [KetentuanController::class, 'index']);
+// Route::get('/ruang', [RuangController::class, 'index']);
+Route::resource('/ruang', RuangController::class)->middleware(['auth', 'can:admin']);
 // Rekap Bayar //
+
 Route::get('/rekapbayar', [RekapBayarController::class, 'index'])->middleware('auth');
 
 // Pengguna //
