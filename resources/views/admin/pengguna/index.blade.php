@@ -27,7 +27,7 @@
             <div class="modal-header">
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="{{ url('admin.pengguna') }}">
+            <form action="{{ url('pengguna') }}" method="POST">
               <div class="modal-body">
                 <input type="hidden" name="id" id="id">
                 <div class="form-group ; mb-3">
@@ -53,7 +53,7 @@
                 </div>
                 <div class="form-group; mb-3">
                   <label for="NoHP">No HP</label>
-                  <input type="number" class="form-control" id="NoHP" name="NoHP" placeholder="nomor telepon" required />
+                  <input type="text" class="form-control" id="NoHP" name="NoHP" placeholder="nomor telepon" required />
                 </div>
               </div>
               <div class="modal-footer">
@@ -100,13 +100,15 @@
                             data-bs-toggle="modal" data-bs-target="#modalberkas">Lihat Berkas</button></td>
                         <td>
                           <button class="button-arounder">
-                            <a href="{{ url('pengguna/'.$item->id.'/edit') }}">
-                              <span class="material-symbols-outlined"> edit </span>
-                            </a>
+                            <span class="material-symbols-outlined"><a href="pengguna/{{ $item->id }}/edit"> edit </a></span>
                           </button>
-                          <a class="button-arounder" onclick="BtnDel(this)">
-                            <span class="material-symbols-outlined"> delete </span>
-                          </a>
+                          {{-- <form action="{{ 'pengguna' }}" method="POST"> --}}
+                            @method('delete')
+                            @csrf
+                            <button class="button-arounder" onclick="return confirm('Yakin mau hapus?')">
+                              <span class="material-symbols-outlined"> delete </span>
+                            </button>
+                          </form>
                         </td>
                       </tr>
 

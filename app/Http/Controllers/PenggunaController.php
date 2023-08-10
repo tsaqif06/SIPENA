@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\User;
-
+use Illuminate\Http\Request;
 
 class PenggunaController extends Controller
 {
@@ -25,7 +24,7 @@ class PenggunaController extends Controller
      */
     public function create()
     {
-        // return view('admin.pengguna.index');
+        //
     }
 
     /**
@@ -33,13 +32,13 @@ class PenggunaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(User $users)
     {
         //
     }
@@ -47,24 +46,40 @@ class PenggunaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $users, $id)
     {
-        // $users = Pengguna::where('id', $id)->first();
-        // return view('admin.pengguna.edit')->with('users', $users);
+        // dd($users->all());
+        $users = User::findorfail($id);
+        // dd($users);
+        return view('admin.pengguna.edit', [
+            'title' => 'Tabel Pengguna',
+            'role' => auth()->user()->role,
+            'users' => $users
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $users, $id)
     {
-        //
+        // dd($request->all());
+        $users = User::findOrfail($id);
+        // dd($users);
+
+        $users->nama = $request->nama;
+        $users->tempatlahir = $request->tempatlahir;
+        $users->tanggallahir = $request->tanggallahir;
+        $users->alamat = $request->alamat;
+        $users->pekerjaan = $request->pekerjaan;
+        $users->notelp = $request->notelp;
+        $users->save();
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(User $user)
     {
         //
     }

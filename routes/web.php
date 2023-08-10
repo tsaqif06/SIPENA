@@ -63,6 +63,9 @@ Route::get('/rekapbayar', [RekapBayarController::class, 'index'])->middleware('a
 
 // Pengguna //
 Route::get('/pengguna', [PenggunaController::class, 'index'])->middleware('auth');
+Route::get('/pengguna/{id}/edit', [PenggunaController::class, 'edit'])->middleware('auth');
+Route::put('/pengguna/{id}', [PenggunaController::class, 'update'])->middleware('auth');
+// Route::resource('/pengguna', PenggunaController::class)->middleware('auth');
 
 // Penyewaan //
 Route::get('/penyewaan', [PenyewaanController::class, 'index'])->middleware(['auth', 'can:user']);
