@@ -29,7 +29,7 @@
     <link href="/assets/css/style.css" rel="stylesheet" />
 </head>
 
-<body>
+<body class="d-flex flex-column min-vh-100 section-bg">
 
     @include('partials.header-' . $role)
 

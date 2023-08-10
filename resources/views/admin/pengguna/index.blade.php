@@ -16,6 +16,7 @@
             data-bs-target="#exampleModal">
             Tambah Data
           </button>
+          
         </div>
       </div> <br>
 
@@ -26,29 +27,33 @@
             <div class="modal-header">
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form>
+            <form action="{{ url('admin.pengguna') }}">
               <div class="modal-body">
                 <input type="hidden" name="id" id="id">
                 <div class="form-group ; mb-3">
                   <label for="Nama">Nama</label>
-                  <input type="text" class="form-control" id="Nama" name="Nama" placeholder="Nama" required />
+                  <input type="text" class="form-control" id="Nama" name="Nama" placeholder="nama" required />
                 </div>
                 <div class="form-group, mb-3">
-                  <label for="TTL">Tempat, Tanggal Lahir</label>
-                  <input type="text" class="form-control" id="TTL" name="TTL" placeholder="TTL" required />
+                  <label for="tempatLahir">Tempat Lahir</label>
+                  <input type="text" class="form-control" id="tempatLahir" name="tempatLahir" placeholder="tempat lahir" required />
+                </div>
+                <div class="form-group, mb-3">
+                  <label for="tanggalLahir">Tanggal Lahir</label>
+                  <input type="text" class="form-control" id="tanggalLahir" name="tanggalLahir" placeholder="tangga lahir" required />
                 </div>
                 <div class="form-group; mb-3">
                   <label for="Alamat">Alamat</label>
-                  <input type="text" class="form-control" id="Alamat" name="Alamat" placeholder="Alamat" required />
+                  <input type="text" class="form-control" id="Alamat" name="Alamat" placeholder="alamat" required />
                 </div>
                 <div class="form-group; mb-3">
                   <label for="Pekerjaan">Pekerjaan</label>
-                  <input type="text" class="form-control" id="Pekerjaan" name="Pekerjaan" placeholder="Pekerjaan"
+                  <input type="text" class="form-control" id="Pekerjaan" name="Pekerjaan" placeholder="pekerjaan"
                     required />
                 </div>
                 <div class="form-group; mb-3">
                   <label for="NoHP">No HP</label>
-                  <input type="number" class="form-control" id="NoHP" name="NoHP" placeholder="NO TELP" required />
+                  <input type="number" class="form-control" id="NoHP" name="NoHP" placeholder="nomor telepon" required />
                 </div>
               </div>
               <div class="modal-footer">
@@ -71,7 +76,8 @@
                       <tr>
                         <th> No </th>
                         <th> Nama </th>
-                        <th> TTL </th>
+                        <th style="width: 150px"> Tempat lahir </th>
+                        <th style="width: 150px"> Tanggal Lahir </th>
                         <th> Alamat </th>
                         <th> Pekerjaan </th>
                         <th> No HP </th>
@@ -80,59 +86,32 @@
                       </tr>
                     </thead>
                     <tbody>
+                      @foreach ($users as $item)
+                          
                       <tr>
-                        <td> 1. </td>
-                        <td>Imron</td>
-                        <td> Malang, 10 Maret 1973</td>
-                        <td> Dinoyo</td>
-                        <td> Tidak Ada</td>
-                        <td> 089227833746</td>
+                        <td> {{ $loop->iteration }} </td>
+                        <td>{{ $item->nama }}</td>
+                        <td> {{ $item->tempatlahir }}</td>
+                        <td> {{ $item->tanggallahir }}</td>
+                        <td> {{ $item->alamat }}</td>
+                        <td> {{ $item->pekerjaan}}</td>
+                        <td> {{ $item->notelp }}</td>
                         <td><button class="btn btn-sm" style="color:white; background-color:#5CB874"
                             data-bs-toggle="modal" data-bs-target="#modalberkas">Lihat Berkas</button></td>
                         <td>
                           <button class="button-arounder">
-                            <span class="material-symbols-outlined"> edit </span>
+                            <a href="{{ url('pengguna/'.$item->id.'/edit') }}">
+                              <span class="material-symbols-outlined"> edit </span>
+                            </a>
                           </button>
                           <button class="button-arounder" onclick="BtnDel(this)">
                             <span class="material-symbols-outlined"> delete </span>
                           </button>
                         </td>
                       </tr>
-                      <tr>
-                        <td> 2. </td>
-                        <td>Hamdan</td>
-                        <td> Sidoarjo, 2 Februari 1958</td>
-                        <td> Sukun</td>
-                        <td> Tukang Parkir </td>
-                        <td> 0898479287 </td>
-                        <td><button class="btn btn-sm" style="color:white; background-color:#5CB874"
-                            data-bs-toggle="modal" data-bs-target="#modalberkas">Lihat Berkas</button></td>
-                        <td>
-                          <button class="button-arounder">
-                            <span class="material-symbols-outlined"> edit </span>
-                          </button>
-                          <button class="button-arounder" onclick="BtnDel(this)">
-                            <span class="material-symbols-outlined"> delete </span>
-                          </button>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td> 3. </td>
-                        <td> Husna</td>
-                        <td> Sidoarjo, 2 Februari 1958</td>
-                        <td> Sukun</td>
-                        <td> Tukang Parkir </td>
-                        <td> 0898479287 </td>
-                        <td> Tidak ada </td>
-                        <td>
-                          <button class="button-arounder">
-                            <span class="material-symbols-outlined"> edit </span>
-                          </button>
-                          <button class="button-arounder" onclick="BtnDel(this)">
-                            <span class="material-symbols-outlined"> delete </span>
-                          </button>
-                        </td>
-                      </tr>
+
+                      @endforeach
+                      
                     </tbody>
                   </table>
                 </div>

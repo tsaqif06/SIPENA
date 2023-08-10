@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
+
 
 class PenggunaController extends Controller
 {
@@ -11,11 +13,10 @@ class PenggunaController extends Controller
      */
     public function index()
     {
-        $role = auth()->user()->role;
-
-        return view("$role.pengguna.index", [
-            'title' => 'Pengguna',
-            'role' => $role
+        return view('admin.pengguna.index', [
+            'title' => 'Tabel Pengguna',
+            'role' => auth()->user()->role,
+            'users' => User::all()
         ]);
     }
 
@@ -24,7 +25,7 @@ class PenggunaController extends Controller
      */
     public function create()
     {
-        //
+        // return view('admin.pengguna.index');
     }
 
     /**
@@ -48,7 +49,8 @@ class PenggunaController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        // $users = Pengguna::where('id', $id)->first();
+        // return view('admin.pengguna.edit')->with('users', $users);
     }
 
     /**
