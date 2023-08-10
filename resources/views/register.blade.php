@@ -65,97 +65,102 @@
                                             <div class="col-md-12"><label class="labels">Nama</label><input
                                                     type="text"
                                                     class="form-control @error('nama') is-invalid @enderror"
-                                                    placeholder="Nama" name="nama"></div>
-                                        </div>
-                                        @error('nama')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
+                                                    placeholder="Nama" name="nama">
+                                                    @error('nama')
+                                                        <div class="invalid-feedback">
+                                                            {{ $message }}
+                                                        </div>
+                                                    @enderror
                                             </div>
-                                        @enderror
+                                        </div>
                                         <div class="col-md-12">
                                             <label class="labels">Tempat Lahir</label>
                                             <input type="text"
                                                 class="form-control @error('tempatlahir') is-invalid @enderror"
                                                 placeholder="Tempat Lahir" name="tempatlahir">
+                                            @error('nama')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
-                                        data
                                         <div class="col-md-12">
                                             <label class="labels">Tanggal Lahir</label>
                                             <input type="date"
                                                 class="form-control @error('tanggallahir') is-invalid @enderror"
                                                 name="tanggallahir">
+                                                @error('tanggallahir')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                         </div>
-                                        @error('tanggallahir')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
                                         <div class="col-md-12">
                                             <label class="labels">Alamat</label>
                                             <input type="text"
                                                 class="form-control @error('alamat') is-invalid @enderror"
                                                 placeholder="Alamat" name="alamat">
+                                                @error('alamat')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                         </div>
-                                        @error('alamat')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
                                         <div class="col-md-12">
                                             <label class="labels">Pekerjaan</label>
                                             <input type="text"
                                                 class="form-control @error('pekerjaan') is-invalid @enderror"
                                                 placeholder="Pekerjaan" name="pekerjaan">
+                                                @error('pekerjaan')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                         </div>
-                                        @error('pekerjaan')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
                                         <div class="col-md-12">
                                             <label class="labels">No. HP</label>
                                             <input type="text"
                                                 class="form-control @error('notelp') is-invalid @enderror"
                                                 placeholder="No. HP" name="notelp">
+                                                @error('notelp')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                         </div>
-                                        @error('notelp')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
                                         <div class="col-md-12">
                                             <label class="labels">Jumlah Anggota Keluarga</label>
                                             <input type="number"
                                                 class="form-control @error('jmlkeluarga') is-invalid @enderror"
                                                 placeholder="Jumlah Anggota Keluarga" name="jmlkeluarga">
+                                                @error('jmlkeluarga')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                         </div>
-                                        @error('jmlkeluarga')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
                                         <div class="col-md-12">
                                             <label class="labels">Email</label>
                                             <input type="email"
                                                 class="form-control @error('email') is-invalid @enderror"
                                                 placeholder="Email" name="email">
+                                            @error('email')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
                                         </div>
-                                        @error('email')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
                                         <div class="col-md-12">
                                             <label class="labels">Password</label>
                                             <input type="password"
                                                 class="form-control @error('password') is-invalid @enderror"
                                                 placeholder="Password" name="password">
+                                                @error('password')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                         </div>
-                                        @error('password')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                        @enderror
                                         <div class="mt-5 text-center d-grid gap-2">
                                             <button class="btn" type="submit"
                                                 style="color:white; background-color:#5CB874">Daftar</button>

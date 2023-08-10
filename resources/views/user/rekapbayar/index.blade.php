@@ -52,48 +52,24 @@
                                                     <span class="material-symbols-outlined"> delete </span>
                                                 </button>
                                             </td>
-                                            <td>1.</td>
-                                            <td>Raib</td>
-                                            <td>50</td>
-                                            <td>082232097234</td>
-                                            <td> Lunas </td>
-                                            <td> Lunas </td>
-                                            <td> Lunas </td>
-                                            <td> Lunas </td>
-                                            <td> Lunas </td>
-                                            <td> Lunas </td>
-                                            <td> Lunas </td>
-                                            <td> Lunas </td>
-                                            <td> Lunas </td>
-                                            <td> Lunas </td>
-                                            <td> Lunas </td>
-                                            <td> Lunas </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <button class="button-arounder">
-                                                    <span class="material-symbols-outlined"> edit </span>
-                                                </button>
-                                                <button class="button-arounder" onclick="BtnDel(this)">
-                                                    <span class="material-symbols-outlined"> delete </span>
-                                                </button>
-                                            </td>
-                                            <td>2.</td>
-                                            <td>Seli</td>
-                                            <td>20</td>
-                                            <td>082232087134</td>
-                                            <td> Lunas </td>
-                                            <td> Lunas </td>
-                                            <td> Lunas </td>
-                                            <td> Lunas </td>
-                                            <td> Lunas </td>
-                                            <td> Lunas </td>
-                                            <td class="text-danger"> Belum </td>
-                                            <td class="text-danger"> Belum </td>
-                                            <td class="text-danger"> Belum </td>
-                                            <td class="text-danger"> Belum </td>
-                                            <td class="text-danger"> Belum </td>
-                                            <td class="text-danger"> Belum </td>
+                                            @foreach ($rekapbayars as $rekapbayar)
+                                                <td>{{ $loop->iteration }}</td>
+                                                <td>{{ $rekapbayar->user->nama }}</td>
+                                                <td>{{ $rekapbayar->user->nama }}</td>
+                                                <td>{{ $rekapbayar->user->notelp }}</td>
+                                                <td>{{ $rekapbayar->jan }}</td>
+                                                <td>{{ $rekapbayar->feb }}</td>
+                                                <td>{{ $rekapbayar->mar }}</td>
+                                                <td>{{ $rekapbayar->apr }}</td>
+                                                <td>{{ $rekapbayar->mei }}</td>
+                                                <td>{{ $rekapbayar->jul }}</td>
+                                                <td>{{ $rekapbayar->jun }}</td>
+                                                <td>{{ $rekapbayar->aug }}</td>
+                                                <td>{{ $rekapbayar->sep }}</td>
+                                                <td>{{ $rekapbayar->okt }}</td>
+                                                <td>{{ $rekapbayar->nov }}</td>
+                                                <td>{{ $rekapbayar->des }}</td>
+                                            @endforeach
                                         </tr>
                                     </tbody>
                                 </table>

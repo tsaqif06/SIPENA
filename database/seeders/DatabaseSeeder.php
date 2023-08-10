@@ -37,5 +37,6 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('royhan'),
         ]);
         \App\Models\User::factory(10)->create();
+        \App\Models\Ruang::factory(10)->create();
     }
 }

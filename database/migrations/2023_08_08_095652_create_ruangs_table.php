@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('ruangs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
+            $table->foreignId('user_id')->nullable();
             $table->boolean('is_dipakai')->default(false);
             $table->string('koderuang');
             $table->timestamps();

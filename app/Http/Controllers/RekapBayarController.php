@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+use App\Models\RekapBayar;
+
 class RekapBayarController extends Controller
 {
     /**
@@ -12,10 +15,16 @@ class RekapBayarController extends Controller
     public function index()
     {
         $user = auth()->user();
+        if ($user->role == 'admin') {
+            $users = User::all();
+        } else {
+            $users = $user;
+        }
 
         return view("$user->role.rekapbayar.index", [
             'title' => 'Rekap Bayar',
-            'users' => $user,
+            // 'users' => $users,
+            'rekapbayars' => RekapBayar::all(),
             'role' => $user->role
         ]);
     }
@@ -25,7 +34,12 @@ class RekapBayarController extends Controller
      */
     public function create()
     {
-        //
+        $role = auth()->user()->role;
+
+        return view('admin.rekapbayar.create', [
+            'title' => 'Rekap Bayar',
+            'role' => $role
+        ]);
     }
 
     /**
