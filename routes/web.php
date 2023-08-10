@@ -75,3 +75,4 @@ Route::get("/ketentuan", function () {
         'role' => auth()->user()->role
     ]);
 })->middleware('auth');
+

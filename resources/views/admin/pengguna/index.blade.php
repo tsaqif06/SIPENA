@@ -104,9 +104,9 @@
                               <span class="material-symbols-outlined"> edit </span>
                             </a>
                           </button>
-                          <a class="button-arounder" onclick="BtnDel(this)">
+                          <button class="button-arounder" onclick="BtnDel(this)">
                             <span class="material-symbols-outlined"> delete </span>
-                          </a>
+                          </button>
                         </td>
                       </tr>
 
