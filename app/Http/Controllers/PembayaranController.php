@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pembayaran;
-use App\Http\Requests\StorePembayaranRequest;
-use App\Http\Requests\UpdatePembayaranRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PembayaranController extends Controller
 {
@@ -32,7 +32,7 @@ class PembayaranController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePembayaranRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -56,7 +56,7 @@ class PembayaranController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePembayaranRequest $request, Pembayaran $pembayaran)
+    public function update(Request $request, Pembayaran $pembayaran)
     {
         //
     }
