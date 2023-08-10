@@ -11,7 +11,7 @@
             </div>
             <br>
 
-            <!--Tabel-->
+            {{--  <!--Tabel-->  --}}
             <div class="container">
                 <div class="row py-10">
                     <div class="col-md-12">
@@ -29,30 +29,19 @@
                                         </thead>
 
                                         <tbody>
-                                            <tr>
-                                                <td> 1. </td>
-                                                <td> <button type="button" class="btn btn-sm btn-success">Terisi</button>
-                                                </td>
-                                                <td>Imron</td>
-                                                <td> L1 F14</td>
-                                            </tr>
-                                            <tr>
-                                                <td> 2. </td>
-                                                <td> <button type="button"
-                                                        class="btn btn-sm btn-info text-white">Tersedia</button> </td>
-                                                <td>Hamdan</td>
-                                                <td> L2 L21</td>
-                                            </tr>
+                                            @foreach ($data as $item)
+                                                <tr>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td> <button type="button"
+                                                            class="btn btn-sm btn-{{ $item->is_dipakai == 0 ? 'danger' : 'success' }}">{{ $item->is_dipakai == 0 ? 'Kosong' : 'Terisi' }}</button>
+                                                    </td>
+                                                    <td>{{ $item->user->nama }}</td>
+                                                    <td>{{ $item->koderuang }}</td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
         </section>
     </main>
-    >>>>>>> main

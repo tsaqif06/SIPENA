@@ -14,7 +14,6 @@
                     Tambah Data
                 </button>
             </div>
-
             {{--  <!-- Modal -->  --}}
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -34,7 +33,7 @@
                                                 <input class="form-check-input" type="radio" name="status" id="status1"
                                                     value="option1" checked>
                                                 <label class="form-check-label" for="status1">
-                                                    Tersedia
+                                                    Terisi
                                                 </label>
                                             </div>
                                             <div class="form-check">
@@ -46,15 +45,10 @@
                                             </div>
                                         </div>
                                     </div>
-                                </fieldset>
-                                <div class="form-group, mb-3">
-                                    <label for="exampleInputEmail1">Kode Ruang</label>
-                                    <input type="text" class="form-control" id="koderuang" name="koderuang" required />
-                                </div>
-                                <div class="form-group, mb-3">
-                                    <label for="exampleInputEmail1">Nama Pengisi</label>
-                                    <input type="text" class="form-control" id="nama" name="nama" required />
-                                </div>
+                                    <div class="form-group, mb-3">
+                                        <label for="exampleInputEmail1">Nama Pengisi</label>
+                                        <input type="text" class="form-control" id="nama" name="nama" required />
+                                    </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="submit" class="btn btn-outline-secondary"
@@ -62,7 +56,6 @@
                                 <button type="button" class="btn"
                                     style="color:white; background-color:#5CB874">Tambah</button>
                             </div>
-
                         </form>
                     </div>
                 </div>
@@ -88,44 +81,29 @@
                                         </thead>
 
                                         <tbody>
-                                            <tr>
-                                                <td> 1. </td>
-                                                <td> <button type="button" class="btn btn-sm btn-success">Terisi</button>
-                                                </td>
-                                                <td>Imron</td>
-                                                <td> F14</td>
-                                                <td>
-                                                    <button class="button-arounder">
-                                                        <span class="material-symbols-outlined"> edit </span>
-                                                    </button>
-                                                    <button class="button-arounder" onclick="BtnDel(this)">
-                                                        <span class="material-symbols-outlined"> delete </span>
-                                                    </button>
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td> 2. </td>
-                                                <td> <button type="button" class="btn btn-sm btn-info">Tersedia</button>
-                                                </td>
-                                                <td>Hamdan</td>
-                                                <td>L21</td>
-                                                <td>
-                                                    <button class="button-arounder">
-                                                        <span class="material-symbols-outlined"> edit </span>
-                                                    </button>
-                                                    <button class="button-arounder" onclick="BtnDel(this)">
-                                                        <span class="material-symbols-outlined"> delete </span>
-                                                    </button>
-                                                </td>
-                                            </tr>
+                                            @foreach ($data as $item)
+                                                <tr>
+                                                    <td> {{ $loop->iteration }} </td>
+                                                    <td> <button type="button"
+                                                            class="btn btn-sm btn-{{ $item->is_dipakai == 0 ? 'danger' : 'success' }}">{{ $item->is_dipakai == 0 ? 'Kosong' : 'Terisi' }}</button>
+                                                    </td>
+                                                    <td>{{ $item->user->nama }}</td>
+                                                    <td>{{ $item->koderuang }}</td>
+                                                    <td>
+                                                        <button class="button-arounder">
+                                                            <span class="material-symbols-outlined"> edit </span>
+                                                        </button>
+                                                        <button class="button-arounder" onclick="BtnDel(this)">
+                                                            <span class="material-symbols-outlined"> delete </span>
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-            </div>
 
 
         </section>

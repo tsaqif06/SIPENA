@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->boolean('is_dipakai')->default(false);
+            $table->string('koderuang');
             $table->timestamps();
         });
     }
