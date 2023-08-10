@@ -4,13 +4,11 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RuangController;
-use App\Http\Controllers\UsersController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\RekapBayarController;
-use App\Http\Controllers\KetentuanController;
 use App\Http\Controllers\PenggunaController;
 
 /*
@@ -53,12 +51,16 @@ Route::get('/dashboard', function () {
 })->middleware('auth');
 
 // Ruang //
-Route::get('/ruang', [RuangController::class, 'index'])->middleware('auth');
+Route::resource('/ruang', RuangController::class)->middleware(['auth', 'can:admin']);
 
 // Pembayaran //
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->middleware(['auth', 'can:user']);
 
+
+Route::get('/ketentuan', [KetentuanController::class, 'index']);
+// Route::get('/ruang', [RuangController::class, 'index']);
 // Rekap Bayar //
+
 Route::get('/rekapbayar', [RekapBayarController::class, 'index'])->middleware('auth');
 
 // Pengguna //
