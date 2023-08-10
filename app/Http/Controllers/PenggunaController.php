@@ -33,7 +33,6 @@ class PenggunaController extends Controller
      */
     public function store(Request $request)
     {
-        
     }
 
     /**
@@ -55,26 +54,29 @@ class PenggunaController extends Controller
         return view('admin.pengguna.edit', [
             'title' => 'Tabel Pengguna',
             'role' => auth()->user()->role,
-            'users' => $users
+            'user' => $users
         ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, User $users, $id)
+    public function update(Request $request, User $user)
     {
-        // dd($request->all());
-        $users = User::findOrfail($id);
-        // dd($users);
+        $validatedData = $request->validate([
+            "nama" => "required|max:255",
+            "tempatlahir" => "required|max:255",
+            "tanggallahir" => "required|date",
+            "alamat" => "required|max:255",
+            "pekerjaan" => "required|max:255",
+            "notelp" => "required|max:20",
+            // "jmlkeluarga" => "required|numeric"
+        ]);
 
-        $users->nama = $request->nama;
-        $users->tempatlahir = $request->tempatlahir;
-        $users->tanggallahir = $request->tanggallahir;
-        $users->alamat = $request->alamat;
-        $users->pekerjaan = $request->pekerjaan;
-        $users->notelp = $request->notelp;
-        $users->save();
+        User::where('id', $request->id)
+            ->update($validatedData);
+
+        return redirect('/pengguna')->with('success', 'Your Post Has Been Updated!');
     }
 
     /**
