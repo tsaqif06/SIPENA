@@ -21,7 +21,7 @@ class RuangFactory extends Factory
 
         return [
             'is_dipakai' => mt_rand(0, 1),
-            'koderuang' => $faker->unique()->regexify('[A-Z0-9]{6}')
+            'koderuang' => 'L' . $faker->numberBetween(1, 3) . ' ' . strtoupper($faker->randomLetter) . $faker->randomNumber(3, true)
         ];
     }
 }

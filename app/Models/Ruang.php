@@ -19,6 +19,8 @@ class Ruang extends Model
 
     protected static function booted()
     {
+        parent::boot();
+
         static::updated(function ($ruang) {
             if ($ruang->isDirty('user_id')) {
                 $rekapBayar = new RekapBayar();
