@@ -13,19 +13,11 @@ class PembayaranController extends Controller
      */
     public function index()
     {
+        $user = auth()->user();
+
         return view('user.pembayaran.index', [
             'title' => 'Pembayaran',
             'role' => auth()->user()->role
-        ]);
-    }
-
-    public function rekap()
-    {
-        $role = auth()->user()->role;
-
-        return view("{$role}.rekapbayar.index", [
-            'title' => 'Rekap Pembayaran',
-            'role' => $role
         ]);
     }
 

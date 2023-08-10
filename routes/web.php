@@ -10,7 +10,6 @@ use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\RekapBayarController;
-use App\Http\Controllers\KetentuanController;
 
 /*
 |--------------------------------------------------------------------------

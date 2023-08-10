@@ -1,12 +1,12 @@
-<!-- Favicons -->
+{{--  <!-- Favicons -->  --}}
 <link rel="shortcut icon" type="image/png" href="../assets/img/logofinal.png" />
 
-<!-- Google Fonts -->
+{{--  <!-- Google Fonts -->  --}}
 <link
     href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
     rel="stylesheet">
 
-<!-- Vendor CSS Files -->
+{{--  <!-- Vendor CSS Files -->  --}}
 <link href="/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
 <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
@@ -28,7 +28,7 @@
 
 <link rel="stylesheet" href="/assets/css/tablestyle.css">
 
-<!-- data table bootsrap -->
+{{--  <!-- data table bootsrap -->  --}}
 
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css" />
 <link rel="stylesheet" href="/assets/css/tablestyle.css">
