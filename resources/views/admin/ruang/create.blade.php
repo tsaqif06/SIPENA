@@ -9,7 +9,7 @@
                     <div class="card-title">
                         <h4 style="color: #5CB874">Edit Data Ruang</h4>
                     </div>
-                    <form action="/ruang" method="GET">
+                    <form action="/ruang" method="POST">
                       @csrf
                         <div class="modal-body">
                           <input type="hidden" name="id" id="id">
