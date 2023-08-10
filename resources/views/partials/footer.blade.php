@@ -1,5 +1,5 @@
 {{--  <!-- ======= Footer ======= -->  --}}
-<footer id="footer">
+<footer id="footer" class="mt-auto">
     <div class="container">
       <h3>
         <a href="/" class="logo me-auto"

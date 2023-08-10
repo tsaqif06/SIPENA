@@ -11,6 +11,7 @@ use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\RekapBayarController;
 use App\Http\Controllers\KetentuanController;
+use App\Http\Controllers\PenggunaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,8 +61,8 @@ Route::get('/pembayaran', [PembayaranController::class, 'index'])->middleware(['
 // Rekap Bayar //
 Route::get('/rekapbayar', [RekapBayarController::class, 'index'])->middleware('auth');
 
-// Users //
-Route::get('/users', [UsersController::class, 'index'])->middleware(['auth', 'can:admin']);
+// Pengguna //
+Route::get('/pengguna', [PenggunaController::class, 'index'])->middleware('auth');
 
 // Penyewaan //
 Route::get('/penyewaan', [PenyewaanController::class, 'index'])->middleware(['auth', 'can:user']);
@@ -74,3 +75,4 @@ Route::get("/ketentuan", function () {
         'role' => auth()->user()->role
     ]);
 })->middleware('auth');
+
