@@ -42,17 +42,19 @@ class RuangController extends Controller
      */
     public function store(StoreRuangRequest $request)
     {
-        return $request;
+        // return $request
         $validatedData = $request->validate([
-            "nama" => "required|unique:user,nama",
+            "nama" => "required",
             "status" => "required",
             "koderuang" => "required",
         ]);
-        $validatedData['user_id'] = User::where('id', $validatedData['nama'])->get();
-        return $validatedData;
+        $validatedData['user_id'] = User::where('nama', "{$validatedData['nama']}")->pluck('id')->first();
+        // $validatedData['user_id'] = auth()->user()->id;
+        unset($validatedData['nama']);
+        // return $validatedData;
 
-        // Ruang::create($validatedData);
-        // return back();
+        Ruang::create($validatedData);
+        return back();
     }
 
     /**

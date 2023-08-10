@@ -24,6 +24,18 @@ class DatabaseSeeder extends Seeder
             'email' => 'superadmin@gmail.com',
             'password' => bcrypt('superadmin123'),
         ]);
+        \App\Models\User::factory()->create([
+            'nama' => 'Royhan',
+            'role' => 'user',
+            'tempatlahir' => 'Bogor',
+            'tanggallahir' => '1991-01-02',
+            'alamat' => 'Perumahan Bogor',
+            'pekerjaan' => 'Codingman',
+            'notelp' => '0812345678',
+            'jmlkeluarga' => '4',
+            'email' => 'royhan@gmail.com',
+            'password' => bcrypt('royhan'),
+        ]);
         \App\Models\User::factory(10)->create();
     }
 }
