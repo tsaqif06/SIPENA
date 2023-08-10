@@ -48,5 +48,6 @@ Route::get('/tabelpengguna', function () {
 });
 
 Route::get('/ketentuan', [KetentuanController::class, 'index']);
-Route::get('/ruang', [RuangController::class, 'index']);
+// Route::get('/ruang', [RuangController::class, 'index']);
+Route::resource('/ruang', RuangController::class)->middleware(['auth', 'can:admin']);
 Route::get('/rekapbayar', [RekapBayarController::class, 'index'])->middleware('auth');

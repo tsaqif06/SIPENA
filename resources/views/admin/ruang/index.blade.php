@@ -12,60 +12,9 @@
         
         <button type="button" class="btn" style="color:white; background-color:#5CB874" data-bs-toggle="modal"
           data-bs-target="#exampleModal">
-          Tambah Data
+          <a href="/ruang" style="color:white; background-color:#5CB874">Tambah Data </a>
         </button>
       </div>
-
-      <!-- Modal -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">Tambah Data</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <form>
-              <div class="modal-body">
-                <input type="hidden" name="id" id="id">
-                <fieldset class="form-group">
-                  <div class="row">
-                    <legend class="col-form-label col-sm-2 pt-0">Status</legend>
-                    <div class="col-sm-10">
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="status" id="status1" value="option1"
-                          checked>
-                        <label class="form-check-label" for="status1">
-                          Terisi
-                        </label>
-                      </div>
-                      <div class="form-check">
-                        <input class="form-check-input" type="radio" name="status" id="status2" value="option2">
-                        <label class="form-check-label" for="status">
-                          Kosong
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </fieldset>
-                <div class="form-group, mb-3">
-                  <label for="exampleInputEmail1">Kode Ruang</label>
-                  <input type="text" class="form-control" id="koderuang" name="koderuang" required />
-                </div>
-                <div class="form-group, mb-3">
-                  <label for="exampleInputEmail1">Nama Pengisi</label>
-                  <input type="text" class="form-control" id="nama" name="nama" required />
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
-                <button type="button" class="btn" style="color:white; background-color:#5CB874">Tambah</button>
-              </div>
-
-            </form>
-          </div>
-        </div>
-      </div>
-      <br>
 
       <!--Tabel-->
       <div class="container">
