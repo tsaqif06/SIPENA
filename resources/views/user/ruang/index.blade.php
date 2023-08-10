@@ -2,6 +2,12 @@
 
 @section('content')
 
+<<<<<<< HEAD
+    {{-- TEMPLATE (delete and replace this template) --}}
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 400px;">
+        <h1>User : Rekap Ruang</h1>
+    </div>
+=======
 <main id="main">
     <section class="featured-services section-bg">
       <div class="container">
@@ -54,5 +60,6 @@
 
     </section>
   </main>
+>>>>>>> main
 
 @endsection

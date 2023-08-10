@@ -196,11 +196,10 @@
                                                             value="{{ $user->nama }}" readonly></div>
                                                     <div class="col-md-12"><label class="labels">Email</label><input
                                                             type="text" value="{{ $user->email }}"
-                                                            class="form-control"
-                                                            readonly></div>
-                                                    <div class="col-md-12"><label class="labels">Password</label><input
-                                                            type="text" value="*****"
                                                             class="form-control" readonly></div>
+                                                    <div class="col-md-12"><label class="labels">Password</label><input
+                                                            type="text" value="*****" class="form-control" readonly>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>

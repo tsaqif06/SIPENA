@@ -1,16 +1,6 @@
 @extends('layouts.main')
 
 @section('content')
-    <section>
-        <div class="container">
-            <div class="pb-0">
-                <div class="row">
-                    <h3 style="font-weight:700;"> REKAP PEMBAYARAN SAYA</h3>
-                </div>
-            </div>
-        </div>
-        <br>
-
         <div class="container">
             <div class="row py-10">
                 <div class="col-md-12">
