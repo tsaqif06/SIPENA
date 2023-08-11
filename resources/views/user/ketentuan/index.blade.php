@@ -19,9 +19,9 @@
               <p>&#8211; Surat keterangan belum memiliki Rumah</p>
               <p>Untuk memudahkan informasi pelayanan bagi penghuni/calon penghuni dapat menghubungi wa center 0895372233322</p>
             </div>
-            <embed src="../assets/pdf/Panduan Penggunaan LMS SIBELA Untuk Siswa-1.pdf" width=100% height=500>       
-        </div> 
+            <embed src="../assets/pdf/Panduan Penggunaan LMS SIBELA Untuk Siswa-1.pdf" width=100% height=500>
+        </div>
     </section>
   </main>
-    
+
 @endsection

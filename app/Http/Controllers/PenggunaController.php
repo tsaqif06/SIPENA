@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengguna;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +27,12 @@ class PenggunaController extends Controller
      */
     public function create()
     {
-        //
+        $role = auth()->user()->role;
+
+        return view('admin.pengguna.create', [
+            'title' => 'Tambah Data Pengguna',
+            'role' => $role
+        ]);
     }
 
     /**
@@ -34,7 +40,26 @@ class PenggunaController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            "nama" => "required",
+            "tempatlahir" => "required",
+            "tanggallahir" => "required",
+            "alamat" => "required",
+            "pekerjaan" => "required",
+            "notelp" => "required",
+            "jmlkeluarga" => "integer",
+            "email" => "required",
+            "password" => "required"  // You can adjust the validation rule based on your needs
+        ]);
+
+
+        // Find or create a user based on the 'nama' field
+        $user = User::firstOrCreate(['nama' => $validatedData['nama']], $validatedData);
+
+        return redirect('/pengguna')->with('success', 'Pengguna Baru Telah Ditambah!');
     }
+
+
 
     /**
      * Display the specified resource.
