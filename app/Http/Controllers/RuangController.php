@@ -6,6 +6,8 @@ use App\Models\Ruang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\session;
 
 class RuangController extends Controller
 {
@@ -67,9 +69,15 @@ class RuangController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Ruang $ruang)
+    public function edit(Ruang $ruangs, $id)
     {
-        //
+        $ruangs = Ruang::findorfail($id);
+        // dd($ruangs);
+        return view('admin.ruang.edit', [
+            'title' => 'Rekap Ruang',
+            'role' => auth()->user()->role,
+            'ruang' => $ruangs
+        ]);
     }
 
     /**
@@ -77,14 +85,48 @@ class RuangController extends Controller
      */
     public function update(Request $request, Ruang $ruang)
     {
-        //
+        // dd ($request->all());
+        $validatedData = $request->validate([
+            "is_dipakai" => "required",
+            "koderuang" => "required",
+        ]);
+        if($validatedData['is_dipakai'] == 0 ){
+            $validatedData['user_id'] = null;
+        }
+        Ruang::where('id', $request->id)
+            ->update($validatedData);
+
+            if($ruang){
+                Session::flash('status', 'success');
+                Session::flash('message', 'Berhasil mengedit ruang!');
+            }
+
+        return redirect('/ruang')->with('success', 'Your Post Has Been Updated!');
+        
     }
+
+
+    public function delete(Ruang $ruangs, $id)
+    {
+        $Ruangs = User::findorfail($id);
+        return view('admin.ruang.delete', [
+            'title' => 'Rekap Ruang',
+            'role' => auth()->user()->role,
+            'ruang' => $ruangs
+        ]);
+    }
+
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Ruang $ruang)
+    public function destroy(Ruang $ruangs, $id)
     {
-        //
+        $deleteruangs = DB::table('ruangs')->where('id', $id)->delete();
+        if($id){
+            Session::flash('status', 'success');
+            Session::flash('message', 'Berhasil menghapus ruang!');
+        }
+        return redirect('/ruang');
     }
 }
