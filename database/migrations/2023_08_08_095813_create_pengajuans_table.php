@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('pengajuans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id');
+            $table->string('pilihanruang');
+            $table->boolean('accept')->default(0);
+            $table->string('suratpermohonan');
+            $table->string('suratkesanggupan');
+            $table->string('suratpernyataan');
             $table->timestamps();
         });
     }

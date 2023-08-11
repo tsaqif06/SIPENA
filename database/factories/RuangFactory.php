@@ -17,14 +17,11 @@ class RuangFactory extends Factory
      */
     public function definition(): array
     {
-        $faker = Faker::create();
-        $isDipakai = mt_rand(0, 1);
-        $usedUserIds = [];
-
+        static $userId = 1;
         return [
-            'is_dipakai' => $isDipakai,
-            'user_id' => ($isDipakai == 1) ? $this->getUnusedUserId($usedUserIds) : null,
-            'koderuang' => 'L' . $faker->numberBetween(1, 3) . ' ' . strtoupper($faker->randomLetter) . $faker->randomNumber(3, true)
+            'user_id' => $userId++,
+            'is_dipakai' => mt_rand(0, 1),
+            'koderuang' => 'L' . fake()->numberBetween(1, 3) . ' ' . strtoupper(fake()->randomLetter) . fake()->randomNumber(3, true)
         ];
     }
 

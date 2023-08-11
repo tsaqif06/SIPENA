@@ -66,8 +66,8 @@ Route::resource('/rekapbayar', RekapBayarController::class)->middleware('auth');
 Route::resource('/pengguna', PenggunaController::class)->middleware('auth');
 
 // Penyewaan //
-Route::get('/penyewaan', [PenyewaanController::class, 'index'])->middleware(['auth', 'can:user']);
-Route::get('/penyewaan/rekap', [PengajuanController::class, 'index'])->middleware(['auth', 'can:admin']);
+Route::resource('/penyewaan', PenyewaanController::class)->middleware(['auth', 'can:user']);
+Route::resource('/pengajuan', PengajuanController::class)->middleware(['auth', 'can:admin']);
 
 // Ketentuan //
 Route::get("/ketentuan", function () {
