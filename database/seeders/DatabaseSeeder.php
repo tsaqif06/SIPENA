@@ -36,7 +36,20 @@ class DatabaseSeeder extends Seeder
             'email' => 'royhan@gmail.com',
             'password' => bcrypt('royhan'),
         ]);
-        \App\Models\User::factory(20)->create();
+        \App\Models\User::factory()->create([
+            'nama' => 'Sando',
+            'role' => 'user',
+            'tempatlahir' => 'Malang',
+            'tanggallahir' => '1991-01-02',
+            'alamat' => 'Perumahan Nganjuk',
+            'pekerjaan' => 'Codingman',
+            'notelp' => '0812345678',
+            'jmlkeluarga' => '4',
+            'email' => 'masandofami@gmail.com',
+            'password' => bcrypt('sando123'),
+        ]);
+        \App\Models\User::factory(10)->create();
+        
         \App\Models\Ruang::factory(10)->create();
     }
 }

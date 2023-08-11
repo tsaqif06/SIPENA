@@ -20,11 +20,11 @@ class RuangFactory extends Factory
         $faker = Faker::create();
         $isDipakai = mt_rand(0, 1);
         $usedUserIds = [];
-
         return [
             'is_dipakai' => $isDipakai,
             'user_id' => ($isDipakai == 1) ? $this->getUnusedUserId($usedUserIds) : null,
             'koderuang' => 'L' . $faker->numberBetween(1, 5) . ' ' . strtoupper($faker->randomLetter) . $faker->randomNumber(3, true)
+
         ];
     }
 

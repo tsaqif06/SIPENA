@@ -21,7 +21,7 @@
                 <li><a class="nav-link {{ Request::is('rekapbayar') ? 'active' : '' }}" href="/rekapbayar">Rekap
                         Pembayaran</a>
                 </li>
-                <li><a class="nav-link {{ Request::is('penyewaan') ? 'active' : '' }}" href="/penyewaaan">Penyewaan</a>
+                <li><a class="nav-link {{ Request::is('penyewaan') ? 'active' : '' }}" href="/penyewaan">Penyewaan</a>
                 </li>
                 <li>
                     <a class="nav-link {{ Request::is('ketentuan') ? 'active' : '' }}" href="/ketentuan">Ketentuan</a>

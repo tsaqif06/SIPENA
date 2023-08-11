@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengajuan;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\StorePengajuanRequest;
+use App\Http\Requests\UpdatePengajuanRequest;
+use App\Models\Ruang;
+use Illuminate\Support\Facades\Storage;
 
 class PengajuanController extends Controller
 {
@@ -15,7 +17,9 @@ class PengajuanController extends Controller
     {
         return view('admin.rekapsewa.index', [
             'title' => 'Pengajuan Sewa',
-            'role' => auth()->user()->role
+            'role' => 'admin',
+            'data' => Pengajuan::where('accept', 0)->get(),
+            'ruangkosong' => Ruang::where('is_dipakai', 0)->pluck('koderuang')
         ]);
     }
 
@@ -30,7 +34,7 @@ class PengajuanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePengajuanRequest $request)
     {
         //
     }
@@ -54,9 +58,21 @@ class PengajuanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Pengajuan $pengajuan)
+    public function update(UpdatePengajuanRequest $request, Pengajuan $pengajuan)
     {
-        //
+        $request->validate([
+            'ruang' => 'required'
+        ]);
+
+        Ruang::where('koderuang', $request['ruang'])->where('is_dipakai', 0)
+        ->update([
+            'user_id' => $pengajuan->user_id,
+            'is_dipakai' => 1
+        ]);
+        
+        Pengajuan::find($pengajuan->id)->update(['accept' => 1]);
+
+        return back()->with('success', 'Data ruang berhasil diperbarui!');
     }
 
     /**
@@ -64,6 +80,12 @@ class PengajuanController extends Controller
      */
     public function destroy(Pengajuan $pengajuan)
     {
-        //
+        Storage::delete($pengajuan->suratpermohonan);
+        Storage::delete($pengajuan->suratkesanggupan);
+        Storage::delete($pengajuan->suratpernyataan);
+
+        Pengajuan::destroy($pengajuan->id);
+
+        return back()->with('success', 'Data berhasil dihapus!');
     }
 }
