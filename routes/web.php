@@ -51,7 +51,7 @@ Route::get('/dashboard', function () {
 })->middleware('auth');
 
 // Ruang //
-Route::resource('/ruang', RuangController::class)->middleware(['auth', 'can:admin']);
+Route::resource('/ruang', RuangController::class)->middleware(['auth']);
 
 // Pembayaran //
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->middleware(['auth', 'can:user']);
