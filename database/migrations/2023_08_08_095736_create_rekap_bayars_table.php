@@ -14,18 +14,18 @@ return new class extends Migration
         Schema::create('rekap_bayars', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable();
-            $table->boolean('jan')->default(false);
-            $table->boolean('feb')->default(false);
-            $table->boolean('mar')->default(false);
-            $table->boolean('apr')->default(false);
-            $table->boolean('mei')->default(false);
-            $table->boolean('jun')->default(false);
-            $table->boolean('jul')->default(false);
-            $table->boolean('aug')->default(false);
-            $table->boolean('sep')->default(false);
-            $table->boolean('okt')->default(false);
-            $table->boolean('nov')->default(false);
-            $table->boolean('des')->default(false);
+            $table->enum('jan', ['Lunas', 'Belum'])->default('Belum');
+            $table->enum('feb', ['Lunas', 'Belum'])->default('Belum');
+            $table->enum('mar', ['Lunas', 'Belum'])->default('Belum');
+            $table->enum('apr', ['Lunas', 'Belum'])->default('Belum');
+            $table->enum('mei', ['Lunas', 'Belum'])->default('Belum');
+            $table->enum('jun', ['Lunas', 'Belum'])->default('Belum');
+            $table->enum('jul', ['Lunas', 'Belum'])->default('Belum');
+            $table->enum('aug', ['Lunas', 'Belum'])->default('Belum');
+            $table->enum('sep', ['Lunas', 'Belum'])->default('Belum');
+            $table->enum('okt', ['Lunas', 'Belum'])->default('Belum');
+            $table->enum('nov', ['Lunas', 'Belum'])->default('Belum');
+            $table->enum('des', ['Lunas', 'Belum'])->default('Belum');
             $table->timestamps();
         });
     }

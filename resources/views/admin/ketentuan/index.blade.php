@@ -3,7 +3,7 @@
 @section('content')
 
 <main id="main">
-    <!-- ======= Featured Services Section ======= -->
+    {{--  <!-- ======= Featured Services Section ======= -->  --}}
     <section id="featured-services" class="featured-services section-bg">
         <div class="container">
             <div class="section-title">
@@ -23,6 +23,7 @@
             <embed src="../assets/pdf/Panduan Penggunaan LMS SIBELA Untuk Siswa-1.pdf" width=100% height=500></embed>         
         </div> 
     </section>
-  </main><!-- End #main -->
+  </main>
+  {{--  <!-- End #main -->  --}}
 
  @endsection

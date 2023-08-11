@@ -51,21 +51,21 @@
                                 <input type="email"
                                     class="form-control rounded-left @error('email') is-invalid @enderror"
                                     name="email" placeholder="Email" autofocus required>
+                                @error('email')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
-                            @error('email')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
                             <div class="form-group d-flex">
                                 <input type="password" class="form-control @error('email') is-invalid @enderror"
                                     name="password" placeholder="Password" required>
+                                @error('password')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
-                            @error('password')
-                                <div class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
                             <div class="form-group d-md-flex">
                                 <div class="w-50">
                                     <label class="checkbox-wrap checkbox-primary" for="remember">Ingat Saya

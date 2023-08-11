@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Ruang;
-use App\Http\Requests\StoreRuangRequest;
-use App\Http\Requests\UpdateRuangRequest;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class RuangController extends Controller
 {
@@ -17,7 +18,8 @@ class RuangController extends Controller
 
         return view("$role.ruang.index", [
             'title' => 'Rekap Ruang',
-            'role' => $role
+            'role' => $role,
+            'data' => Ruang::all()
         ]);
     }
 
@@ -26,15 +28,32 @@ class RuangController extends Controller
      */
     public function create()
     {
-        //
+
+        $role = auth()->user()->role;
+
+        return view('admin.ruang.create', [
+            'title' => 'Rekap Ruang',
+            'role' => $role
+        ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreRuangRequest $request)
+    public function store(Request $request)
     {
-        //
+        // return $request
+        $validatedData = $request->validate([
+            "nama" => "required",
+            "status" => "required",
+            "koderuang" => "required",
+        ]);
+
+        $validatedData['user_id'] = User::where('nama', "{$validatedData['nama']}")->pluck('id')->first();
+        unset($validatedData['nama']);
+
+        Ruang::create($validatedData);
+        return redirect('/ruang')->with('success', 'Ruang Baru Telah Ditambah!');
     }
 
     /**
@@ -56,7 +75,7 @@ class RuangController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateRuangRequest $request, Ruang $ruang)
+    public function update(Request $request, Ruang $ruang)
     {
         //
     }
