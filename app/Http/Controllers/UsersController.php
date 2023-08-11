@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
 
 class UsersController extends Controller
 {
@@ -13,7 +15,8 @@ class UsersController extends Controller
     {
         return view('admin.users.index', [
             'title' => 'Tabel Pengguna',
-            'role' => auth()->user()->role
+            'role' => auth()->user()->role,
+            'users' => User::all()
         ]);
     }
 

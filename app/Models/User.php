@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Ruang;
+use App\Models\RekapBayar;
 
 class User extends Authenticatable
 {
@@ -46,4 +48,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function ruang()
+    {
+        return $this->belongsTo(Ruang::class);
+    }
+
+    public function rekapbayar()
+    {
+        return $this->belongsTo(RekapBayar::class);
+    }
 }

@@ -6,7 +6,7 @@ use App\Models\Pengajuan;
 use App\Models\Ruang;
 use Illuminate\Contracts\Support\ValidatedData;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
 class PenyewaanController extends Controller
 {
     /**
