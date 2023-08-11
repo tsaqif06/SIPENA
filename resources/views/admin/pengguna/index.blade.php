@@ -16,15 +16,16 @@
             data-bs-target="#exampleModal">
             <a href="/pengguna/create" style="color:white; background-color:#5CB874">Tambah Data </a>
           </button>
+          @if (Session::has('status'))
+          <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+            {{ Session::get('message') }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+          </div>
+    
+          @endif
 
         </div>
       </div> <br>
-      {{-- @if (Session::has('status'))
-      <div class="alert alert-success" role="alert">
-        {{ Session::get('message') }}
-      </div>
-
-      @endif --}}
 
             </div>
           </div>
@@ -67,13 +68,13 @@
                           <button class="button-arounder">
                             <span class="material-symbols-outlined"><a href="pengguna/{{ $item->id }}/edit"> edit </a></span>
                           </button>
-                          {{-- <form action="{{ 'pengguna' }}" method="POST"> --}}
+                          <form action="/pengguna/{{ $item->id }}" method="POST">
                             @method('delete')
                             @csrf
-                            <button class="button-arounder">
-                              <span class="material-symbols-outlined"><a href="pengguna/{{ $item->id }}/delete"> delete </a></span>
+                            <button class="button-arounder" type="submit" onclick="return confirm('Apakah Anda Yakin?')">
+                                <span class="material-symbols-outlined"> delete </span>
                             </button>
-                          </form>
+                        </form>
                         </td>
                       </tr>
 
