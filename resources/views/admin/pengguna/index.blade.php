@@ -17,7 +17,7 @@
             <a href="/pengguna/create" style="color:white; background-color:#5CB874">Tambah Data </a>
           </button>
           @if (Session::has('status'))
-          <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
+          <div style="width: 400px" class="alert alert-success alert-dismissible fade show mt-3" role="alert">
             {{ Session::get('message') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
