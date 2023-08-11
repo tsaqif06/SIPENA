@@ -58,7 +58,6 @@ Route::get('/pembayaran', [PembayaranController::class, 'index'])->middleware(['
 
 
 Route::get('/ketentuan', [KetentuanController::class, 'index']);
-// Route::get('/ruang', [RuangController::class, 'index']);
 // Rekap Bayar //
 
 Route::resource('/rekapbayar', RekapBayarController::class)->middleware('auth');

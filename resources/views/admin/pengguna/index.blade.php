@@ -19,7 +19,12 @@
           
         </div>
       </div> <br>
-
+      {{-- @if (Session::has('status'))
+      <div class="alert alert-success" role="alert">
+        {{ Session::get('message') }}
+      </div>
+          
+      @endif --}}
       <!-- Modal tambah data -->
       <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -105,8 +110,8 @@
                           {{-- <form action="{{ 'pengguna' }}" method="POST"> --}}
                             @method('delete')
                             @csrf
-                            <button class="button-arounder" onclick="return confirm('Yakin mau hapus?')">
-                              <span class="material-symbols-outlined"> delete </span>
+                            <button class="button-arounder">
+                              <span class="material-symbols-outlined"><a href="pengguna/{{ $item->id }}/delete"> delete </a></span>
                             </button>
                           </form>
                         </td>
