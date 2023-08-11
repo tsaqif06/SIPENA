@@ -35,7 +35,7 @@
                                                     <td> <button type="button"
                                                             class="btn btn-sm btn-{{ $item->is_dipakai == 0 ? 'danger' : 'success' }}">{{ $item->is_dipakai == 0 ? 'Kosong' : 'Terisi' }}</button>
                                                     </td>
-                                                    <td>{{ $item->user->nama }}</td>
+                                                    <td>{{ $item->user->nama ?? 'Kosong' }}</td>
                                                     <td>{{ $item->koderuang }}</td>
                                                 </tr>
                                             @endforeach
@@ -45,3 +45,4 @@
                             </div>
         </section>
     </main>
+@stop

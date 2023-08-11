@@ -27,6 +27,24 @@
 
     {{--  <!-- Template Main CSS File -->  --}}
     <link href="/assets/css/style.css" rel="stylesheet" />
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+    <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+
+    <link rel="stylesheet" href="/assets/css/tablestyle.css">
+
+    {{--  <!-- data table bootsrap -->  --}}
+    <link rel="stylesheet" href="/assets/css/tablestyle.css">
+    <link href="/assets/css/style.css" rel="stylesheet">
 </head>
 
 <body class="d-flex flex-column min-vh-100 section-bg">
@@ -55,8 +73,6 @@
     <script src="/assets/vendor/php-email-form/validate.js"></script>
 
     {{--  <!-- Template Main JS CDN -->  --}}
-    <script src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>

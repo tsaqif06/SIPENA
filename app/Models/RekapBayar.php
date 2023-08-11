@@ -12,6 +12,20 @@ class RekapBayar extends Model
 
     protected $with = ['user'];
 
+    protected static function booted()
+    {
+        static::creating(function ($rekapBayar) {
+            // Set maxbayar ke akhir bulan dari waktu sekarang
+            $rekapBayar->maxbayar = now()->endOfMonth();
+
+            // Cek apakah maxbayar sudah melewati tanggal sekarang
+            if ($rekapBayar->maxbayar < now()) {
+                // Jika melewati, ubah maxbayar menjadi akhir bulan berikutnya
+                $rekapBayar->maxbayar = now()->addMonthNoOverflow()->endOfMonth();
+            }
+        });
+    }
+
     public function user()
     {
         return $this->belongsTo(User::class);

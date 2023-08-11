@@ -3,7 +3,8 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
-
+use App\Models\Ruang;
+use App\Observers\RuangObserver; // Pastikan import ini benar
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -17,8 +18,8 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
+    public function boot()
     {
-        //
+        Ruang::observe(RuangObserver::class);
     }
 }

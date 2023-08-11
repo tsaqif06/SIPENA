@@ -22,12 +22,18 @@ class Ruang extends Model
         parent::boot();
 
         static::updated(function ($ruang) {
-            if ($ruang->isDirty('user_id')) {
+            if ($ruang->user_id !== null && !$ruang->rekapBayarExists()) {
                 $rekapBayar = new RekapBayar();
                 $rekapBayar->user_id = $ruang->user_id;
+                $rekapBayar->maxbayar = now()->endOfMonth();
                 $rekapBayar->save();
             }
         });
+    }
+
+    public function rekapBayarExists()
+    {
+        return RekapBayar::where('user_id', $this->user_id)->exists();
     }
 
     protected $guarded = [

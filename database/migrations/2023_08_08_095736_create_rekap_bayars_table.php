@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('rekap_bayars', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->nullable();
+            $table->date('maxbayar')->nullable();
             $table->enum('jan', ['Lunas', 'Belum'])->default('Belum');
             $table->enum('feb', ['Lunas', 'Belum'])->default('Belum');
             $table->enum('mar', ['Lunas', 'Belum'])->default('Belum');

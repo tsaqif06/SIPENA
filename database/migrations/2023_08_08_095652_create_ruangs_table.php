@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('user_id')->nullable();
             $table->boolean('is_dipakai')->default(false);
             $table->string('koderuang');
+            $table->integer('harga')->nullable();
             $table->timestamps();
         });
     }

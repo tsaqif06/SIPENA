@@ -24,7 +24,7 @@ class RuangFactory extends Factory
         return [
             'is_dipakai' => $isDipakai,
             'user_id' => ($isDipakai == 1) ? $this->getUnusedUserId($usedUserIds) : null,
-            'koderuang' => 'L' . $faker->numberBetween(1, 3) . ' ' . strtoupper($faker->randomLetter) . $faker->randomNumber(3, true)
+            'koderuang' => 'L' . $faker->numberBetween(1, 5) . ' ' . strtoupper($faker->randomLetter) . $faker->randomNumber(3, true)
         ];
     }
 
