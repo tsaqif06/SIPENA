@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class PenggunaController extends Controller
@@ -82,8 +83,23 @@ class PenggunaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(User $user)
+
+    public function delete(User $users, $id)
     {
-        //
+        $users = User::findorfail($id);
+        return view('admin.pengguna.delete', [
+            'title' => 'Tabel Pengguna',
+            'role' => auth()->user()->role,
+            'users' => $users
+        ]);
+
+    }
+
+
+    public function destroy(User $users, $id)
+    {
+        // dd($id);
+        $deletepengguna = DB::table('users')->where('id', $id)->delete();
+        return redirect('/pengguna');
     }
 }
