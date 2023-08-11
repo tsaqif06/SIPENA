@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class PenggunaController extends Controller
 {
@@ -56,6 +57,11 @@ class PenggunaController extends Controller
         // Find or create a user based on the 'nama' field
         $user = User::firstOrCreate(['nama' => $validatedData['nama']], $validatedData);
 
+        if($user){
+            Session::flash('status', 'success');
+            Session::flash('message', 'Berhasil menambahkan pengguna!');
+        }
+
         return redirect('/pengguna')->with('success', 'Pengguna Baru Telah Ditambah!');
     }
 
@@ -101,6 +107,10 @@ class PenggunaController extends Controller
 
         User::where('id', $request->id)
             ->update($validatedData);
+            if($user){
+                Session::flash('status', 'success');
+                Session::flash('message', 'Berhasil mengedit pengguna!');
+            }
 
         return redirect('/pengguna')->with('success', 'Your Post Has Been Updated!');
     }
@@ -125,6 +135,10 @@ class PenggunaController extends Controller
     {
         // dd($id);
         $deletepengguna = DB::table('users')->where('id', $id)->delete();
+        if($id){
+            Session::flash('status', 'success');
+            Session::flash('message', 'Berhasil menghapus pengguna!');
+        }
         return redirect('/pengguna');
     }
 }
