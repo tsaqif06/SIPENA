@@ -45,7 +45,7 @@
                         <div class="modal-footer">
                           <button type="submit" class="btn" style="color:white; background-color:#5CB874">Tambah</button>
                         </div>
-              
+
                       </form>
                 </div>
             </div>

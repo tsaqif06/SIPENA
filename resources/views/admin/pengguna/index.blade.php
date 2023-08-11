@@ -1,9 +1,9 @@
 @extends('layouts.main')
 
 @section('content')
-    
+
 {{-- @if ($role == 'admin') --}}
-    
+
 <main id="main">
 
     <!-- ======= Featured Services Section ======= -->
@@ -14,61 +14,21 @@
           <p> Data Tabel Pengguna Rusunawa Kota Malang</p>
           <button type="button" class="btn" style="color:white; background-color:#5CB874" data-bs-toggle="modal"
             data-bs-target="#exampleModal">
-            Tambah Data
+            <a href="/pengguna/create" style="color:white; background-color:#5CB874">Tambah Data </a>
           </button>
-          
+
         </div>
       </div> <br>
       {{-- @if (Session::has('status'))
       <div class="alert alert-success" role="alert">
         {{ Session::get('message') }}
       </div>
-          
+
       @endif --}}
-      <!-- Modal tambah data -->
-      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
             </div>
-            <form action="{{ url('pengguna') }}" method="POST">
-              <div class="modal-body">
-                <input type="hidden" name="id" id="id">
-                <div class="form-group ; mb-3">
-                  <label for="Nama">Nama</label>
-                  <input type="text" class="form-control" id="Nama" name="Nama" placeholder="nama" required />
-                </div>
-                <div class="form-group, mb-3">
-                  <label for="tempatLahir">Tempat Lahir</label>
-                  <input type="text" class="form-control" id="tempatLahir" name="tempatLahir" placeholder="tempat lahir" required />
-                </div>
-                <div class="form-group, mb-3">
-                  <label for="tanggalLahir">Tanggal Lahir</label>
-                  <input type="text" class="form-control" id="tanggalLahir" name="tanggalLahir" placeholder="tangga lahir" required />
-                </div>
-                <div class="form-group; mb-3">
-                  <label for="Alamat">Alamat</label>
-                  <input type="text" class="form-control" id="Alamat" name="Alamat" placeholder="alamat" required />
-                </div>
-                <div class="form-group; mb-3">
-                  <label for="Pekerjaan">Pekerjaan</label>
-                  <input type="text" class="form-control" id="Pekerjaan" name="Pekerjaan" placeholder="pekerjaan"
-                    required />
-                </div>
-                <div class="form-group; mb-3">
-                  <label for="NoHP">No HP</label>
-                  <input type="text" class="form-control" id="NoHP" name="NoHP" placeholder="nomor telepon" required />
-                </div>
-              </div>
-              <div class="modal-footer">
-                <button type="submit" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
-                <button type="button" class="btn" style="color:white; background-color:#5CB874">Tambah</button>
-              </div>
-            </form>
           </div>
         </div>
-      </div>
 
       <div class="container">
         <div class="row py-10">
@@ -92,7 +52,7 @@
                     </thead>
                     <tbody>
                       @foreach ($users as $item)
-                          
+
                       <tr>
                         <td> {{ $loop->iteration }} </td>
                         <td>{{ $item->nama }}</td>
@@ -118,7 +78,7 @@
                       </tr>
 
                       @endforeach
-                      
+
                     </tbody>
                   </table>
                 </div>
