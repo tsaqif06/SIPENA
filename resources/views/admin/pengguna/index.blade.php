@@ -6,7 +6,7 @@
 
 <main id="main">
 
-    <!-- ======= Featured Services Section ======= -->
+    {{--  <!-- ======= Featured Services Section ======= -->  --}}
     <section>
       <div class="container">
         <div class="pb-0">

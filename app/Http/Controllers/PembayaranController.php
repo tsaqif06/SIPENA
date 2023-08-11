@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pembayaran;
+use App\Models\Ruang;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -13,11 +15,34 @@ class PembayaranController extends Controller
      */
     public function index()
     {
+        $bulan = [
+            'jan' => 'Januari',
+            'feb' => 'Februari',
+            'mar' => 'Maret',
+            'apr' => 'April',
+            'mei' => 'Mei',
+            'jun' => 'Juni',
+            'jul' => 'Juli',
+            'aug' => 'Agustus',
+            'sep' => 'September',
+            'okt' => 'Oktober',
+            'nov' => 'November',
+            'des' => 'Desember',
+        ];
+
         $user = auth()->user();
+        $ruang = Ruang::where('user_id', $user->id)->first();
+
+        Carbon::setLocale('id'); // Atur locale bahasa Indonesia
+        $ruang['bulanSekarang'] = Carbon::now()->translatedFormat('F');
+        $ruang['pdam'] = 20000;
+        $ruang['totalharga'] = $ruang->harga + $ruang->pdam;
 
         return view('user.pembayaran.index', [
             'title' => 'Pembayaran',
-            'role' => auth()->user()->role
+            'ruang' => ($ruang ?? null),
+            'bulan' => $bulan,
+            'role' => $user->role
         ]);
     }
 

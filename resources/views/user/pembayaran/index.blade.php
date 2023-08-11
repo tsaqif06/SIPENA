@@ -97,6 +97,11 @@
                                     <h3 style="font-weight:700;"> Pembayaran Rusunawa </h3>
                                     <p> Pembayaran Sewa Rusunawa Kota Malang</p>
                                 </div>
+                                @if ($ruang == null)
+                                    <div class="alert alert-danger" role="alert">
+                                        Anda Belum Punya Ruang Yang Ditempati, Tidak Bisa Melakukan Pembayaran Sekarang!
+                                    </div>
+                                @endif
                                 <div class="col-md-7">
                                     <div class="card mb-4">
                                         <div class="card-body">
@@ -105,27 +110,49 @@
                                                     <h4 class="text-right">Detail Pembayaran </h4>
                                                 </div>
                                                 <div class="row mt-2">
-                                                    <div class="col-md-12"><label class="labels">Nama</label><input
-                                                            type="text" class="form-control" placeholder="Fido"
-                                                            value="" disabled></div>
-                                                    <div class="col-md-12"><label class="labels">No telepon</label><input
-                                                            type="text" class="form-control" value=""
-                                                            placeholder="081254389" disabled></div>
-                                                    <div class="col-md-12"><label class="labels">Bulan </label><input
-                                                            type="text" class="form-control" value=""
-                                                            placeholder="Agustus" disabled></div>
-                                                    <div class="col-md-12"><label class="labels">No.
-                                                            Bangunan</label><input type="text" class="form-control"
-                                                            value="" placeholder="L21" disabled></div>
-                                                    <div class="col-md-12"><label class="labels">Harga Sewa </label><input
-                                                            type="text" class="form-control" value=""
-                                                            placeholder="Rp. 125.000" disabled></div>
+                                                    <div class="col-md-12">
+                                                        <label class="labels">Nama</label>
+                                                        <input type="text" name="nama" class="form-control"
+                                                            value="{{ $ruang->user->nama ?? '-' }}" readonly>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label class="labels">No telepon</label>
+                                                        <input type="number" class="form-control" name="notelp"
+                                                            value="{{ $ruang->user->notelp ?? '0' }}" readonly>
+                                                    </div>
+                                                    <div class="col-md-12"><label class="labels">Bulan </label>
+                                                        <select class="form-select" name="bulan"
+                                                            aria-label="Default select example">
+                                                            @foreach ($bulan as $key => $value)
+                                                                @if ($ruang->bulanSekarang == $value)
+                                                                    <option value="{{ $key }}" selected>
+                                                                        {{ $value }}</option>
+                                                                @else
+                                                                    <option value="{{ $key }}">{{ $value }}
+                                                                @endif
+                                                                </option>
+                                                            @endforeach
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label class="labels">Kode Ruang</label>
+                                                        <input type="text" class="form-control"
+                                                            value="{{ $ruang->koderuang ?? '-' }}" readonly>
+                                                    </div>
+                                                    <div class="col-md-12"><label class="labels">Harga Sewa
+                                                        </label><input type="text" class="form-control"
+                                                            value="Rp.{{ number_format($ruang->harga, 0, ',', '.') ?? '-' }}"
+                                                            name="harga" readonly>
+                                                    </div>
                                                     <div class="col-md-12"><label class="labels"> PDAM</label><input
-                                                            type="text" class="form-control" value=""
-                                                            placeholder="Rp.50.000" disabled></div>
+                                                            type="text" class="form-control" name="pdam"
+                                                            value="Rp.{{ number_format($ruang->pdam, 0, ',', '.') ?? '-' }}"
+                                                            readonly></div>
                                                     <div class="col-md-12"><label class="labels"> Total </label><input
-                                                            type="text" class="form-control" value=""
-                                                            placeholder="Rp.175.000" disabled></div>
+                                                            type="text" class="form-control"
+                                                            value="Rp.{{ number_format($ruang->totalharga, 0, ',', '.') ?? '-' }}"
+                                                            name="total" readonly>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -147,7 +174,8 @@
                                                             placeholder="KODE CVV"> </div>
                                                     <div class="col-12">
                                                         <div class="card border-0"> <input class="form-control ps-5"
-                                                                type="text" placeholder="NAMA PEMILIK KARTU"> </div>
+                                                                type="text" placeholder="NAMA PEMILIK KARTU">
+                                                        </div>
                                                     </div>
                                                 </div>
                                                 <div class="mt-5 text-center d-grid gap-2">
