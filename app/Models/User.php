@@ -49,13 +49,13 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function ruang()
-    {
-        return $this->belongsTo(Ruang::class);
-    }
-
     public function rekapbayar()
     {
         return $this->belongsTo(RekapBayar::class);
+    }
+
+    public function ruang()
+    {
+        return $this->belongsTo(Ruang::class);
     }
 }

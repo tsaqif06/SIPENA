@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pengajuan;
-use App\Http\Requests\StorePengajuanRequest;
-use App\Http\Requests\UpdatePengajuanRequest;
 use App\Models\Ruang;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class PengajuanController extends Controller
@@ -34,7 +33,7 @@ class PengajuanController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StorePengajuanRequest $request)
+    public function store(Request $request)
     {
         //
     }
@@ -58,7 +57,7 @@ class PengajuanController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePengajuanRequest $request, Pengajuan $pengajuan)
+    public function update(Request $request, Pengajuan $pengajuan)
     {
         $request->validate([
             'ruang' => 'required'

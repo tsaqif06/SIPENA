@@ -26,6 +26,10 @@ class RekapBayar extends Model
         });
     }
 
+    public function ruang()
+    {
+        return $this->belongsTo(Ruang::class, 'user_id', 'user_id');
+    }
     public function user()
     {
         return $this->belongsTo(User::class);

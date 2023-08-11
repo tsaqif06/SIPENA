@@ -31,11 +31,11 @@ class Ruang extends Model
         });
     }
 
+    
     public function rekapBayarExists()
     {
         return RekapBayar::where('user_id', $this->user_id)->exists();
     }
-
     protected $guarded = [
         'id'
     ];

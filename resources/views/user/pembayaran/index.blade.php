@@ -60,27 +60,35 @@
                 <nav id="navbar" class="navbar">
                     <ul>
                         <li>
-                            <a class="nav-link" href="userberanda.html">Dasbor</a>
+                            <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">Dasbor</a>
                         </li>
                         <li>
-                            <a class="nav-link" href="usertabelruang.html">Rekap Ruang</a>
+                            <a class="nav-link {{ Request::is('ruang') ? 'active' : '' }}" href="/ruang">Rekap Ruang</a>
                         </li>
                         <li>
-                        <li><a class="nav-link active" href="userpembayaran.html">Pembayaran</a>
+                        <li><a class="nav-link {{ Request::is('pembayaran') ? 'active' : '' }}"
+                                href="/pembayaran">Pembayaran</a>
                         </li>
-                        <li><a class="nav-link" href="userrekappembayaran.html">Rekap Pembayaran</a>
+                        <li><a class="nav-link {{ Request::is('rekapbayar') ? 'active' : '' }}" href="/rekapbayar">Rekap
+                                Pembayaran</a>
                         </li>
-                        <li><a class="nav-link" href="usersewa.html">Penyewaan</a>
+                        <li><a class="nav-link {{ Request::is('penyewaan') ? 'active' : '' }}"
+                                href="/penyewaan">Penyewaan</a>
                         </li>
                         <li>
-                            <a class="nav-link" href="userketentuan.html">Ketentuan</a>
+                            <a class="nav-link {{ Request::is('ketentuan') ? 'active' : '' }}"
+                                href="/ketentuan">Ketentuan</a>
+                        </li>
+                        <li>
+                            <form action="/logout" method="post">
+                                @csrf
+                                <button class="getstarted logout" type="submit">KELUAR</button>
+                            </form>
                         </li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav>
-
-
-                <!-- .navbar -->
+                {{--  <!-- .navbar -->  --}}
             </div>
         </header>
 
@@ -128,7 +136,8 @@
                                                                     <option value="{{ $key }}" selected>
                                                                         {{ $value }}</option>
                                                                 @else
-                                                                    <option value="{{ $key }}">{{ $value }}
+                                                                    <option value="{{ $key }}">
+                                                                        {{ $value }}
                                                                 @endif
                                                                 </option>
                                                             @endforeach

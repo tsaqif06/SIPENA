@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\RekapBayar;
+use App\Models\Ruang;
 
 class RekapBayarController extends Controller
 {
@@ -16,31 +17,21 @@ class RekapBayarController extends Controller
     {
         $user = auth()->user();
         if ($user->role == 'admin') {
-            $users = User::all();
+            $ruangs = Ruang::with('user')->get(); // Eager load the user relationship
         } else {
-            $users = $user;
+            $ruangs = Ruang::where('user_id', $user->id)->with('user')->get(); // Eager load the user relationship
         }
+
+        $rekapbayars = RekapBayar::with('user.ruang')->get(); // Eager load the user and ruang relationships
 
         return view("$user->role.rekapbayar.index", [
             'title' => 'Rekap Bayar',
-            // 'users' => $users,
-            'rekapbayars' => RekapBayar::all(),
+            'ruangs' => $ruangs,
+            'rekapbayars' => $rekapbayars,
             'role' => $user->role
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        $role = auth()->user()->role;
-
-        return view('admin.rekapbayar.create', [
-            'title' => 'Rekap Bayar',
-            'role' => $role
-        ]);
-    }
 
     /**
      * Store a newly created resource in storage.

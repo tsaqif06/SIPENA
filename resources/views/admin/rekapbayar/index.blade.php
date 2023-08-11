@@ -49,19 +49,21 @@
                                         </tr>
                                     </thead>
                                     <tbody class="table-body-content">
-                                        <tr>
-                                            <td>
-                                                <button class="button-arounder">
-                                                    <span class="material-symbols-outlined"> edit </span>
-                                                </button>
-                                                <button class="button-arounder" onclick="BtnDel(this)">
-                                                    <span class="material-symbols-outlined"> delete </span>
-                                                </button>
-                                            </td>
-                                            @foreach ($rekapbayars as $rekapbayar)
+                                        @foreach ($rekapbayars as $rekapbayar)
+                                            <tr>
+                                                <td>
+                                                    <button class="button-arounder">
+                                                        <span class="material-symbols-outlined"> edit </span>
+                                                    </button>
+                                                    <button class="button-arounder" onclick="BtnDel(this)">
+                                                        <span class="material-symbols-outlined"> delete </span>
+                                                    </button>
+                                                </td>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $rekapbayar->user->nama }}</td>
-                                                <td>{{ $rekapbayar->user->nama }}</td>
+                                                <td>
+                                                    {{ $rekapbayar->ruang->koderuang }}
+                                                </td>
                                                 <td>{{ $rekapbayar->user->notelp }}</td>
                                                 <td>{{ $rekapbayar->jan }}</td>
                                                 <td>{{ $rekapbayar->feb }}</td>
@@ -75,8 +77,8 @@
                                                 <td>{{ $rekapbayar->okt }}</td>
                                                 <td>{{ $rekapbayar->nov }}</td>
                                                 <td>{{ $rekapbayar->des }}</td>
-                                            @endforeach
-                                        </tr>
+                                            </tr>
+                                        @endforeach
                                     </tbody>
                                 </table>
                             </div>
