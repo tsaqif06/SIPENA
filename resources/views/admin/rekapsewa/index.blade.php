@@ -116,7 +116,7 @@
                       @csrf
                       <div class="form-group">
                         <label class="labels" for="ruang">Pilih ruang yang akan ditempati user.</label>
-                        <input type="text" class="form-control" list="ruangkosong" id="ruang" name="ruang" placeholder="L3 L270" required>
+                        <input type="text" class="form-control" id="ruang" list="ruangkosong" name="ruang" autocomplete="off" placeholder="L3 L270" required>
                         <datalist id="ruangkosong"></datalist>
                       </div>
                   </div>
@@ -209,9 +209,9 @@
           document.querySelector('#suratkesanggupan input').value = '/storage/' + e.target.dataset.suratkesanggupan;
           document.querySelector('#suratpernyataan input').value = '/storage/' + e.target.dataset.suratpernyataan;
 
-          document.querySelector('#suratpermohonan a').setAttribute('href', '/storage/' + $(e.target).data('suratpermohonan'));
-          document.querySelector('#suratkesanggupan a').setAttribute('href', '/storage/' + $(e.target).data('suratkesanggupan'));
-          document.querySelector('#suratpernyataan a').setAttribute('href', '/storage/' + $(e.target).data('suratpernyataan'));
+          document.querySelector('#suratpermohonan a').setAttribute('href', '/storage/' + e.target.dataset.suratpermohonan);
+          document.querySelector('#suratkesanggupan a').setAttribute('href', '/storage/' + e.target.dataset.suratkesanggupan);
+          document.querySelector('#suratpernyataan a').setAttribute('href', '/storage/' + e.target.dataset.suratpernyataan);
         });
       });
 

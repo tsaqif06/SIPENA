@@ -1,15 +1,17 @@
 <?php
 
+use App\Models\Ruang;
+use App\Models\Pengguna;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RuangController;
+use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\RekapBayarController;
-use App\Http\Controllers\PenggunaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +48,9 @@ Route::get('/dashboard', function () {
     return view('dashboard', [
         'title' => 'Dashboard',
         'role' => Auth::user()->role,
-        'user' => Auth::user()
+        'user' => Auth::user(),
+        'ruang' => Ruang::where('user_id', Auth::user()->id)->pluck('koderuang')->first(),
+        'belumBayar' => false
     ]);
 })->middleware('auth');
 
@@ -68,6 +72,7 @@ Route::resource('/pengguna', PenggunaController::class)->middleware('auth');
 // Penyewaan //
 Route::resource('/penyewaan', PenyewaanController::class)->middleware(['auth', 'can:user']);
 Route::resource('/pengajuan', PengajuanController::class)->middleware(['auth', 'can:admin']);
+Route::get('/api/pengajuan/berkas', [PenggunaController::class, 'getAllBerkas'])->middleware('auth');
 
 // Ketentuan //
 Route::get("/ketentuan", function () {

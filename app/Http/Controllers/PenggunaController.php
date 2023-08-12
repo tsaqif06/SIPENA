@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Pengajuan;
 use App\Models\Pengguna;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -140,5 +141,12 @@ class PenggunaController extends Controller
             Session::flash('message', 'Berhasil menghapus pengguna!');
         }
         return redirect('/pengguna');
+    }
+
+    public function getAllBerkas(Request $request)
+    {
+        $dataBerkas = Pengajuan::where('user_id', $request->id)->get(['suratpermohonan', 'suratkesanggupan', 'suratpernyataan'])->first();
+
+        return response()->json($dataBerkas);
     }
 }

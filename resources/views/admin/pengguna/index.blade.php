@@ -62,8 +62,8 @@
                         <td> {{ $item->alamat }}</td>
                         <td> {{ $item->pekerjaan}}</td>
                         <td> {{ $item->notelp }}</td>
-                        <td><button class="btn btn-sm" style="color:white; background-color:#5CB874"
-                            data-bs-toggle="modal" data-bs-target="#modalberkas">Lihat Berkas</button></td>
+                        <td><button class="btn btn-sm btn-modal-berkas" style="color:white; background-color:#5CB874"
+                            data-bs-toggle="modal" data-bs-target="#modalberkas" data-id="{{ $item->id }}">Lihat Berkas</button></td>
                         <td>
                           <button class="button-arounder">
                             <span class="material-symbols-outlined"><a href="pengguna/{{ $item->id }}/edit"> edit </a></span>
@@ -98,30 +98,33 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <form>
-            <div class="modal-body">
+            <div class="modal-body position-relative">
+              <div id="modal-loader" class="position-absolute w-100 h-100 bg-light d-flex justify-content-center align-items-center">
+                <span class="spinner-border text-success" role="status"></span>
+              </div>
               <h4 class="modal-title" id="exampleModalLabel">Berkas</h4>
               <div class="form-group">
                 <label>Surat Permohonan</label>
-                <div class="input-group col-xs-12">
-                  <input type="text" class="form-control file-upload-info" disabled placeholder="xxx">
+                <div id="suratpermohonan" class="input-group col-xs-12">
+                  <input type="text" class="form-control file-upload-info" disabled placeholder="Data Kosong">
                   <span class="input-group-append">
                     <button class="btn" style="color:white; background-color:#5CB874" type="button">Lihat</button>
                   </span>
                 </div>
               </div>
               <div class="form-group">
-                <label>Surat Permohonan</label>
-                <div class="input-group col-xs-12">
-                  <input type="text" class="form-control file-upload-info" disabled placeholder="xxx">
+                <label>Surat Kesanggupan</label>
+                <div id="suratkesanggupan" class="input-group col-xs-12">
+                  <input type="text" class="form-control file-upload-info" disabled placeholder="Data Kosong">
                   <span class="input-group-append">
                     <button class="btn" style="color:white; background-color:#5CB874" type="button">Lihat</button>
                   </span>
                 </div>
               </div>
               <div class="form-group">
-                <label>Surat Permohonan</label>
-                <div class="input-group col-xs-12">
-                  <input type="text" class="form-control file-upload-info" disabled placeholder="xxx">
+                <label>Surat Pernyataan</label>
+                <div id="suratpernyataan" class="input-group col-xs-12">
+                  <input type="text" class="form-control file-upload-info" disabled placeholder="Data Kosong">
                   <span class="input-group-append">
                     <button class="btn" style="color:white; background-color:#5CB874" type="button">Lihat</button>
                   </span>
@@ -138,6 +141,65 @@
   </main><!-- End #main -->
 
 {{-- @endif --}}
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    var suratpermohonan, suratkesanggupan, suratpernyataan;
+
+    function updateModalBerkas(notEmpty, data) {
+        if (notEmpty) {
+          // console.log('not empty');
+          suratpermohonan = data.suratpermohonan;
+          suratkesanggupan = data.suratkesanggupan;
+          suratpernyataan = data.suratpernyataan;
+        } else {
+          // console.log('data empty');
+          [suratpermohonan, suratkesanggupan, suratpernyataan] = ['', '', ''];
+        }
+        // console.log([suratpermohonan, suratkesanggupan, suratpernyataan, target]);
+        
+        document.querySelector('#suratpermohonan input').value = (suratpermohonan !== '#' ? suratpermohonan : '' );
+        document.querySelector('#suratkesanggupan input').value = (suratkesanggupan !== '#' ? suratkesanggupan : '' );
+        document.querySelector('#suratpernyataan input').value = (suratpernyataan !== '#' ? suratpernyataan : '' );
+
+        document.querySelector('#suratpermohonan button').setAttribute('onclick', 
+          (suratpermohonan !== '' ? `window.open('/storage/${suratpermohonan}', '_blank')` : '' )
+        );
+        document.querySelector('#suratkesanggupan button').setAttribute('onclick', 
+          (suratkesanggupan !== '' ? `window.open('/storage/${suratkesanggupan}', '_blank')` : '' )
+        );
+        document.querySelector('#suratpernyataan button').setAttribute('onclick', 
+          (suratpernyataan !== '' ? `window.open('/storage/${suratpernyataan}', '_blank')` : '' )
+        );
+
+        document.querySelector('#suratpermohonan button').disabled = !notEmpty;
+        document.querySelector('#suratkesanggupan button').disabled = !notEmpty;
+        document.querySelector('#suratpernyataan button').disabled = !notEmpty;
+    }
+
+    document.querySelectorAll('.btn-modal-berkas').forEach((element) => {
+      element.addEventListener('click', (e) => {
+        document.getElementById('modal-loader').classList.remove('hide');
+
+        let id = e.target.dataset.id;
+
+        fetch(`/api/pengajuan/berkas?id=${id}`)
+        .then((response) => {
+        if (!response.ok) throw Error(response.statusText); 
+            return response.json();
+        })
+        .then((data) => {
+            updateModalBerkas((Object.keys(data).length !== 0), data);  
+        })
+        .catch((error) => {console.log(error)})
+        .finally(() => {
+        document.getElementById('modal-loader').classList.add('hide');
+        });
+      });
+    });
+
+  });
+</script>
 
 
 @endsection
