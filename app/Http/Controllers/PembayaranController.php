@@ -34,13 +34,15 @@ class PembayaranController extends Controller
         $ruang = Ruang::where('user_id', $user->id)->first();
 
         Carbon::setLocale('id'); // Atur locale bahasa Indonesia
-        $ruang['bulanSekarang'] = Carbon::now()->translatedFormat('F');
-        $ruang['pdam'] = 20000;
-        $ruang['totalharga'] = $ruang->harga + $ruang->pdam;
-
+        $bayar = [
+            'bulanSekarang' => Carbon::now()->translatedFormat('F'),
+            'pdam' => 20000,
+        ];
+        $bayar['totalbayar'] = ($ruang->harga ?? 0) + $bayar['pdam'];
         return view('user.pembayaran.index', [
             'title' => 'Pembayaran',
-            'ruang' => ($ruang ?? null),
+            'ruang' => $ruang ?? null,
+            'bayar' => $bayar,
             'bulan' => $bulan,
             'role' => $user->role
         ]);

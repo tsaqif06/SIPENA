@@ -8,7 +8,6 @@
                 <h2 class="text-white">Selamat Datang {{ $user->nama }} !</h2>
             </div>
         </section>
-
         <main id="main">
             <section>
                 <div class="container">
@@ -20,7 +19,8 @@
                                 </div>
                                 <div class="card-body">
                                     <h5 class="card-title">Anda sudah mendapatkan ruang untuk di huni</h5>
-                                    <h3 class="card-title" style="color:#5CB874">Kode ruang anda adalah : LT.2 F&94</h3>
+                                    <h3 class="card-title" style="color:#5CB874">Kode ruang anda adalah :
+                                        {{ $koderuang }}</h3>
                                 </div>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                                 <div class="card-body text-danger">
                                     <h5 class="card-title">Anda belum melakukan pembayaran bulan ini</h5>
                                     <p class="card-text">Segera lakukan pembayaran sewa bulan ini, sekarang.</p>
-                                    <a href="/#" class="btn"
+                                    <a href="/pembayaran" class="btn"
                                         style="color:white; background-color:#5CB874">Pembayaran</a>
                                 </div>
                             </div>
