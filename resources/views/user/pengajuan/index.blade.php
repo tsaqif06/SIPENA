@@ -152,10 +152,10 @@
     </main>
 
     <script>
-        $(document).ready(() => {
-          let ruangkosong = {!! !$ruangkosong->isEmpty() ? json_encode($ruangkosong->toArray()) : "[]" !!};
-          ruangkosong = ruangkosong.map((e) => `<option value="${e}">`).join('');
-          $('#ruangkosong').append(ruangkosong);
+        document.addEventListener('DOMContentLoaded', () => {
+            let ruangkosong = {!! !$ruangkosong->isEmpty() ? json_encode($ruangkosong->toArray()) : "[]" !!};
+            ruangkosong = ruangkosong.map((e) => `<option value="${e}">`).join('');
+            document.getElementById('ruangkosong').innerHTML = ruangkosong;
         });
     </script>
 

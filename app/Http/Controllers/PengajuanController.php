@@ -63,15 +63,19 @@ class PengajuanController extends Controller
             'ruang' => 'required'
         ]);
 
-        Ruang::where('koderuang', $request['ruang'])->where('is_dipakai', 0)
+        $updateDataRuang = Ruang::where('koderuang', $request['ruang'])->where('is_dipakai', 0)
         ->update([
             'user_id' => $pengajuan->user_id,
             'is_dipakai' => 1
         ]);
-        
-        Pengajuan::find($pengajuan->id)->update(['accept' => 1]);
 
-        return back()->with('success', 'Data ruang berhasil diperbarui!');
+        if($updateDataRuang) {
+            Pengajuan::find($pengajuan->id)->update(['accept' => 1]);
+    
+            return back()->with('success', 'Data ruang berhasil diperbarui!');
+        }
+        
+        return back()->with('error', 'Terjadi kesalahan saat memperbarui data ruang.');
     }
 
     /**
@@ -79,12 +83,18 @@ class PengajuanController extends Controller
      */
     public function destroy(Pengajuan $pengajuan)
     {
-        Storage::delete($pengajuan->suratpermohonan);
-        Storage::delete($pengajuan->suratkesanggupan);
-        Storage::delete($pengajuan->suratpernyataan);
+        $deleteFile = Storage::delete([
+            $pengajuan->suratpermohonan,
+            $pengajuan->suratkesanggupan,
+            $pengajuan->suratpernyataan
+        ]);
 
-        Pengajuan::destroy($pengajuan->id);
-
-        return back()->with('success', 'Data berhasil dihapus!');
+        if ($deleteFile) {
+            Pengajuan::destroy($pengajuan->id);
+    
+            return back()->with('success', 'Data berhasil dihapus!');
+        }
+        
+        return back()->with('error', 'Terjadi kesalahan saat memperbarui data ruang.');
     }
 }

@@ -24,9 +24,9 @@
                             {{ session('success') }}
                             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                         </div>
-                        @elseif ($errors->any())
+                        @elseif ($errors->any() || session()->has('error'))
                             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                Error saat memproses data! Data yang Anda masukan mungkin tidak sesuai, coba lagi.
+                                Terjadi kesalahan saat memproses data! Data yang Anda masukan mungkin tidak sesuai, coba lagi.
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @endif
@@ -189,30 +189,35 @@
   </div>
 
   <script>
-    $(document).ready(() => {
-      $('.btn-modal-penyewaan').click((e) => {
-        let ruang = $(e.target).data('pemilihan');
-        $('#ruang1').val(ruang[0]);
-        $('#ruang2').val(ruang[1]);
-        $('#ruang3').val(ruang[2]);
+    document.addEventListener('DOMContentLoaded', () => {
 
-        $('form#edit-form').attr('action', `/pengajuan/${$(e.target).data('id')}`);
-        $('form#delete-form').attr('action', `/pengajuan/${$(e.target).data('id')}`);
+      document.querySelectorAll('.btn-modal-penyewaan').forEach(element => {
+        element.addEventListener('click', (e) => {
+          let ruang = JSON.parse(e.target.dataset.pemilihan);
+          document.getElementById('ruang1').value = ruang[0];
+          document.getElementById('ruang2').value = ruang[1];
+          document.getElementById('ruang3').value = ruang[2];
+
+          document.querySelector('form#edit-form').setAttribute('action', `/pengajuan/${$(e.target).data('id')}`);
+          document.querySelector('form#delete-form').setAttribute('action', `/pengajuan/${$(e.target).data('id')}`);
+        });
       });
-  
-      $('.btn-modal-berkas').click((e) => {
-        $('#suratpermohonan input').val('/storage/' + $(e.target).data('suratpermohonan'));
-        $('#suratkesanggupan input').val('/storage/' + $(e.target).data('suratkesanggupan'));
-        $('#suratpernyataan input').val('/storage/' + $(e.target).data('suratpernyataan'));
 
-        $('#suratpermohonan a').attr('href', '/storage/' + $(e.target).data('suratpermohonan'));
-        $('#suratkesanggupan a').attr('href', '/storage/' + $(e.target).data('suratkesanggupan'));
-        $('#suratpernyataan a').attr('href', '/storage/' + $(e.target).data('suratpernyataan'));
+      document.querySelectorAll('.btn-modal-berkas').forEach(element => {
+        element.addEventListener('click', (e) => {
+          document.querySelector('#suratpermohonan input').value = '/storage/' + e.target.dataset.suratpermohonan;
+          document.querySelector('#suratkesanggupan input').value = '/storage/' + e.target.dataset.suratkesanggupan;
+          document.querySelector('#suratpernyataan input').value = '/storage/' + e.target.dataset.suratpernyataan;
+
+          document.querySelector('#suratpermohonan a').setAttribute('href', '/storage/' + $(e.target).data('suratpermohonan'));
+          document.querySelector('#suratkesanggupan a').setAttribute('href', '/storage/' + $(e.target).data('suratkesanggupan'));
+          document.querySelector('#suratpernyataan a').setAttribute('href', '/storage/' + $(e.target).data('suratpernyataan'));
+        });
       });
 
       let ruangkosong = {!! !$ruangkosong->isEmpty() ? json_encode($ruangkosong->toArray()) : "[]" !!};
       ruangkosong = ruangkosong.map((e) => `<option value="${e}">`).join('');
-      $('#ruangkosong').append(ruangkosong);
+      document.getElementById('ruangkosong').innerHTML = ruangkosong;
     });
   </script>
 
