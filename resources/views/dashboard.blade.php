@@ -11,7 +11,7 @@
     @if ($role == 'user')
         <main id="main">
             <section>
-                @if ($ruang) 
+                @if ($koderuang) 
                     <div class="container">
                             <div class="row">
                                 <div class="container">
@@ -21,7 +21,7 @@
                                         </div>
                                         <div class="card-body">
                                             <h5 class="card-title">Anda sudah mendapatkan ruang untuk dihuni</h5>
-                                            <h3 class="card-title" style="color:#5CB874">Kode ruang anda adalah : {{ $ruang }}</h3>
+                                            <h3 class="card-title" style="color:#5CB874">Kode ruang anda adalah : {{ $koderuang }}</h3>
                                         </div>
                                     </div>
                                 </div>
