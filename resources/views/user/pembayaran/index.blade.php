@@ -1,7 +1,3 @@
-@extends('layouts.main')
-
-@section('content')
-
     <!DOCTYPE html>
     <html lang="en">
 
@@ -39,7 +35,8 @@
 
         <link rel="stylesheet" type="text/css"
             href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
+        <link rel="stylesheet" type="text/css"
+            href="https://cdn.datatables.net/1.13.6/css/dataTables.bootstrap5.min.css">
 
         <!-- data table bootsrap -->
 
@@ -50,47 +47,7 @@
     </head>
 
     <body class="d-flex flex-column min-vh-100 section-bg">
-        <header id="header" class="d-flex align-items-center">
-            <div class="container d-flex align-items-center">
-                <h1 class="logo me-auto">
-                    <a href="berandaadmin.html" class="logo me-auto"><img src="../assets/img/logosipenafinal.png"
-                            alt="" class="img-fluid" /></a>
-                </h1>
-
-                <nav id="navbar" class="navbar">
-                    <ul>
-                        <li>
-                            <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">Dasbor</a>
-                        </li>
-                        <li>
-                            <a class="nav-link {{ Request::is('ruang') ? 'active' : '' }}" href="/ruang">Rekap Ruang</a>
-                        </li>
-                        <li>
-                        <li><a class="nav-link {{ Request::is('pembayaran') ? 'active' : '' }}"
-                                href="/pembayaran">Pembayaran</a>
-                        </li>
-                        <li><a class="nav-link {{ Request::is('rekapbayar') ? 'active' : '' }}" href="/rekapbayar">Rekap
-                                Pembayaran</a>
-                        </li>
-                        <li><a class="nav-link {{ Request::is('penyewaan') ? 'active' : '' }}"
-                                href="/penyewaan">Penyewaan</a>
-                        </li>
-                        <li>
-                            <a class="nav-link {{ Request::is('ketentuan') ? 'active' : '' }}"
-                                href="/ketentuan">Ketentuan</a>
-                        </li>
-                        <li>
-                            <form action="/logout" method="post">
-                                @csrf
-                                <button class="getstarted logout" type="submit">KELUAR</button>
-                            </form>
-                        </li>
-                    </ul>
-                    <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav>
-                {{--  <!-- .navbar -->  --}}
-            </div>
-        </header>
+        @include('partials.header-user')
 
 
         <main id="main">
@@ -110,7 +67,7 @@
                                         Anda Belum Punya Ruang Yang Ditempati, Tidak Bisa Melakukan Pembayaran Sekarang!
                                     </div>
                                 @endif
-                                <div class="col-md-7">
+                                <div class="col-md-12">
                                     <div class="card mb-4">
                                         <div class="card-body">
                                             <div class="row">
@@ -132,7 +89,7 @@
                                                         <select class="form-select" name="bulan"
                                                             aria-label="Default select example">
                                                             @foreach ($bulan as $key => $value)
-                                                                @if ($ruang->bulanSekarang == $value)
+                                                                @if ($bayar['bulanSekarang'] == $value)
                                                                     <option value="{{ $key }}" selected>
                                                                         {{ $value }}</option>
                                                                 @else
@@ -150,16 +107,16 @@
                                                     </div>
                                                     <div class="col-md-12"><label class="labels">Harga Sewa
                                                         </label><input type="text" class="form-control"
-                                                            value="Rp.{{ number_format($ruang->harga, 0, ',', '.') ?? '-' }}"
+                                                            value="{{ isset($ruang->harga) ? 'Rp.' . number_format($ruang->harga, 0, ',', '.') : 'Rp.0' }}"
                                                             name="harga" readonly>
                                                     </div>
                                                     <div class="col-md-12"><label class="labels"> PDAM</label><input
                                                             type="text" class="form-control" name="pdam"
-                                                            value="Rp.{{ number_format($ruang->pdam, 0, ',', '.') ?? '-' }}"
+                                                            value="{{ isset($ruang->harga) ? 'Rp.' . number_format($bayar['pdam'], 0, ',', '.') : 'Rp.0' }}"
                                                             readonly></div>
                                                     <div class="col-md-12"><label class="labels"> Total </label><input
                                                             type="text" class="form-control"
-                                                            value="Rp.{{ number_format($ruang->totalharga, 0, ',', '.') ?? '-' }}"
+                                                            value="{{ isset($ruang->harga) ? 'Rp.' . number_format($bayar['totalbayar'], 0, ',', '.') : 'Rp.0' }}"
                                                             name="total" readonly>
                                                     </div>
                                                 </div>
@@ -167,88 +124,17 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-5 col-12 ps-md-5 p-0 ">
-                                    <div class="box-left">
-                                        <div class="container">
-                                            <p class="h7 fw-bold mb-1">Pembayaran</p>
-                                            <div class="form">
-                                                <div class="row">
-                                                    <div class="col-12">
-                                                        <div class="card border-0"> <input class="form-control ps-5"
-                                                                type="text" placeholder="No. Rek"></span> </div>
-                                                    </div>
-                                                    <div class="col-6"> <input class="form-control my-3" type="date">
-                                                    </div>
-                                                    <div class="col-6"> <input class="form-control my-3" type="text"
-                                                            placeholder="KODE CVV"> </div>
-                                                    <div class="col-12">
-                                                        <div class="card border-0"> <input class="form-control ps-5"
-                                                                type="text" placeholder="NAMA PEMILIK KARTU">
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="mt-5 text-center d-grid gap-2">
-                                                    <button type="button" class="btn"
-                                                        style="color:white; background-color:#5CB874">
-                                                        <span class="fas fa-dollar-sign ms-2"></span>Bayar<span
-                                                            class="ms-3 fas fa-arrow-right"></span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </section>
-
         </main>
-        <!-- Modal -->
-        <div class="modal fade" id="modalbayar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <form>
-                        <div class="modal-body">
 
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-secondary"
-                                data-bs-dismiss="modal">Tutup</button>
-                            <button type="button" class="btn"
-                                style="color:white; background-color:#5CB874">Bayar</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        {{--  <!-- ======= Footer ======= -->  --}}
-        <footer class="mt-auto" id="footer">
-            <div class="container">
-                <h3>
-                    <a href="#" class="logo me-auto"><img src="../assets/img/logosipenafinal.png" alt=""
-                            class="img-fluid" style="height: 50px" /></a>
-                </h3>
-                <p>
-                    Sistem Informasi Pembayaran Sewa Rusunawa Kota Malang
-                </p>
-                <div class="copyright">
-                    &copy; Copyright <strong><span>SIPENA</span></strong>. All Rights Reserved
-                </div>
-                <div class="credits"></div>
-            </div>
-        </footer>
-        {{--  <!-- End Footer -->  --}}
+        @include('partials.footer')
 
         <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
                 class="bi bi-arrow-up-short"></i></a>
     </body>
 
     </html>
-@stop

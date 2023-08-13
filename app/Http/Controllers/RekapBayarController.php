@@ -16,17 +16,16 @@ class RekapBayarController extends Controller
     public function index()
     {
         $user = auth()->user();
-        if ($user->role == 'admin') {
-            $ruangs = Ruang::with('user')->get(); // Eager load the user relationship
+        if ($user->role === 'admin') {
+            $rekapbayars = RekapBayar::with('user.ruang')->get();
         } else {
-            $ruangs = Ruang::where('user_id', $user->id)->with('user')->get(); // Eager load the user relationship
+            $rekapbayars = RekapBayar::whereHas('user', function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })->with('user.ruang')->get();
         }
-
-        $rekapbayars = RekapBayar::with('user.ruang')->get(); // Eager load the user and ruang relationships
-
+        
         return view("$user->role.rekapbayar.index", [
             'title' => 'Rekap Bayar',
-            'ruangs' => $ruangs,
             'rekapbayars' => $rekapbayars,
             'role' => $user->role
         ]);

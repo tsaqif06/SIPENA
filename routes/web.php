@@ -1,13 +1,11 @@
 <?php
 
-use App\Models\Ruang;
-use App\Models\Pengguna;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\RuangController;
-use App\Http\Controllers\PenggunaController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\RuangController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\PembayaranController;
@@ -44,15 +42,7 @@ Route::get('/', function () {
 Route::redirect('/home', '/dashboard');
 
 // Dashboard //
-Route::get('/dashboard', function () {
-    return view('dashboard', [
-        'title' => 'Dashboard',
-        'role' => Auth::user()->role,
-        'user' => Auth::user(),
-        'ruang' => Ruang::where('user_id', Auth::user()->id)->pluck('koderuang')->first(),
-        'belumBayar' => false
-    ]);
-})->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 // Ruang //
 Route::resource('/ruang', RuangController::class)->middleware(['auth']);

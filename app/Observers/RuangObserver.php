@@ -3,6 +3,7 @@
 namespace App\Observers;
 
 use App\Models\Ruang;
+use App\Models\RekapBayar;
 
 class RuangObserver
 {
@@ -27,6 +28,15 @@ class RuangObserver
                 $harga = $this->hargaByAngka[$angka];
                 $ruang->update(['harga' => $harga]);
             }
+        }
+    }
+
+    public function updating(Ruang $ruang)
+    {
+        // Cek apakah user_id akan diubah menjadi NULL
+        if ($ruang->isDirty('user_id') && $ruang->user_id === null) {
+            // Hapus rekaman dari tabel RekapBayar yang memiliki user_id yang sama dengan nilai user_id yang diubah menjadi NULL
+            RekapBayar::where('user_id', $ruang->getOriginal('user_id'))->delete();
         }
     }
 }

@@ -20,7 +20,6 @@
                                 <table id="table-data" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th rowspan="2">Aksi</th>
                                             <th rowspan="2">No.</th>
                                             <th rowspan="2">Nama</th>
                                             <th rowspan="2">Kode Ruang</th>
@@ -45,17 +44,10 @@
                                     <tbody class="table-body-content">
                                         @foreach ($rekapbayars as $rekapbayar)
                                             <tr>
-                                                <td>
-                                                    <button class="button-arounder">
-                                                        <span class="material-symbols-outlined"> edit </span>
-                                                    </button>
-                                                    <button class="button-arounder" onclick="BtnDel(this)">
-                                                        <span class="material-symbols-outlined"> delete </span>
-                                                    </button>
-                                                </td>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $rekapbayar->user->nama }}</td>
-                                                <td>{{ $rekapbayar->user->kode_ruang }}</td>
+                                                <td>{{ $rekapbayar->ruang->koderuang }}
+                                                </td>
                                                 <td>{{ $rekapbayar->user->notelp }}</td>
                                                 <td>{{ $rekapbayar->jan }}</td>
                                                 <td>{{ $rekapbayar->feb }}</td>
