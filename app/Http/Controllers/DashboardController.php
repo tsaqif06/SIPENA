@@ -16,7 +16,8 @@ class DashboardController extends Controller
             'title' => 'Dashboard',
             'user' => $user,
             'role' => $user->role,
-            'koderuang' => $koderuang
+            'koderuang' => $koderuang,
+            'belumBayar' => false
         ]);
     }
 }

@@ -2,15 +2,15 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\RuangController;
+use App\Http\Controllers\PenggunaController;
+use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\PenyewaanController;
 use App\Http\Controllers\PembayaranController;
 use App\Http\Controllers\RekapBayarController;
-use App\Http\Controllers\PenggunaController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,6 +64,7 @@ Route::resource('/pengguna', PenggunaController::class)->middleware('auth');
 // Penyewaan //
 Route::resource('/penyewaan', PenyewaanController::class)->middleware(['auth', 'can:user']);
 Route::resource('/pengajuan', PengajuanController::class)->middleware(['auth', 'can:admin']);
+Route::get('/api/pengajuan/berkas', [PenggunaController::class, 'getAllBerkas'])->middleware('auth');
 
 // Ketentuan //
 Route::get("/ketentuan", function () {

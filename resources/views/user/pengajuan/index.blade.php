@@ -76,11 +76,11 @@
                                         <div class="col-md-12">
                                             <label class="labels">Pilihan Ruang Sewa</label>
                                             <input type="text" class="form-control mb-2" name="ruang1"
-                                                placeholder="Ruang 1" value="" list="ruangkosong" required>
+                                                placeholder="Ruang 1" value="" list="ruangkosong" autocomplete="off" required>
                                             <input type="text" class="form-control mb-2" name="ruang2"
-                                                placeholder="Ruang 2" value="" list="ruangkosong" required>
+                                                placeholder="Ruang 2" value="" list="ruangkosong" autocomplete="off" required>
                                             <input type="text" class="form-control mb-2" name="ruang3"
-                                                placeholder="Ruang 3" value="" list="ruangkosong" required>
+                                                placeholder="Ruang 3" value="" list="ruangkosong" autocomplete="off" required>
                                             <datalist id="ruangkosong"></datalist>
                                         </div>
                                         {{-- END USER INFORMATION --}}
@@ -152,10 +152,10 @@
     </main>
 
     <script>
-        $(document).ready(() => {
-          let ruangkosong = {!! !$ruangkosong->isEmpty() ? json_encode($ruangkosong->toArray()) : "[]" !!};
-          ruangkosong = ruangkosong.map((e) => `<option value="${e}">`).join('');
-          $('#ruangkosong').append(ruangkosong);
+        document.addEventListener('DOMContentLoaded', () => {
+            let ruangkosong = {!! !$ruangkosong->isEmpty() ? json_encode($ruangkosong->toArray()) : "[]" !!};
+            ruangkosong = ruangkosong.map((e) => `<option value="${e}">`).join('');
+            document.getElementById('ruangkosong').innerHTML = ruangkosong;
         });
     </script>
 
