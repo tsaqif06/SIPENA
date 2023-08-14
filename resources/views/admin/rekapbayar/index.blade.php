@@ -7,10 +7,6 @@
                 <div class="row">
                     <h3 style="font-weight:700;"> REKAP PEMBAYARAN SAYA</h3>
                 </div>
-
-                <a href="/rekapbayar/create" class="btn" style="color:white; background-color:#5CB874">
-                    Tambah data
-                </a>
             </div>
         </div>
 

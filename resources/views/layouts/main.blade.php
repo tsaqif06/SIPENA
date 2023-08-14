@@ -25,6 +25,10 @@
     <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet" />
     <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
+    {{--  Midtrans  --}}
+    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+        data-client-key="{{ config('midtrans.client_key') }}"></script>
+
     {{--  <!-- Template Main CSS File -->  --}}
     <link href="/assets/css/style.css" rel="stylesheet" />
     <link href="/assets/css/modal-loader.css" rel="stylesheet" />
@@ -58,6 +62,7 @@
     {{--  <!-- Template Main JS File -->  --}}
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/jquery.js"></script>
+    <script src="/assets/js/datatable.js"></script>
 
     <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="/assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -66,9 +71,9 @@
     <script src="/assets/vendor/php-email-form/validate.js"></script>
 
     {{--  <!-- Template Main JS CDN -->  --}}
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.0.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.13.6/js/dataTables.bootstrap5.min.js"></script>
 
 </body>
 

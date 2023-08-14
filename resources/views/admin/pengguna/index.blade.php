@@ -37,7 +37,7 @@
             <div class="card rounded shadow border-0">
               <div class="card-body p-10 bg-white rounded">
                 <div class="table-responsive">
-                  <table id="tabel-data" class="table table-striped table-bordered">
+                  <table id="table-data" class="table table-striped table-bordered">
                     <thead>
                       <tr>
                         <th> No </th>

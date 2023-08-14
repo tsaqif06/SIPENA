@@ -1,4 +1,3 @@
-$(document).ready(function(){
-    $('#tabel-data').DataTable();
+$(document).ready(function () {
+    $("#table-data").DataTable();
 });
- 

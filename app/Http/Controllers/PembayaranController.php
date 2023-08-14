@@ -63,8 +63,11 @@ class PembayaranController extends Controller
 
         $nama = $request['nama'];
         $notelp = $request['notelp'];
+        $pdam = $request['pdam'];
+        $harga = $request['harga'];
+        $koderuang = $request['koderuang'];
 
-        unset($request['nama'], $request['notelp'], $request['pdam'], $request['harga']);
+        unset($request['nama'], $request['notelp'], $request['pdam'], $request['harga'], $request['koderuang'], $request['koderuang']);
         $order = Pembayaran::create($request->all());
 
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
@@ -85,7 +88,19 @@ class PembayaranController extends Controller
         ];
 
         $snapToken = \Midtrans\Snap::getSnapToken($params);
-        return view('user.pembayaran.checkout', compact('snapToken', 'order', 'nama', 'notelp'));
+        $title = "Checkout";
+        $role = 'user';
+        return view('user.pembayaran.checkout', compact(
+            'snapToken',
+            'order',
+            'nama',
+            'notelp',
+            'koderuang',
+            'pdam',
+            'harga',
+            'title',
+            'role'
+        ));
     }
 
     public function callback(Request $request)
@@ -103,6 +118,8 @@ class PembayaranController extends Controller
     public function invoice($id)
     {
         $order = Pembayaran::find($id);
-        return view('user.pembayaran.invoice', compact('order'));
+        $title = "Invoice";
+        $role = 'user';
+        return view('user.pembayaran.invoice', compact('order', 'title', 'role'));
     }
 }

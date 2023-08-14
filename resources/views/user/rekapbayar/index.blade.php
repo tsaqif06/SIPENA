@@ -55,7 +55,7 @@
                                                 <td>{{ $rekapbayar->apr == null ? 'Belum Bayar' : 'Lunas' }}</td>
                                                 <td>{{ $rekapbayar->mei == null ? 'Belum Bayar' : 'Lunas' }}</td>
                                                 <td>{{ $rekapbayar->jun == null ? 'Belum Bayar' : 'Lunas' }}</td>
-                                                <td>{{ $rekapbayar->jul == null ? 'Belum Bayar' : 'Lunas' }}</td>
+                                                <td>{{ $rekapbayar->pjul == null ? 'Belum Bayar' : 'Lunas' }}</td>
                                                 <td>{{ $rekapbayar->aug == null ? 'Belum Bayar' : 'Lunas' }}</td>
                                                 <td>{{ $rekapbayar->sep == null ? 'Belum Bayar' : 'Lunas' }}</td>
                                                 <td>{{ $rekapbayar->okt == null ? 'Belum Bayar' : 'Lunas' }}</td>

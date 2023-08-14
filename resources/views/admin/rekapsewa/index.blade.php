@@ -30,7 +30,7 @@
                                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                             </div>
                         @endif
-                        <table id="tabel-data" class="table table-striped table-bordered">
+                        <table id="table-data" class="table table-striped table-bordered">
                           <thead>
                               <tr>
                                   <th> No </th>
