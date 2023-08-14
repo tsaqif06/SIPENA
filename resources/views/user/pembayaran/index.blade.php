@@ -38,17 +38,19 @@
                                                             value="{{ $ruang->user->notelp ?? '0' }}" readonly>
                                                     </div>
                                                     <div class="col-md-12"><label class="labels">Bulan </label>
-                                                        <select class="form-select" name="bulan"
-                                                            aria-label="Default select example">
+                                                        <select class="form-select" name="bulan" aria-label="Default select example">
                                                             @foreach ($bulan as $key => $value)
-                                                                @if ($bayar['bulanSekarang'] == $value)
-                                                                    <option value="{{ $key }}" selected>
-                                                                        {{ $value }}</option>
-                                                                @else
-                                                                    <option value="{{ $key }}">
-                                                                        {{ $value }}
+                                                                @if (!isset($bayar[$key]))
+                                                                    @if ($bayar['bulanSekarang'] == $value)
+                                                                        <option value="{{ $key }}" selected>
+                                                                            {{ $value }}
+                                                                        </option>
+                                                                    @else
+                                                                        <option value="{{ $key }}">
+                                                                            {{ $value }}
+                                                                        </option>
+                                                                    @endif
                                                                 @endif
-                                                                </option>
                                                             @endforeach
                                                         </select>
                                                     </div>

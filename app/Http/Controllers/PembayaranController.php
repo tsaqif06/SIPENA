@@ -36,11 +36,13 @@ class PembayaranController extends Controller
         $ruang = Ruang::where('user_id', $user->id)->first();
 
         Carbon::setLocale('id');
-        $bayar = [
+        $bayarRekap = RekapBayar::where('user_id', $user->id)->first();
+        $bayarBuatan = [
             'bulanSekarang' => Carbon::now()->translatedFormat('F'),
             'pdam' => 20000,
         ];
-        $bayar['totalbayar'] = ($ruang->harga ?? 0) + $bayar['pdam'];
+        $bayarBuatan['totalbayar'] = ($ruang->harga ?? 0) + $bayarBuatan['pdam'];
+        $bayar = array_merge($bayarRekap->toArray(), $bayarBuatan);
         return view('user.pembayaran.index', [
             'title' => 'Pembayaran',
             'ruang' => $ruang ?? null,
@@ -111,6 +113,9 @@ class PembayaranController extends Controller
             if ($request->transaction_status == 'capture' or $request->transaction_status == 'settlement') {
                 $order = Pembayaran::find($request->order_id);
                 $order->update(['status' => "Lunas"]);
+
+                $rekapbayar = RekapBayar::find($order->rekapbayar_id);
+                $rekapbayar->update([$order->bulan => "Lunas"]);
             }
         }
     }
