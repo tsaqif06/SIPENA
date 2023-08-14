@@ -49,18 +49,18 @@
                                                 <td>{{ $rekapbayar->ruang->koderuang }}
                                                 </td>
                                                 <td>{{ $rekapbayar->user->notelp }}</td>
-                                                <td>{{ $rekapbayar->jan }}</td>
-                                                <td>{{ $rekapbayar->feb }}</td>
-                                                <td>{{ $rekapbayar->mar }}</td>
-                                                <td>{{ $rekapbayar->apr }}</td>
-                                                <td>{{ $rekapbayar->mei }}</td>
-                                                <td>{{ $rekapbayar->jul }}</td>
-                                                <td>{{ $rekapbayar->jun }}</td>
-                                                <td>{{ $rekapbayar->aug }}</td>
-                                                <td>{{ $rekapbayar->sep }}</td>
-                                                <td>{{ $rekapbayar->okt }}</td>
-                                                <td>{{ $rekapbayar->nov }}</td>
-                                                <td>{{ $rekapbayar->des }}</td>
+                                                <td>{{ $rekapbayar->jan == null ? 'Belum Bayar' : 'Lunas' }}</td>
+                                                <td>{{ $rekapbayar->feb == null ? 'Belum Bayar' : 'Lunas' }}</td>
+                                                <td>{{ $rekapbayar->mar == null ? 'Belum Bayar' : 'Lunas' }}</td>
+                                                <td>{{ $rekapbayar->apr == null ? 'Belum Bayar' : 'Lunas' }}</td>
+                                                <td>{{ $rekapbayar->mei == null ? 'Belum Bayar' : 'Lunas' }}</td>
+                                                <td>{{ $rekapbayar->jun == null ? 'Belum Bayar' : 'Lunas' }}</td>
+                                                <td>{{ $rekapbayar->jul == null ? 'Belum Bayar' : 'Lunas' }}</td>
+                                                <td>{{ $rekapbayar->aug == null ? 'Belum Bayar' : 'Lunas' }}</td>
+                                                <td>{{ $rekapbayar->sep == null ? 'Belum Bayar' : 'Lunas' }}</td>
+                                                <td>{{ $rekapbayar->okt == null ? 'Belum Bayar' : 'Lunas' }}</td>
+                                                <td>{{ $rekapbayar->nov == null ? 'Belum Bayar' : 'Lunas' }}</td>
+                                                <td>{{ $rekapbayar->des == null ? 'Belum Bayar' : 'Lunas' }}</td>
                                             </tr>
                                         @endforeach
                                     </tbody>

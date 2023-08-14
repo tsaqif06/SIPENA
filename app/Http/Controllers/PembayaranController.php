@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Pembayaran;
+use App\Models\RekapBayar;
+use App\Models\User;
 use App\Models\Ruang;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -33,7 +35,7 @@ class PembayaranController extends Controller
         $user = auth()->user();
         $ruang = Ruang::where('user_id', $user->id)->first();
 
-        Carbon::setLocale('id'); // Atur locale bahasa Indonesia
+        Carbon::setLocale('id');
         $bayar = [
             'bulanSekarang' => Carbon::now()->translatedFormat('F'),
             'pdam' => 20000,
@@ -48,51 +50,39 @@ class PembayaranController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function checkout(Request $request)
     {
-        //
-    }
+        $user = User::where('nama', $request->nama)
+            ->where('notelp', $request->notelp)
+            ->first();
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $rekapbayar = RekapBayar::where('user_id', $user->id)->first();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Pembayaran $pembayaran)
-    {
-        //
-    }
+        $request->request->add(['rekapbayar_id' => $rekapbayar->id, 'tanggalbayar' => date('Y-m-d'), 'status' => 'Belum Lunas']);
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Pembayaran $pembayaran)
-    {
-        //
-    }
+        unset($request['nama'], $request['notelp'], $request['pdam'], $request['harga']);
+        dd($request->all());
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Pembayaran $pembayaran)
-    {
-        //
-    }
+        $order = Pembayaran::create($request->all());
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Pembayaran $pembayaran)
-    {
-        //
+        \Midtrans\Config::$serverKey = config('midtrans.server_key');
+        \Midtrans\Config::$isProduction = config('midtrans.is_production');
+        \Midtrans\Config::$isSanitized = true;
+        \Midtrans\Config::$is3ds = true;
+
+        $params = [
+            'transaction_details' => [
+                'order_id' => $order->id,
+                'gross_amount' => $order->totalbayar,
+            ],
+            'customer_details' => [
+                'first_name' => $request->nama,
+                'last_name' => '',
+                'phone' => $request->notelp,
+            ],
+        ];
+
+        $snapToken = \Midtrans\Snap::getSnapToken($params);
+        return view('checkout', compact('snapToken', 'order'));
     }
 }

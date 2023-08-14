@@ -16,14 +16,13 @@
         <link
             href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
             rel="stylesheet">
-
         <!-- Vendor CSS Files -->
-        <link href="../assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-        <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-        <link href="../assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-        <link href="../assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-        <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <link href="/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+        <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
         <link rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -55,7 +54,6 @@
 
                 <div class="container mt-3">
                     <div class="bg-white border rounded-5">
-
                         <div class="w-100 p-4" style="background-color: #ffffff; border-radius: 10px;">
                             <div class="row">
                                 <div class="pb-0">
@@ -74,52 +72,57 @@
                                                 <div class="d-flex justify-content-between align-items-center mb-3">
                                                     <h4 class="text-right">Detail Pembayaran </h4>
                                                 </div>
-                                                <div class="row mt-2">
-                                                    <div class="col-md-12">
-                                                        <label class="labels">Nama</label>
-                                                        <input type="text" name="nama" class="form-control"
-                                                            value="{{ $ruang->user->nama ?? '-' }}" readonly>
+                                                <form action="/pembayaran/checkout" method="post">
+                                                    @csrf
+                                                    <div class="row mt-2">
+                                                        <div class="col-md-12">
+                                                            <label class="labels">Nama</label>
+                                                            <input type="text" name="nama" class="form-control"
+                                                                value="{{ $ruang->user->nama ?? '-' }}" readonly>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label class="labels">No telepon</label>
+                                                            <input type="number" class="form-control" name="notelp"
+                                                                value="{{ $ruang->user->notelp ?? '0' }}" readonly>
+                                                        </div>
+                                                        <div class="col-md-12"><label class="labels">Bulan </label>
+                                                            <select class="form-select" name="bulan"
+                                                                aria-label="Default select example">
+                                                                @foreach ($bulan as $key => $value)
+                                                                    @if ($bayar['bulanSekarang'] == $value)
+                                                                        <option value="{{ $key }}" selected>
+                                                                            {{ $value }}</option>
+                                                                    @else
+                                                                        <option value="{{ $key }}">
+                                                                            {{ $value }}
+                                                                    @endif
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
+                                                        </div>
+                                                        <div class="col-md-12">
+                                                            <label class="labels">Kode Ruang</label>
+                                                            <input type="text" class="form-control"
+                                                                value="{{ $ruang->koderuang ?? '-' }}" readonly>
+                                                        </div>
+                                                        <div class="col-md-12"><label class="labels">Harga Sewa
+                                                            </label><input type="text" class="form-control"
+                                                                value="{{ isset($ruang->harga) ? 'Rp.' . number_format($ruang->harga, 0, ',', '.') : 'Rp.0' }}"
+                                                                name="harga" readonly>
+                                                        </div>
+                                                        <div class="col-md-12"><label class="labels"> PDAM</label><input
+                                                                type="text" class="form-control" name="pdam"
+                                                                value="{{ isset($ruang->harga) ? 'Rp.' . number_format($bayar['pdam'], 0, ',', '.') : 'Rp.0' }}"
+                                                                readonly></div>
+                                                        <div class="col-md-12"><label class="labels"> Total
+                                                            </label><input type="text" class="form-control"
+                                                                value="{{ isset($ruang->harga) ? 'Rp.' . number_format($bayar['totalbayar'], 0, ',', '.') : 'Rp.0' }}"
+                                                                name="total" readonly>
+                                                        </div>
+                                                        <button class="btn btn-success my-3"
+                                                            type="submit">Submit</button>
                                                     </div>
-                                                    <div class="col-md-12">
-                                                        <label class="labels">No telepon</label>
-                                                        <input type="number" class="form-control" name="notelp"
-                                                            value="{{ $ruang->user->notelp ?? '0' }}" readonly>
-                                                    </div>
-                                                    <div class="col-md-12"><label class="labels">Bulan </label>
-                                                        <select class="form-select" name="bulan"
-                                                            aria-label="Default select example">
-                                                            @foreach ($bulan as $key => $value)
-                                                                @if ($bayar['bulanSekarang'] == $value)
-                                                                    <option value="{{ $key }}" selected>
-                                                                        {{ $value }}</option>
-                                                                @else
-                                                                    <option value="{{ $key }}">
-                                                                        {{ $value }}
-                                                                @endif
-                                                                </option>
-                                                            @endforeach
-                                                        </select>
-                                                    </div>
-                                                    <div class="col-md-12">
-                                                        <label class="labels">Kode Ruang</label>
-                                                        <input type="text" class="form-control"
-                                                            value="{{ $ruang->koderuang ?? '-' }}" readonly>
-                                                    </div>
-                                                    <div class="col-md-12"><label class="labels">Harga Sewa
-                                                        </label><input type="text" class="form-control"
-                                                            value="{{ isset($ruang->harga) ? 'Rp.' . number_format($ruang->harga, 0, ',', '.') : 'Rp.0' }}"
-                                                            name="harga" readonly>
-                                                    </div>
-                                                    <div class="col-md-12"><label class="labels"> PDAM</label><input
-                                                            type="text" class="form-control" name="pdam"
-                                                            value="{{ isset($ruang->harga) ? 'Rp.' . number_format($bayar['pdam'], 0, ',', '.') : 'Rp.0' }}"
-                                                            readonly></div>
-                                                    <div class="col-md-12"><label class="labels"> Total </label><input
-                                                            type="text" class="form-control"
-                                                            value="{{ isset($ruang->harga) ? 'Rp.' . number_format($bayar['totalbayar'], 0, ',', '.') : 'Rp.0' }}"
-                                                            name="total" readonly>
-                                                    </div>
-                                                </div>
+                                                </form>
                                             </div>
                                         </div>
                                     </div>

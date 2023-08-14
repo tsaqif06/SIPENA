@@ -50,6 +50,7 @@ Route::resource('/ruang', RuangController::class)->middleware(['auth']);
 
 // Pembayaran //
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->middleware(['auth', 'can:user']);
+Route::post('/pembayaran/checkout', [PembayaranController::class, 'checkout'])->middleware(['auth', 'can:user']);
 
 
 Route::get('/ketentuan', [KetentuanController::class, 'index']);

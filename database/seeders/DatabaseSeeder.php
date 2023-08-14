@@ -39,5 +39,12 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(10)->create();
 
         \App\Models\Ruang::factory(20)->create();
+
+        \App\Models\Pembayaran::factory()->create([
+            'rekapbayar_id' => 2,
+            'totalbayar' => 95000,
+            'tanggalbayar' => '2023-07-23',
+            'bulan' => 'jul'
+        ]);
     }
 }
