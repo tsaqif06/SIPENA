@@ -59,10 +59,12 @@ class PembayaranController extends Controller
         $rekapbayar = RekapBayar::where('user_id', $user->id)->first();
 
         $request->request->add(['rekapbayar_id' => $rekapbayar->id, 'tanggalbayar' => date('Y-m-d'), 'status' => 'Belum Lunas']);
+        $request['totalbayar'] = (int)str_replace(['Rp.', '.'], '', $request->totalbayar);
+
+        $nama = $request['nama'];
+        $notelp = $request['notelp'];
 
         unset($request['nama'], $request['notelp'], $request['pdam'], $request['harga']);
-        dd($request->all());
-
         $order = Pembayaran::create($request->all());
 
         \Midtrans\Config::$serverKey = config('midtrans.server_key');
@@ -76,13 +78,31 @@ class PembayaranController extends Controller
                 'gross_amount' => $order->totalbayar,
             ],
             'customer_details' => [
-                'first_name' => $request->nama,
+                'first_name' => $nama,
                 'last_name' => '',
-                'phone' => $request->notelp,
+                'phone' => $notelp,
             ],
         ];
 
         $snapToken = \Midtrans\Snap::getSnapToken($params);
-        return view('checkout', compact('snapToken', 'order'));
+        return view('user.pembayaran.checkout', compact('snapToken', 'order', 'nama', 'notelp'));
+    }
+
+    public function callback(Request $request)
+    {
+        $serverKey = config('midtrans.server_key');
+        $hashed = hash("sha512", $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
+        if ($hashed == $request->signature_key) {
+            if ($request->transaction_status == 'capture' or $request->transaction_status == 'settlement') {
+                $order = Pembayaran::find($request->order_id);
+                $order->update(['status' => "Lunas"]);
+            }
+        }
+    }
+
+    public function invoice($id)
+    {
+        $order = Pembayaran::find($id);
+        return view('user.pembayaran.invoice', compact('order'));
     }
 }

@@ -117,7 +117,7 @@
                                                         <div class="col-md-12"><label class="labels"> Total
                                                             </label><input type="text" class="form-control"
                                                                 value="{{ isset($ruang->harga) ? 'Rp.' . number_format($bayar['totalbayar'], 0, ',', '.') : 'Rp.0' }}"
-                                                                name="total" readonly>
+                                                                name="totalbayar" readonly>
                                                         </div>
                                                         <button class="btn btn-success my-3"
                                                             type="submit">Submit</button>
