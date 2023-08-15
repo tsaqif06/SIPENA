@@ -20,7 +20,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/Tsaqif06/SIPENA">
-    <img src="public/assets/img/logosipenafinal.png" alt="Logo" width="160" height="80">
+    <img src="public/assets/img/logosipenafinal.png" alt="Logo" width="200" height="80">
   </a>
 
   <h3 align="center">SIPENA</h3>
