@@ -83,11 +83,7 @@ class PengajuanController extends Controller
      */
     public function destroy(Pengajuan $pengajuan)
     {
-        $deleteFile = Storage::delete([
-            $pengajuan->suratpermohonan,
-            $pengajuan->suratkesanggupan,
-            $pengajuan->suratpernyataan
-        ]);
+        $deleteFile = Storage::deleteDirectory('berkas/' . str_replace(" ", "_", $pengajuan->user->nama));
 
         if ($deleteFile) {
             Pengajuan::destroy($pengajuan->id);
@@ -96,5 +92,21 @@ class PengajuanController extends Controller
         }
         
         return back()->with('error', 'Terjadi kesalahan saat memperbarui data ruang.');
+    }
+
+
+    // Mengambil semua data path berkas
+
+    public function getAllBerkas(Request $request)
+    {
+        $dataBerkas = Pengajuan::where('user_id', $request->id)
+            ->without(['id', 'user_id', 'accept', 'created_at', 'updated_at', 'user'])
+            ->first();
+
+        if ($dataBerkas) {
+            return response()->json($dataBerkas->makeHidden(['id', 'user_id', 'accept', 'created_at', 'updated_at', 'user']));
+        }
+
+        return response()->json([]);
     }
 }

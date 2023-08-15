@@ -23,8 +23,7 @@ class PenyewaanController extends Controller
             'data' => [
                 Pengajuan::where('user_id', $user->id)->first(),
                 Ruang::where('user_id', $user->id)->first()
-            ],
-            'ruangkosong' => Ruang::where('is_dipakai', 0)->pluck('koderuang')
+            ]
         ]);
     }
 
@@ -45,27 +44,34 @@ class PenyewaanController extends Controller
 
         $validateData = $request->validate([
             'user_id' => 'required|unique:pengajuans,user_id',
-            'ruang1' => 'required',
-            'ruang2' => 'required',
-            'ruang3' => 'required',
-            'suratpermohonan' => 'required|file|mimes:pdf|max:2048',
-            'suratkesanggupan' => 'required|file|mimes:pdf|max:2048',
-            'suratpernyataan' => 'required|file|mimes:pdf|max:2048'
-        ]);
-        
-        $validateData['pilihanruang'] = json_encode([
-            $validateData['ruang1'],
-            $validateData['ruang2'],
-            $validateData['ruang3'],
+            'fotoktp_suami' => 'required|file|mimes:jpg,jpeg|max:2048',
+            'fotoktp_istri' => 'required|file|mimes:jpg,jpeg|max:2048',
+            'fotokk' => 'required|file|mimes:jpg,jpeg|max:2048',
+            'berkas_statusnikah' => 'required|file|mimes:jpg,jpeg|max:2048',
+            'surat_ket_rumah' => 'required|file|mimes:pdf,jpg,jpeg|max:2048',
+            'surat_ket_pendapatan' => 'required|file|mimes:pdf,jpg,jpeg|max:2048',
+            'surat_ket_kepolisian' => 'required|file|mimes:pdf,jpg,jpeg|max:2048',
+            'pasfoto_suami' => 'required|file|mimes:jpg,jpeg|max:2048',
+            'pasfoto_istri' => 'required|file|mimes:jpg,jpeg|max:2048',
+            'surat_permohonan' => 'required|file|mimes:pdf|max:2048',
+            'surat_kesanggupan' => 'required|file|mimes:pdf|max:2048',
+            'surat_pernyataan' => 'required|file|mimes:pdf|max:2048',
+            'surat_rekomendasi' => 'required|file|mimes:pdf,jpg,jpeg|max:2048'
         ]);
 
-        unset($validateData['ruang1']);
-        unset($validateData['ruang2']);
-        unset($validateData['ruang3']);
-
-        $validateData['suratpermohonan'] = $request->file('suratpermohonan')->store('berkas/suratpermohonan');
-        $validateData['suratkesanggupan'] = $request->file('suratkesanggupan')->store('berkas/suratkesanggupan');
-        $validateData['suratpernyataan'] = $request->file('suratpernyataan')->store('berkas/suratpernyataan');
+        $validateData['fotoktp_suami'] = $request->file('fotoktp_suami')->store("berkas/" . str_replace(" ", "_", auth()->user()->nama) . "/fotoktp_suami");
+        $validateData['fotoktp_istri'] = $request->file('fotoktp_istri')->store("berkas/" . str_replace(" ", "_", auth()->user()->nama) . "/fotoktp_istri");
+        $validateData['fotokk'] = $request->file('fotokk')->store("berkas/" . str_replace(" ", "_", auth()->user()->nama) . "/fotokk");
+        $validateData['berkas_statusnikah'] = $request->file('berkas_statusnikah')->store("berkas/" . str_replace(" ", "_", auth()->user()->nama) . "/berkas_statusnikah");
+        $validateData['surat_ket_rumah'] = $request->file('surat_ket_rumah')->store("berkas/" . str_replace(" ", "_", auth()->user()->nama) . "/surat_ket_rumah");
+        $validateData['surat_ket_pendapatan'] = $request->file('surat_ket_pendapatan')->store("berkas/" . str_replace(" ", "_", auth()->user()->nama) . "/surat_ket_pendapatan");
+        $validateData['surat_ket_kepolisian'] = $request->file('surat_ket_kepolisian')->store("berkas/" . str_replace(" ", "_", auth()->user()->nama) . "/surat_ket_kepolisian");
+        $validateData['pasfoto_suami'] = $request->file('pasfoto_suami')->store("berkas/" . str_replace(" ", "_", auth()->user()->nama) . "/pasfoto_suami");
+        $validateData['pasfoto_istri'] = $request->file('pasfoto_istri')->store("berkas/" . str_replace(" ", "_", auth()->user()->nama) . "/pasfoto_istri");
+        $validateData['surat_permohonan'] = $request->file('surat_permohonan')->store("berkas/" . str_replace(" ", "_", auth()->user()->nama) . "/surat_permohonan");
+        $validateData['surat_kesanggupan'] = $request->file('surat_kesanggupan')->store("berkas/" . str_replace(" ", "_", auth()->user()->nama) . "/surat_kesanggupan");
+        $validateData['surat_pernyataan'] = $request->file('surat_pernyataan')->store("berkas/" . str_replace(" ", "_", auth()->user()->nama) . "/surat_pernyataan");
+        $validateData['surat_rekomendasi'] = $request->file('surat_rekomendasi')->store("berkas/" . str_replace(" ", "_", auth()->user()->nama) . "/surat_rekomendasi");
 
         Pengajuan::create($validateData);
 
