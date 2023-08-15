@@ -18,7 +18,8 @@
             <button type="button" class="btn text-white bg-green d-none" id="selection-submit">
                 Submit
             </button>
-            <p class="text-warning d-inline-block m-0 d-none" id="selection-tutor"><i class="bi bi-info-circle-fill me-2"></i><b>Pilih</b> data pengguna yang akan dikirimi notifikasi!</p>
+            <p class="text-warning d-inline-block m-0 d-none" id="selection-tutor"><i
+                    class="bi bi-info-circle-fill me-2"></i><b>Pilih</b> data pengguna yang akan dikirimi notifikasi!</p>
         </div>
 
         <br>
@@ -38,7 +39,6 @@
                                             <th rowspan="2">Kode Ruang</th>
                                             <th rowspan="2">No Hp</th>
                                             <th colspan="12" class="text-center">Bulan</th>
-                                            <th rowspan="2">Aksi</th>
                                         </tr>
                                         <tr>
                                             <th> Jan </th>
@@ -59,8 +59,9 @@
                                         @foreach ($rekapbayars as $rekapbayar)
                                             <tr>
                                                 <td class="selection d-none" align="center" valign="middle">
-                                                    <input type="checkbox" class="form-check-input m-0 d-block radio" data-id="{{ $rekapbayar->user->id }}"
-                                                            style="width: 1.5rem; height: 1.5rem; box-shadow: unset;">
+                                                    <input type="checkbox" class="form-check-input m-0 d-block radio"
+                                                        data-id="{{ $rekapbayar->user->id }}"
+                                                        style="width: 1.5rem; height: 1.5rem; box-shadow: unset;">
                                                 </td>
                                                 <td>{{ $loop->iteration }}</td>
                                                 <td>{{ $rekapbayar->user->nama }}</td>
@@ -78,14 +79,6 @@
                                                 <td>{{ $rekapbayar->okt == null ? 'Belum Bayar' : 'Lunas' }}</td>
                                                 <td>{{ $rekapbayar->nov == null ? 'Belum Bayar' : 'Lunas' }}</td>
                                                 <td>{{ $rekapbayar->des == null ? 'Belum Bayar' : 'Lunas' }}</td>
-                                                <td>
-                                                    <button class="button-arounder">
-                                                        <span class="material-symbols-outlined"> edit </span>
-                                                    </button>
-                                                    <button class="button-arounder" onclick="BtnDel(this)">
-                                                        <span class="material-symbols-outlined"> delete </span>
-                                                    </button>
-                                                </td>
                                             </tr>
                                         @endforeach
                                     </tbody>
