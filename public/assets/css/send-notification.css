@@ -1,0 +1,28 @@
+.bg-green {
+  background-color:#5cb874 !important;
+}
+
+#selection-show.active {
+  outline: 1px solid #dc3545;
+  border: unset;
+  background-color: transparent !important;
+  color: #dc3545 !important;
+  transition: background-color 0.3s ease;
+}
+
+#selection-show.active:hover {
+  background-color: #dc3545 !important;
+  color: white !important;
+}
+
+.selection:nth-child(odd) {
+  background-color: #fff3cd;
+}
+
+.selection:nth-child(even) {
+  background-color: #f2e7c3;
+}
+
+.radio[type=checkbox]:checked {
+  accent-color: #5cb874 !important;
+}

@@ -58,6 +58,7 @@ Route::get('/ketentuan', [KetentuanController::class, 'index']);
 // Rekap Bayar //
 
 Route::resource('/rekapbayar', RekapBayarController::class)->middleware('auth');
+Route::get('/api/rekapbayar/send-notif', [RekapBayarController::class, 'sendNotification'])->middleware('auth');
 
 // Pengguna //
 Route::resource('/pengguna', PenggunaController::class)->middleware('auth');
