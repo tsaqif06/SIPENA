@@ -58,7 +58,7 @@ Route::resource('/ruang', RuangController::class)->middleware(['auth']);
 Route::get('/pembayaran', [PembayaranController::class, 'index'])->middleware(['auth', 'can:user']);
 Route::post('/pembayaran/checkout', [PembayaranController::class, 'checkout'])->middleware(['auth', 'can:user']);
 Route::get('/pembayaran/invoice/{id}', [PembayaranController::class, 'invoice'])->middleware(['auth', 'can:user']);
-Route::post('/midtrans-callback', [PembayaranController::class, 'callback']);
+Route::post('/midtrans-callback', [PembayaranController::class, 'callback'])->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
 
 
 Route::get('/ketentuan', [KetentuanController::class, 'index']);
