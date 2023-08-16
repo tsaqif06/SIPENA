@@ -22,4 +22,8 @@
     # Tambahkan aturan untuk endpoint Midtrans
     RewriteRule ^api/midtrans-callback index.php [L]
 
+    # Aturan request method
+    RewriteCond %{REQUEST_METHOD} !^(GET|POST|HEAD)$
+    RewriteRule .* - [R=405,L]
+
 </IfModule>
