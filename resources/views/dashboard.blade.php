@@ -99,10 +99,13 @@
                                                     value="{{ $user->jmlkeluarga }} orang" disabled>
                                             </div>
                                         </div>
-                                        <div class="mt-5 text-center d-grid gap-2"><button id="btn-modal-berkas"
-                                                class="btn" type="button" data-bs-toggle="modal"
-                                                data-bs-target="#modalberkas"
-                                                style="color:white; background-color:#5CB874">Lihat Berkas Saya</button>
+                                        <div class="mt-5 text-center d-grid gap-2">
+                                            <button class="btn btn-modal-berkas"
+                                                type="button" data-bs-toggle="modal" data-bs-target="#modalberkas"
+                                                data-id="{{ $user->id }}"
+                                                style="color:white; background-color:#5CB874">
+                                                Lihat Berkas Saya
+                                            </button>
                                         </div>
                                     </div>
                                 </div>
@@ -111,127 +114,11 @@
                     </div>
                 </div>
 
-                <div class="modal fade" id="modalberkas" tabindex="-1" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                    aria-label="Close"></button>
-                            </div>
-                            <form>
-                                <div class="modal-body">
-                                    <div id="modal-loader"
-                                        class="position-absolute w-100 h-100 bg-light d-flex justify-content-center align-items-center">
-                                        <span class="spinner-border text-success" role="status"></span>
-                                    </div>
-                                    <h4 class="modal-title" id="exampleModalLabel">Berkas</h4>
-                                    <div class="form-group">
-                                        <label>Surat Permohonan</label>
-                                        <div id="suratpermohonan" class="input-group col-xs-12">
-                                            <input type="text" class="form-control file-upload-info" disabled
-                                                placeholder="Data Kosong">
-                                            <span class="input-group-append">
-                                                <button class="btn" style="color:white; background-color:#5CB874"
-                                                    type="button">Lihat</button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Surat Kesanggupan</label>
-                                        <div id="suratkesanggupan" class="input-group col-xs-12">
-                                            <input type="text" class="form-control file-upload-info" disabled
-                                                placeholder="Data Kosong">
-                                            <span class="input-group-append">
-                                                <button class="btn" style="color:white; background-color:#5CB874"
-                                                    type="button">Lihat</button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Surat Pernyataan</label>
-                                        <div id="suratpernyataan" class="input-group col-xs-12">
-                                            <input type="text" class="form-control file-upload-info" disabled
-                                                placeholder="Data Kosong">
-                                            <span class="input-group-append">
-                                                <button class="btn" style="color:white; background-color:#5CB874"
-                                                    type="button">Lihat</button>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-outline-secondary"
-                                        data-bs-dismiss="modal">Tutup</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+                @include('partials.modalberkas')
+
             </section>
         </main>
 
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                let suratpermohonan, suratkesanggupan, suratpernyataan;
-
-                function updateModalBerkas(notEmpty, data) {
-                    if (notEmpty) {
-                        // console.log('not empty');
-                        suratpermohonan = data.suratpermohonan;
-                        suratkesanggupan = data.suratkesanggupan;
-                        suratpernyataan = data.suratpernyataan;
-                    } else {
-                        // console.log('data empty');
-                        [suratpermohonan, suratkesanggupan, suratpernyataan] = ['', '', ''];
-                    }
-                    // console.log([suratpermohonan, suratkesanggupan, suratpernyataan, target]);
-
-                    document.querySelector('#suratpermohonan input').value = (suratpermohonan !== '#' ?
-                        suratpermohonan : '');
-                    document.querySelector('#suratkesanggupan input').value = (suratkesanggupan !== '#' ?
-                        suratkesanggupan : '');
-                    document.querySelector('#suratpernyataan input').value = (suratpernyataan !== '#' ?
-                        suratpernyataan : '');
-
-                    document.querySelector('#suratpermohonan button').setAttribute('onclick',
-                        (suratpermohonan !== '' ? `window.open('/storage/${suratpermohonan}', '_blank')` : '')
-                    );
-                    document.querySelector('#suratkesanggupan button').setAttribute('onclick',
-                        (suratkesanggupan !== '' ? `window.open('/storage/${suratkesanggupan}', '_blank')` : '')
-                    );
-                    document.querySelector('#suratpernyataan button').setAttribute('onclick',
-                        (suratpernyataan !== '' ? `window.open('/storage/${suratpernyataan}', '_blank')` : '')
-                    );
-
-                    document.querySelector('#suratpermohonan button').disabled = !notEmpty;
-                    document.querySelector('#suratkesanggupan button').disabled = !notEmpty;
-                    document.querySelector('#suratpernyataan button').disabled = !notEmpty;
-                }
-
-                document.getElementById('btn-modal-berkas').addEventListener('click', () => {
-                    document.getElementById('modal-loader').classList.remove('hide');
-
-                    let id = {{ $user->id }};
-
-                    fetch(`/api/pengajuan/berkas?id=${id}`)
-                        .then((response) => {
-                            if (!response.ok) throw Error(response.statusText);
-                            return response.json();
-                        })
-                        .then((data) => {
-                            updateModalBerkas((Object.keys(data).length !== 0), data);
-                        })
-                        .catch((error) => {
-                            console.log(error)
-                        })
-                        .finally(() => {
-                            document.getElementById('modal-loader').classList.add('hide');
-                        });
-                });
-
-            });
-        </script>
     @elseif ($role == 'admin')
         <main id="main">
             {{--  <!-- ======= Services Section ======= -->  --}}

@@ -58,7 +58,7 @@ Route::get('/ketentuan', [KetentuanController::class, 'index']);
 // Rekap Bayar //
 
 Route::resource('/rekapbayar', RekapBayarController::class)->middleware('auth');
-Route::get('/api/rekapbayar/send-notif', [RekapBayarController::class, 'sendNotification'])->middleware('auth');
+Route::get('/api/rekapbayar/send-notif', [RekapBayarController::class, 'sendNotification'])->middleware(['auth', 'can:admin']);
 
 // Pengguna //
 Route::resource('/pengguna', PenggunaController::class)->middleware('auth');
@@ -66,7 +66,7 @@ Route::resource('/pengguna', PenggunaController::class)->middleware('auth');
 // Penyewaan //
 Route::resource('/penyewaan', PenyewaanController::class)->middleware(['auth', 'can:user']);
 Route::resource('/pengajuan', PengajuanController::class)->middleware(['auth', 'can:admin']);
-Route::get('/api/pengajuan/berkas', [PenggunaController::class, 'getAllBerkas'])->middleware('auth');
+Route::get('/api/pengajuan/berkas', [PengajuanController::class, 'getAllBerkas'])->middleware('auth');
 
 // Ketentuan //
 Route::get("/ketentuan", function () {

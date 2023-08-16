@@ -94,7 +94,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 SIPENA - sipena108@gmail.com
 
-Project Link: [https://github.com/Tsaqif06/SIPENA](https://github.com/Tsaqif06/SIPENA)
+Project Link: [https://sipena.site](https://sipena.site)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

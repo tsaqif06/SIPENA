@@ -14,11 +14,20 @@ return new class extends Migration
         Schema::create('pengajuans', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id');
-            $table->string('pilihanruang');
             $table->boolean('accept')->default(0);
-            $table->string('suratpermohonan');
-            $table->string('suratkesanggupan');
-            $table->string('suratpernyataan');
+            $table->string('fotoktp_suami');
+            $table->string('fotoktp_istri');
+            $table->string('fotokk');
+            $table->string('berkas_statusnikah');
+            $table->string('surat_ket_rumah');
+            $table->string('surat_ket_pendapatan');
+            $table->string('surat_ket_kepolisian');
+            $table->string('pasfoto_suami');
+            $table->string('pasfoto_istri');
+            $table->string('surat_permohonan');
+            $table->string('surat_kesanggupan');
+            $table->string('surat_pernyataan');
+            $table->string('surat_rekomendasi');
             $table->timestamps();
         });
     }
