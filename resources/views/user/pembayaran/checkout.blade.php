@@ -31,7 +31,9 @@
                                                     </tr>
                                                     <tr>
                                                         <td>Pembayaran Bulan</td>
-                                                        <td style="color: #5CB874;">{{ Carbon\Carbon::createFromFormat('M', $order->bulan)->isoFormat('MMMM') }}</td>
+                                                        <td style="color: #5CB874;">
+                                                            {{ Carbon\Carbon::createFromFormat('M', $order->bulan)->isoFormat('MMMM') }}
+                                                        </td>
                                                     </tr>
                                                     <tr>
                                                         <td>Tanggal Bayar</td>
@@ -43,18 +45,19 @@
                                                     </tr>
                                                     <tr>
                                                         <td>Harga Sewa</td>
-                                                        <td style="color: #5CB874;">Rp. {{ $harga }}</td>
+                                                        <td style="color: #5CB874;">{{ $harga }}</td>
                                                     </tr>
                                                     <tr>
                                                         <td>PDAM</td>
-                                                        <td style="color: #5CB874;">Rp. {{ $pdam }}</td>
+                                                        <td style="color: #5CB874;">{{ $pdam }}</td>
                                                     </tr>
                                                 </tbody>
                                                 <tfoot class="fw-bold">
                                                     <tr>
                                                         <td>Total</td>
                                                         <td style="color: #5CB874;">
-                                                            {{ 'Rp.' . number_format($order->totalbayar, 0, ',', '.') }}</td>
+                                                            {{ 'Rp.' . number_format($order->totalbayar, 0, ',', '.') }}
+                                                        </td>
                                                     </tr>
                                                 </tfoot>
                                             </table>
