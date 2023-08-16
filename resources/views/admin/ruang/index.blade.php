@@ -47,7 +47,7 @@
                                                     <td>{{ $item->koderuang }}</td>
                                                     <td>
                                                         <button class="button-arounder">
-                                                            <span class="material-symbols-outlined"><a
+                                                            <span class="material-symbols-outlined"><a class="no-decoration"
                                                                     href="ruang/{{ $item->id }}/edit"> edit </a></span>
                                                         </button>
                                                         <form action="/ruang/{{ $item->id }}" method="POST"

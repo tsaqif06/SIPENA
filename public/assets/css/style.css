@@ -3,6 +3,10 @@ body {
     color: #444444;
 }
 
+.no-decoration {
+    text-decoration: none;
+}
+
 a {
     text-decoration: none;
     color: #5cb874;

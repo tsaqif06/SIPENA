@@ -17,11 +17,27 @@ class Ruang extends Model
         return $this->belongsTo(User::class);
     }
 
+    // Ruang.php (Model Ruang)
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::updating(function ($ruang) {
+        });
+    }
+
+
     protected static function booted()
     {
         parent::boot();
 
         static::updated(function ($ruang) {
+            if ($ruang->isDirty('user_id') && is_null($ruang->user_id)) {
+                $ruang->is_dipakai = 0;
+
+                $ruang->rekapbayar()->delete();
+            }
+
             if ($ruang->user_id !== null && !$ruang->rekapBayarExists()) {
                 $rekapBayar = new RekapBayar();
                 $rekapBayar->user_id = $ruang->user_id;
@@ -31,7 +47,7 @@ class Ruang extends Model
         });
     }
 
-    
+
     public function rekapBayarExists()
     {
         return RekapBayar::where('user_id', $this->user_id)->exists();

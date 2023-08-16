@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('rekap_bayars', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable();
+            $table->unsignedBigInteger('user_id')->nullable();
             $table->date('maxbayar')->nullable();
             $table->string('jan')->nullable();
             $table->string('feb')->nullable();
@@ -28,6 +28,10 @@ return new class extends Migration
             $table->string('nov')->nullable();
             $table->string('des')->nullable();
             $table->timestamps();
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
+                ->onDelete('cascade');
         });
     }
 

@@ -107,10 +107,10 @@
                             </div>
                             <div class="card">
                                 <div class="card-body">
-                                    <iframe src="/assets/pdf/SURAT KELENGKAPAN PENGAJUAN RUSUNAWA.pdf" width=100%
-                                        height=500></iframe>
-                                    {{--  <iframe width="100%" height="500"
-                                        src="https://docs.google.com/document/d/e/2PACX-1vSwGUZ0hKN0N4MTjQjdHTL-0A8xgxYSmrKUv4J4y-i1vlAvx_yLjp9W4UOmM_k6f5RbYU4wTC4saJFG/pub?embedded=true"></iframe>  --}}
+                                    {{--  <iframe src="/assets/pdf/SURAT KELENGKAPAN PENGAJUAN RUSUNAWA.pdf" width=100%
+                                        height=500></iframe>  --}}
+                                    <iframe width="100%" height="500"
+                                        src="https://docs.google.com/document/d/e/2PACX-1vSwGUZ0hKN0N4MTjQjdHTL-0A8xgxYSmrKUv4J4y-i1vlAvx_yLjp9W4UOmM_k6f5RbYU4wTC4saJFG/pub?embedded=true"></iframe>
                                 </div>
                             </div>
 
