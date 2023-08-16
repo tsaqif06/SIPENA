@@ -1,29 +1,68 @@
 @extends('layouts.main')
 
 @section('content')
-
-<main id="main">
-    {{--  <!-- ======= Featured Services Section ======= -->  --}}
-    <section id="featured-services" class="featured-services section-bg">
-        <div class="container">
-            <div class="section-title">
-                <h2>Ketentuan Sewa Menyewa </h2>
+    <main id="main">
+        {{--  <!-- ======= Services Section ======= -->  --}}
+        <section id="informasi" class="services">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Informasi</h2>
+                </div>
+                <div class="section-card">
+                    <div class="row">
+                        <div class="section-card">
+                            <div class="card mb-5">
+                                <div class="card-body">
+                                    <h4 class="fw-bold text-center">
+                                        Persyaratan Pendaftaran Penghuni Rusunawa
+                                    </h4>
+                                    <p>
+                                    <ul class="list-group">
+                                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                                            Foto Kartu Tanda Penduduk (KTP) Permohonan suami dan istri
+                                        </li>
+                                        <li class="list-group-item">Foto Kartu Keluarga (C1)</li>
+                                        <li class="list-group-item">Foto surat nikah / Akte cerai / Surat Keterangan
+                                            Kematian</li>
+                                        <li class="list-group-item">Surat Keterangan belum memiliki rumah / Tempat tinggal
+                                            dari Pemerintah Desa /
+                                            Kelurahan dan diketahui Camat</li>
+                                        <li class="list-group-item">Surat Keterangan memiliki penghasilan / pendapatan tetap
+                                            yang diketahui Pemerintah Desa / Kelurahan dan diketahui Camat atau surat
+                                            keterangan penghasilan dari instansi
+                                            / Perusahaan tempat bekerja</li>
+                                        <li class="list-group-item">Surat Keterangan Catatan Kepolisian (SKCK) dilegalisir
+                                        </li>
+                                        <li class="list-group-item">Pas foto berwarna Pemohon atau Suami dan Istri ukur an
+                                            4x6</li>
+                                        <li class="list-group-item">Rekomendasi dari Dinas Sosial Kota Malang untuk hunian
+                                            diffable</li>
+                                        <li class="list-group-item">Surat pernyataan sanggup membayar sewa dan retribusi
+                                            yang berlaku di Rusunawa
+                                            diketahui Pemerintah Desa / Kelurahan dan diketahui Camat</li>
+                                        <li class="list-group-item">Surat permohonan huni Rusunawa. <span
+                                                class="text-success"><a class="text-success"
+                                                    href="/assets/pdf/SURAT PERMOHONAN HUNI RUSUNAWA.pdf"
+                                                    target="blank">Klik di sini untuk unduh format surat.</a></span></li>
+                                        <li class="list-group-item">Surat pernyataan sanggup membayar sewa dan retribusi
+                                            yang berlaku di Rusunawa
+                                            diketahui Pemerintah Desa / Kelurahan dan diketahui Camat. <span
+                                                class="text-success"><a class="text-success"
+                                                    href="/assets/pdf/SURAT PERNYATAAN KESANGGUPAN MEMBAYAR.pdf"
+                                                    target="blank">Klik di sini untuk unduh format surat.</a></span></li>
+                                        <li class="list-group-item">Surat pernyataan bersedia memenuhi ketentuan yang
+                                            berlaku bermaterei cukup. <span class="text-success"><a class="text-success"
+                                                    href="/assets/pdf/SURAT PERNYATAAN BERSEDIA MEMATUHI PERATURAN.pdf"
+                                                    target="blank">Klik di sini untuk unduh format surat.</a></span></li>
+                                    </ul>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="section-card">
-              <p>Rumah susun sederhana sewa (RUSUNAWA) Pemerintah Kota Malang, dalam hal ini di bawah naungan Dinas Pekerjaan Umum Penataan Ruang, Perumahan dan Kawasan Permukiman (DPUPRPKP) Kota Malang, merupakan bangunan gedung bertingkat, lingkungan yang terbagi dalam bagian-bagian yang di strukturkan secara fungsional dalam arah horizontal maupun vertikal, dan merupakan satu kesatuan yang masing-masing digunakan secara terpisah dalam status penguasaan sewanya.</p>
-              <p>Ada 2 gedung bangunan RUSUNAWA yang dikelolah oleh DPUPRPKP Kota Malang, RUSUNAWA 1 di jalan Mayjen Sungkono, Buring, Kec. Kedungkandang, sebelah selatan jembatan Kedungkandang arah barat, dan RUSUNAWA 2 di jalan Simpang Gading, Buring,  nomer  01 belakang GOR Ken Arok Kec. Kedungkandang, Kota Malang, Jawa Timur 65135</p>
-              <p>Bangunan RUSUNAWA ini mempunyai fasilitas umum yakni ruang serba guna, mushola, ruang komersil, ruang parkir motor, ruang panel, ruang pengelola, gedung, ruang penjaga, selain itu juga ada ruang hunian bagi difabel di lantai 1. Tiap hunian terdiri dari ruang tamu, kamar tidur, kamar mandi/wc, dapur dan jemuran.</p>
-              <p>Pembangunan RUSUNAWA dibangun dengan menggunakan dana Anggaran Pendapatan dan Belanja Negara/Anggaran pendapatan dan belanja daerah dengan fungsi utamanya sebagai hunian. Adapun yang berhak menjadi penghuni RUSUNAWA DPUPRPKP Kota Malang adalah dengan syarat sebagai berikut :</p>
-              <p>&#8211; MBR (Masyarakat berpenghasilan rendah).</p>
-              <p>&#8211; KTP kota Malang</p>
-              <p>&#8211; Sudah berkeluarga</p>
-              <p>&#8211; Surat keterangan belum memiliki Rumah</p>
-              <p>Untuk memudahkan informasi pelayanan bagi penghuni/calon penghuni dapat menghubungi wa center 0895372233322</p>
-            </div>
-            <embed src="../assets/pdf/Panduan Penggunaan LMS SIBELA Untuk Siswa-1.pdf" width=100% height=500></embed>         
-        </div> 
-    </section>
-  </main>
-  {{--  <!-- End #main -->  --}}
-
- @endsection
+        </section>
+    </main>
+    {{--  <!-- End #main -->  --}}
+@endsection

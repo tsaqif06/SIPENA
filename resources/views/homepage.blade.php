@@ -100,33 +100,23 @@
                                             yang berlaku di Rusunawa
                                             diketahui Pemerintah Desa / Kelurahan dan diketahui Camat</li>
                                         <li class="list-group-item">Surat permohonan huni Rusunawa. <span
-                                                class="text-succes"><a
+                                                class="text-success"><a class="text-success"
                                                     href="/assets/pdf/SURAT PERMOHONAN HUNI RUSUNAWA.pdf"
                                                     target="blank">Klik di sini untuk unduh format surat.</a></span></li>
                                         <li class="list-group-item">Surat pernyataan sanggup membayar sewa dan retribusi
                                             yang berlaku di Rusunawa
                                             diketahui Pemerintah Desa / Kelurahan dan diketahui Camat. <span
-                                                class="text-succes"><a
+                                                class="text-success"><a class="text-success"
                                                     href="/assets/pdf/SURAT PERNYATAAN KESANGGUPAN MEMBAYAR.pdf"
                                                     target="blank">Klik di sini untuk unduh format surat.</a></span></li>
                                         <li class="list-group-item">Surat pernyataan bersedia memenuhi ketentuan yang
-                                            berlaku bermaterei cukup. <span class="text-succes"><a
+                                            berlaku bermaterei cukup. <span class="text-success"><a class="text-success"
                                                     href="/assets/pdf/SURAT PERNYATAAN BERSEDIA MEMATUHI PERATURAN.pdf"
                                                     target="blank">Klik di sini untuk unduh format surat.</a></span></li>
                                     </ul>
                                     </p>
                                 </div>
                             </div>
-                            <div class="card">
-                                <div class="card-body">
-                                    {{--  <iframe src="/assets/pdf/SURAT KELENGKAPAN PENGAJUAN RUSUNAWA.pdf" width=100%
-                                        height=500></iframe>  --}}
-                                    <iframe width="100%" height="500"
-                                        src="https://docs.google.com/document/d/e/2PACX-1vSwGUZ0hKN0N4MTjQjdHTL-0A8xgxYSmrKUv4J4y-i1vlAvx_yLjp9W4UOmM_k6f5RbYU4wTC4saJFG/pub?embedded=true"></iframe>
-                                </div>
-                            </div>
-
-
                         </div>
                     </div>
                 </div>
