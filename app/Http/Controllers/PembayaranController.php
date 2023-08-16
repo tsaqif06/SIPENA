@@ -109,13 +109,18 @@ class PembayaranController extends Controller
         $serverKey = config('midtrans.server_key');
         $hashed = hash("sha512", $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
         if ($hashed == $request->signature_key) {
+            echo "hash = signature";
             if ($request->transaction_status == 'capture' or $request->transaction_status == 'settlement') {
                 $order = Pembayaran::find($request->order_id);
                 $order->update(['status' => "Lunas"]);
 
                 $rekapbayar = RekapBayar::find($order->rekapbayar_id);
                 $rekapbayar->update([$order->bulan => "Lunas"]);
+
+                echo "Berhasil";
             }
+        } else {
+            echo "Gagal";
         }
     }
 

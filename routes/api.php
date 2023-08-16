@@ -18,5 +18,3 @@ use App\Http\Controllers\PembayaranController;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
-
-Route::post('/midtrans-callback', [PembayaranController::class, 'callback'])->withoutMiddleware([\Illuminate\Foundation\Http\Middleware\VerifyCsrfToken::class]);
