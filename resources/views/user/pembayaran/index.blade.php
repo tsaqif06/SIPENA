@@ -38,7 +38,8 @@
                                                             value="{{ $ruang->user->notelp ?? '0' }}" readonly>
                                                     </div>
                                                     <div class="col-md-12"><label class="labels">Bulan </label>
-                                                        <select class="form-select" name="bulan" aria-label="Default select example">
+                                                        <select class="form-select" name="bulan"
+                                                            aria-label="Default select example">
                                                             @foreach ($bulan as $key => $value)
                                                                 @if (!isset($bayar[$key]))
                                                                     @if ($bayar['bulanSekarang'] == $value)
@@ -61,16 +62,16 @@
                                                     </div>
                                                     <div class="col-md-12"><label class="labels">Harga Sewa
                                                         </label><input type="text" class="form-control"
-                                                            value="{{ isset($ruang->harga) ? 'Rp.' . number_format($ruang->harga, 0, ',', '.') : 'Rp.0' }}"
+                                                            value="{{ isset($ruang->lantai->harga) ? 'Rp.' . number_format($ruang->lantai->harga, 0, ',', '.') : 'Rp.0' }}"
                                                             name="harga" readonly>
                                                     </div>
                                                     <div class="col-md-12"><label class="labels"> PDAM</label><input
                                                             type="text" class="form-control" name="pdam"
-                                                            value="{{ isset($ruang->harga) ? 'Rp.' . number_format($bayar['pdam'], 0, ',', '.') : 'Rp.0' }}"
+                                                            value="{{ isset($ruang->lantai->harga) ? 'Rp.' . number_format($bayar['pdam'], 0, ',', '.') : 'Rp.0' }}"
                                                             readonly></div>
                                                     <div class="col-md-12"><label class="labels"> Total
                                                         </label><input type="text" class="form-control"
-                                                            value="{{ isset($ruang->harga) ? 'Rp.' . number_format($bayar['totalbayar'], 0, ',', '.') : 'Rp.0' }}"
+                                                            value="{{ isset($ruang->lantai->harga) ? 'Rp.' . number_format($bayar['totalbayar'], 0, ',', '.') : 'Rp.0' }}"
                                                             name="totalbayar" readonly>
                                                     </div>
                                                     <button class="btn btn-success my-3" type="submit">Checkout</button>

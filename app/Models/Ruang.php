@@ -5,16 +5,22 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\User;
+use App\Models\Lantai;
 
 class Ruang extends Model
 {
     use HasFactory;
 
-    protected $with = ['user'];
+    protected $with = ['user', 'lantai'];
 
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function lantai()
+    {
+        return $this->belongsTo(Lantai::class);
     }
 
     // Ruang.php (Model Ruang)
