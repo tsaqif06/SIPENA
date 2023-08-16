@@ -102,8 +102,7 @@ class PenggunaController extends Controller
             "tanggallahir" => "required|date",
             "alamat" => "required|max:255",
             "pekerjaan" => "required|max:255",
-            "notelp" => "required|max:20",
-            // "jmlkeluarga" => "required|numeric"
+            "notelp" => "required|max:20"
         ]);
 
         User::where('id', $request->id)

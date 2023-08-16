@@ -2,9 +2,10 @@
 
 namespace Database\Factories;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
+use Ramsey\Uuid\Uuid;
 use Faker\Factory as Faker;
 use Illuminate\Support\Str;
+use Illuminate\Database\Eloquent\Factories\Factory;
 
 
 /**
@@ -22,6 +23,7 @@ class UserFactory extends Factory
         $faker = Faker::create();
 
         return [
+            'uuid' => Uuid::uuid4()->toString(),
             'nama' => $faker->name(),
             'tempatlahir' => $faker->city(),
             'tanggallahir' => $faker->dateTimeBetween('1945-01-01', '2000-12-31')->format('Y-m-d'),

@@ -14,7 +14,6 @@ return new class extends Migration
         Schema::create('rekap_bayars', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->nullable();
-            $table->date('maxbayar')->nullable();
             $table->string('jan')->nullable();
             $table->string('feb')->nullable();
             $table->string('mar')->nullable();

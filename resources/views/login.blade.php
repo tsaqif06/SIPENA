@@ -58,7 +58,7 @@
                                 @enderror
                             </div>
                             <div class="form-group d-flex">
-                                <input type="password" class="form-control @error('email') is-invalid @enderror"
+                                <input type="password" class="form-control @error('password') is-invalid @enderror"
                                     name="password" placeholder="Password" required>
                                 @error('password')
                                     <div class="invalid-feedback">
@@ -79,8 +79,12 @@
                             </div>
                         </form>
                     </div>
-                    <small class="d-block text-center mt-5 text-muted">Belum Mendaftar? <a href="/register">Daftar
-                            Sekarang!</a></small>
+                    <h6 class="d-block text-center mt-5 text-muted">Belum Mendaftar?
+                        <a href="/register">Daftar Sekarang!</a>
+                    </h6>
+                    <h6 class="d-block text-center text-muted">Sudah punya ruang, tapi belum terdaftar?
+                        <a href="/loginpenghuni">Klik Disini!</a>
+                    </h6>
                 </div>
             </div>
         </div>

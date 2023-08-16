@@ -28,9 +28,15 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'auth']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
+// Login Penghuni //
+Route::get('/loginpenghuni', [LoginController::class, 'penghuni'])->name('loginpenghuni')->middleware('guest');
+Route::post('/loginpenghuni', [LoginController::class, 'authpenghuni']);
+
 // Register //
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
+Route::get('/registerulang', [RegisterController::class, 'edit'])->middleware('guest');
+Route::put('/registerulang/{user:uuid}', [RegisterController::class, 'update']);
 
 // Homepage //
 Route::get('/', function () {

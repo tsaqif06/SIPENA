@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Ruang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -28,6 +29,30 @@ class LoginController extends Controller
         }
 
         return back()->with('failed', 'Login Gagal!');
+    }
+
+    public function penghuni()
+    {
+        return view('loginpenghuni');
+    }
+
+    public function authpenghuni(Request $request)
+    {
+        $request->validate([
+            "nama" => "required",
+            "koderuang" => "required"
+        ]);
+
+        $ruang = Ruang::where(['koderuang' => $request->koderuang])->first();
+
+        $auth = $ruang ? ($ruang->user->nama === $request->nama && $ruang->user->password === null) : false;
+
+
+        if ($auth) {
+            return redirect('/registerulang')->with('uuid', $ruang->user->uuid);
+        }
+
+        return back()->with('failed', 'Login Gagal! User tidak ditemukan atau user telah te-registrasi!');
     }
 
     public function logout(Request $request)
