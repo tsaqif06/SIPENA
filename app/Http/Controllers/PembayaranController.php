@@ -108,8 +108,7 @@ class PembayaranController extends Controller
     {
         $serverKey = config('midtrans.server_key');
         $hashed = hash("sha512", $request->order_id . $request->status_code . $request->gross_amount . $serverKey);
-        var_dump($request);
-        var_dump($hashed);
+        echo "$request->order_id = $request->status_code  = $request->gross_amount = $serverKey";
         if ($hashed == $request->signature_key) {
             echo "hash = signature";
             if ($request->transaction_status == 'capture' or $request->transaction_status == 'settlement') {
