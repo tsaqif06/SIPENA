@@ -111,7 +111,7 @@
                                                     target="blank">Klik di sini untuk unduh format surat.</a></span></li>
                                         <li class="list-group-item">Surat pernyataan bersedia memenuhi ketentuan yang
                                             berlaku bermaterei cukup. <span class="text-succes"><a
-                                                    href="../assets/pdf/SURAT PERNYATAAN BERSEDIA MEMATUHI PERATURAN.pdf"
+                                                    href="/assets/pdf/SURAT PERNYATAAN BERSEDIA MEMATUHI PERATURAN.pdf"
                                                     target="blank">Klik di sini untuk unduh format surat.</a></span></li>
                                     </ul>
                                     </p>
