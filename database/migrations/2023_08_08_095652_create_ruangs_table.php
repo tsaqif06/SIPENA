@@ -14,9 +14,10 @@ return new class extends Migration
         Schema::create('ruangs', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->unique()->nullable();
-            $table->boolean('is_dipakai')->default(false);
+            $table->boolean('is_dipakai')->default(0);
+            $table->integer('rusunawa');
             $table->string('koderuang');
-            $table->integer('harga')->nullable();
+            $table->foreignId('lantai_id')->nullable();
             $table->timestamps();
         });
     }
