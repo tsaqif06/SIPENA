@@ -64,7 +64,7 @@
                                         <td style="vertical-align: middle; text-align: center;">
                                             <button class="btn btn-sm btn-modal-penyewaan" data-bs-toggle="modal" data-bs-target="#modalpenyewaan" 
                                               data-id="{{ $item->id }}" 
-                                              data-pemilihan="{{ $item->pilihanruang }}" 
+                                              data-lantai="{{ $item->lantai_id }}" 
                                               style="color:white; background-color:#5CB874">
                                               Aksi
                                             </button>
@@ -84,8 +84,57 @@
 
   </main><!-- End #main -->
 
-  <!--modal aksi sewa-->
+  <!--Modal Aksi Sewa-->
   <div class="modal fade" id="modalpenyewaan" tabindex="-1" aria-labelledby="modalpenyewaanlabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+          <div class="modal-body">
+              <div class="row justify-content-md-center">
+              <div class="col-md-12">
+                <div class="modal-body">
+                  <h4 class="modal-title" id="modalpenyewaanlabel">Data Pemilihan Lantai</h4>
+                  <div class="form-group mt-2">
+                    <input type="text" class="form-control text-secondary" id="lantai" disabled>
+                  </div>
+                </div>
+                <div class="modal-body">
+                  <h4 class="modal-title" id="modalpenyewaanlabel">Penempatan Ruang</h4>
+                  <form id="accept-form" action="/pengajuan" method="POST">
+                    @method('PUT')
+                    @csrf
+                    <div class="form-group">
+                      <label class="labels" for="ruang">Pilih ruang yang akan ditempati user.</label>
+                      <input type="text" class="form-control" id="ruang" list="ruangkosong" name="ruang" autocomplete="off" placeholder="A.1.01" required>
+                      <datalist id="ruangkosong">
+                        @foreach ($ruangkosong as $ruang)
+                          <option value="{{ $ruang }}">
+                        @endforeach
+                      </datalist>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+            
+          <div class="modal-footer flex-row-reverse justify-content-start">
+            <button type="submit" class="btn" onclick="return confirm('Apakah anda yakin ingin menerima pengajuan ini?')" style="color:white; background-color:#5CB874">Terima</button>
+            </form>
+            <form id="decline-form" action="/pengajuan" method="POST">
+              @method('delete')
+              @csrf
+              <button type="submit" class="btn btn-danger text-white" onclick="return confirm('Apakah anda yakin ingin menolak pengajuan ini?')">Tolak</button>
+            </form>
+            <button type="submit" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  {{-- <div class="modal fade" id="modalpenyewaan" tabindex="-1" aria-labelledby="modalpenyewaanlabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content">
         <div class="modal-header">
@@ -115,23 +164,22 @@
           </div>
       </div>
     </div>
-  </div>
+  </div> --}}
 
   @include('partials.modalberkas')
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      let lantai = ['lantai 1', 'lantai 2', 'lantai 3', 'lantai 4', 'lantai 5', 'Sewa Komersil']
 
       document.querySelectorAll('.btn-modal-penyewaan').forEach(element => {
         element.addEventListener('click', (e) => {
+          document.querySelector('#lantai').value = lantai[e.target.dataset.lantai-1];
           document.querySelector('form#accept-form').setAttribute('action', `/pengajuan/${e.target.dataset.id}`);
           document.querySelector('form#decline-form').setAttribute('action', `/pengajuan/${e.target.dataset.id}`);
         });
       });
 
-      let ruangkosong = {!! !$ruangkosong->isEmpty() ? json_encode($ruangkosong->toArray()) : "[]" !!};
-      ruangkosong = ruangkosong.map((e) => `<option value="${e}">`).join('');
-      document.getElementById('ruangkosong').innerHTML = ruangkosong;
     });
   </script>
 

@@ -43,7 +43,8 @@ class PenyewaanController extends Controller
         $request['user_id'] = auth()->user()->id;
 
         $validateData = $request->validate([
-            'user_id' => 'required|unique:pengajuans,user_id',
+            'user_id' => 'required|unique:pengajuans',
+            'lantai_id' => 'required',
             'fotoktp_suami' => 'required|file|mimes:jpg,jpeg|max:2048',
             'fotoktp_istri' => 'required|file|mimes:jpg,jpeg|max:2048',
             'fotokk' => 'required|file|mimes:jpg,jpeg|max:2048',
