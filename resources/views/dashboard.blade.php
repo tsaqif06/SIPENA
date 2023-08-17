@@ -66,7 +66,27 @@
                         @endif
 
                     </div>
-                 
+                
+                @else
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="container">
+                                <div class="card">
+                                    <div class="card-header text-white" style="background-color: #5CB874">
+                                        Perhatian
+                                    </div>
+                                    <div class="card-body">
+                                        <h5 class="card-title">Anda belum menyewa ruang</h5>
+                                        <p class="card-text">Sewa ruang dengan klik menu penyewaan atau klik tombol berikut.</p>
+                                        <a href="/penyewaan" class="btn"
+                                            style="color:white; background-color:#5CB874">Sewa Sekarang</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 @endif
                 
 
