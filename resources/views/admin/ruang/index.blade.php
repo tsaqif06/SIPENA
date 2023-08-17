@@ -19,7 +19,7 @@
                 <div class="row py-10">
                     <div class="col-md-12">
                         @if (Session::has('status'))
-                            <div style="width: 400px" class="alert alert-success alert-dismissible fade show mt-3"
+                            <div style="width: 400px" class="alert alert-{{ Session::get("status") }} alert-dismissible fade show mt-3"
                                 role="alert">
                                 {{ Session::get('message') }}
                                 <button type="button" class="btn-close" data-bs-dismiss="alert"
