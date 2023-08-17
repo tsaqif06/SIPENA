@@ -26,7 +26,7 @@
     <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
 
     {{--  Midtrans  --}}
-    <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
+    <script type="text/javascript" src="{{ config('midtrans.snap_url') }}"
         data-client-key="{{ config('midtrans.client_key') }}"></script>
 
     {{--  <!-- Template Main CSS File -->  --}}
