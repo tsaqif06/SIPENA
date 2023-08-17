@@ -42,15 +42,18 @@
                 <div class="col-md-6 col-lg-5">
                     <div class="login-wrap p-4 p-md-5">
                         <div class="icon d-flex align-items-center justify-content-center">
-                            <img src="assets/img/logosipenafinal.png" alt="" class="img-fluid" />
+                            <img src="/assets/img/logosipenafinal.png" alt="" class="img-fluid" />
                         </div>
                         <h3 class="text-center mb-4">Sistem Informasi Pembayaran Sewa Rusunawa Kota Malang </h3>
-                        <form action="/loginpenghuni" method="post" class="login-form">
+                        <form action="/login/penghuni" method="post" class="login-form">
                             @csrf
                             <div class="form-group">
+                                <label for="nama">
+                                    Masukkan <b>Nama</b> dan <b>Kode Ruang</b> Anda!
+                                </label>
                                 <input type="text"
                                     class="form-control rounded-left @error('nama') is-invalid @enderror" name="nama"
-                                    placeholder="Nama" autofocus required>
+                                    id="nama" placeholder="Nama" autofocus required>
                                 @error('nama')
                                     <div class="invalid-feedback">
                                         {{ $message }}

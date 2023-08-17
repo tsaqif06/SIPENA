@@ -13,11 +13,10 @@ class RegisterController extends Controller
         return view('register');
     }
 
-    function edit()
+    function edit(Request $request)
     {
-        if (!session()->has('uuid')) abort(403);
-        return view('registerulang', [
-            'user' => User::where('uuid', session('uuid'))->first()
+        return view('register-edit', [
+            'user' => auth()->user()
         ]);
     }
 

@@ -12,6 +12,7 @@
         <main id="main">
             <section>
                 @if ($koderuang)
+                
                     <div class="container">
                         <div class="row">
                             <div class="container">
@@ -43,11 +44,31 @@
                                         </div>
                                     </div>
                                 </div>
+                            </div> <br>
+                        @endif
+
+                        @if ($registerulang)
+                            <div class="row">
+                                <div class="container">
+                                    <div class="card">
+                                        <div class="card-header text-white bg-danger">
+                                            Peringatan !
+                                        </div>
+                                        <div class="card-body text-danger">
+                                            <h5 class="card-title">Data diri anda belum lengkap</h5>
+                                            <p class="card-text">Segera lengkapi data anda dengan melakukan registrasi ulang di bawah ini.</p>
+                                            <a href="/register/edit" class="btn"
+                                                style="color:white; background-color:#5CB874">Registrasi Ulang</a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         @endif
 
                     </div>
+                 
                 @endif
+                
 
                 {{--  <!--kalau belum isi di awal-->  --}}
                 <div class="container">

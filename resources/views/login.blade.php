@@ -42,7 +42,7 @@
                 <div class="col-md-6 col-lg-5">
                     <div class="login-wrap p-4 p-md-5">
                         <div class="icon d-flex align-items-center justify-content-center">
-                            <img src="assets/img/logosipenafinal.png" alt="" class="img-fluid" />
+                            <img src="/assets/img/logosipenafinal.png" alt="" class="img-fluid" />
                         </div>
                         <h3 class="text-center mb-4">Sistem Informasi Pembayaran Sewa Rusunawa Kota Malang </h3>
                         <form action="/login" method="post" class="login-form">
@@ -83,7 +83,7 @@
                         <a href="/register">Daftar Sekarang!</a>
                     </h6>
                     <h6 class="d-block text-center text-muted">Sudah punya ruang, tapi belum terdaftar?
-                        <a href="/loginpenghuni">Klik Disini!</a>
+                        <a href="/login/penghuni">Klik Disini!</a>
                     </h6>
                 </div>
             </div>

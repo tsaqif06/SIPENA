@@ -56,15 +56,17 @@
                             </div>
                             <div class="col-md-9 border-right">
                                 <div class="p-3 py-5">
-                                    <div class="d-flex justify-content-between align-items-center mb-3">
-                                        <h4 class="text-right">Registrasi Akun</h4>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <h4 class="text-right">Registrasi Ulang</h4>
                                     </div>
-                                    <form action="/registerulang/{{ $user->uuid }}" method="post">
+                                    <p class="d-block mb-3">Segera perbarui biodata anda dengan melengkapi formulir di bawah ini!</p>
+                                    <hr>
+                                    <form action="/register/{{ $user->uuid }}" method="post">
                                         @method('PUT')
                                         @csrf
                                         <div class="row mt-2">
                                             <div class="col-md-12"><label class="labels">Nama</label>
-                                                <input type="text"
+                                                <input required type="text"
                                                     class="form-control @error('nama') is-invalid @enderror"
                                                     placeholder="Nama" name="nama" value="{{ $user->nama }}">
                                                 @error('nama')
@@ -76,7 +78,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label class="labels">Tempat Lahir</label>
-                                            <input type="text"
+                                            <input required type="text"
                                                 class="form-control @error('tempatlahir') is-invalid @enderror"
                                                 placeholder="Tempat Lahir" name="tempatlahir">
                                             @error('nama')
@@ -87,7 +89,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label class="labels">Tanggal Lahir</label>
-                                            <input type="date"
+                                            <input required type="date"
                                                 class="form-control @error('tanggallahir') is-invalid @enderror"
                                                 name="tanggallahir">
                                             @error('tanggallahir')
@@ -98,7 +100,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label class="labels">Alamat</label>
-                                            <input type="text"
+                                            <input required type="text"
                                                 class="form-control @error('alamat') is-invalid @enderror"
                                                 placeholder="Alamat" name="alamat">
                                             @error('alamat')
@@ -109,7 +111,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label class="labels">Pekerjaan</label>
-                                            <input type="text"
+                                            <input required type="text"
                                                 class="form-control @error('pekerjaan') is-invalid @enderror"
                                                 placeholder="Pekerjaan" name="pekerjaan">
                                             @error('pekerjaan')
@@ -120,7 +122,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label class="labels">No. WA</label>
-                                            <input type="text"
+                                            <input required type="text"
                                                 class="form-control @error('notelp') is-invalid @enderror"
                                                 placeholder="No. WA" name="notelp">
                                             @error('notelp')
@@ -131,7 +133,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label class="labels">Jumlah Anggota Keluarga</label>
-                                            <input type="number"
+                                            <input required type="number"
                                                 class="form-control @error('jmlkeluarga') is-invalid @enderror"
                                                 placeholder="Jumlah Anggota Keluarga" name="jmlkeluarga">
                                             @error('jmlkeluarga')
@@ -142,7 +144,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label class="labels">Email</label>
-                                            <input type="email"
+                                            <input required type="email"
                                                 class="form-control @error('email') is-invalid @enderror"
                                                 placeholder="Email" name="email">
                                             @error('email')
@@ -153,7 +155,7 @@
                                         </div>
                                         <div class="col-md-12">
                                             <label class="labels">Password</label>
-                                            <input type="password"
+                                            <input required type="password"
                                                 class="form-control @error('password') is-invalid @enderror"
                                                 placeholder="Password" name="password">
                                             @error('password')
@@ -163,8 +165,8 @@
                                             @enderror
                                         </div>
                                         <div class="mt-5 text-center d-grid gap-2">
-                                            <button class="btn" type="submit"
-                                                style="color:white; background-color:#5CB874">Daftar</button>
+                                            <button class="btn" type="submit" onclick="return confirm('Setelah ini anda harus login menggunakan email dan password.\n\nSimpan perubahan?')"
+                                                style="color:white; background-color:#5CB874">Simpan Perubahan</button>
                                         </div>
                                     </form>
                                 </div>
