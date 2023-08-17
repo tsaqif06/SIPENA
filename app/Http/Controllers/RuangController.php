@@ -44,18 +44,31 @@ class RuangController extends Controller
      */
     public function store(Request $request)
     {
+        $request['user_id'] = User::where('nama', "{$request['nama']}")->pluck('id')->first();
+        if (!$request['user_id']){
+            return back()->with('error', 'Nama user tidak ditemukan. Coba lagi!');
+        } 
+        unset($request['nama']);
         // return $request
         $validatedData = $request->validate([
-            "nama" => "required",
-            "status" => "required",
+            "user_id" => "required|unique:ruangs",
+            "is_dipakai" => "required",
             "koderuang" => "required",
+            "rusunawa" => "required",
+            "lantai_id" => "required",
         ]);
 
-        $validatedData['user_id'] = User::where('nama', "{$validatedData['nama']}")->pluck('id')->first();
-        unset($validatedData['nama']);
+        // dd($validatedData);
 
-        Ruang::create($validatedData);
-        return redirect('/ruang')->with('success', 'Ruang Baru Telah Ditambah!');
+        $tambah = Ruang::create($validatedData);
+        if ( $tambah ) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Berhasil menambahkan ruang!');
+        } else {
+            Session::flash('status', 'danger');
+            Session::flash('message', 'Gagal menambahkan ruang!');
+        }
+        return redirect('/ruang');
     }
 
     /**
@@ -89,19 +102,23 @@ class RuangController extends Controller
         $validatedData = $request->validate([
             "is_dipakai" => "required",
             "koderuang" => "required",
+            "rusunawa" => "required",
+            "lantai_id" => "required",
         ]);
         if($validatedData['is_dipakai'] == 0 ){
             $validatedData['user_id'] = null;
         }
-        Ruang::where('id', $request->id)
+        $edit = Ruang::where('id', $request->id)
             ->update($validatedData);
 
-            if($ruang){
-                Session::flash('status', 'success');
-                Session::flash('message', 'Berhasil mengedit ruang!');
-            }
-
-        return redirect('/ruang')->with('success', 'Your Post Has Been Updated!');
+        if ( $edit ) {
+            Session::flash('status', 'success');
+            Session::flash('message', 'Berhasil Mengedit ruang!');
+        } else {
+            Session::flash('status', 'danger');
+            Session::flash('message', 'Gagal Mengedit ruang!');
+        }
+        return redirect('/ruang');
         
     }
 
