@@ -8,6 +8,10 @@
                     <h3 style="font-weight:700;"> REKAP RUANG </h3>
                     <p> Daftar Data Ruang Rusunawa Kota Malang</p>
                 </div>
+                <a href="/ruang/create"><button type="button" class="btn mb-3" style="color:white; background-color:#5CB874" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
+                Tambah Data
+              </button></a>
             </div>
 
             <!--Tabel-->
@@ -32,6 +36,8 @@
                                                 <th> Status </th>
                                                 <th> Nama </th>
                                                 <th> Kode Ruang </th>
+                                                <th> Rusunawa </th>
+                                                <th> Lantai </th>
                                                 <th> Aksi </th>
                                             </tr>
                                         </thead>
@@ -45,6 +51,8 @@
                                                     </td>
                                                     <td>{{ $item->user->nama ?? 'Kosong' }}</td>
                                                     <td>{{ $item->koderuang }}</td>
+                                                    <td>{{ $item->rusunawa }}</td>
+                                                    <td>{{ $item->lantai_id }}</td>
                                                     <td>
                                                         <button class="button-arounder">
                                                             <span class="material-symbols-outlined"><a class="no-decoration"
