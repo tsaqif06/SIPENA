@@ -56,7 +56,7 @@
                                         <td>{{ $item->user->jmlkeluarga }}</td>
                                         <td style="vertical-align: middle; text-align: center;">
                                           <button class="btn btn-sm btn-modal-berkas" data-bs-toggle="modal" data-bs-target="#modalberkas"
-                                            data-id="{{ $item->id }}"
+                                            data-id="{{ $item->user_id }}"
                                             style="color:white; background-color:#5CB874">
                                             Lihat Berkas
                                           </button>
@@ -134,37 +134,6 @@
       </div>
     </div>
   </div>
-  {{-- <div class="modal fade" id="modalpenyewaan" tabindex="-1" aria-labelledby="modalpenyewaanlabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-            <div class="modal-body p-4">
-              <h3 class="modal-title" id="modalpenyewaanlabel">Penempatan Ruang</h3>
-              <form id="accept-form" action="/pengajuan" method="POST">
-                @method('PUT')
-                @csrf
-                <div class="form-group">
-                  <label class="labels" for="ruang">Pilih ruang yang akan ditempati user.</label>
-                  <input type="text" class="form-control" id="ruang" list="ruangkosong" name="ruang" autocomplete="off" placeholder="L3 L270" required>
-                  <datalist id="ruangkosong"></datalist>
-                </div>
-            </div>
-          <div class="modal-footer flex-row-reverse justify-content-start">
-            <button type="submit" class="btn" onclick="return confirm('Apakah anda yakin ingin menerima pengajuan ini?')" style="color:white; background-color:#5CB874">Terima</button>
-            </form>
-            <form id="decline-form" action="/pengajuan" method="POST">
-              @method('delete')
-              @csrf
-              <button type="submit" class="btn btn-danger text-white" onclick="return confirm('Apakah anda yakin ingin menolak pengajuan ini?')">Tolak</button>
-            </form>
-            <button type="submit" class="btn btn-outline-secondary" data-bs-dismiss="modal">Tutup</button>
-          </div>
-      </div>
-    </div>
-  </div> --}}
 
   @include('partials.modalberkas')
 
