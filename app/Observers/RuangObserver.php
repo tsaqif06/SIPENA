@@ -18,6 +18,13 @@ class RuangObserver
 
     public function created(Ruang $ruang)
     {
+        if ($ruang->user_id !== null) {
+            RekapBayar::create([
+                'user_id' => $ruang->user_id,
+                // tambahkan kolom-kolom lain sesuai kebutuhan
+            ]);
+        }
+
         // Mengambil angka setelah huruf 'L' pada koderuang
         preg_match('/L(\d+)/', $ruang->koderuang, $matches);
         if (isset($matches[1])) {

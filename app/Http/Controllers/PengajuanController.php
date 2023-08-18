@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Pengajuan;
 use App\Models\Ruang;
+use App\Models\RekapBayar;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -71,6 +72,9 @@ class PengajuanController extends Controller
 
         if($updateDataRuang) {
             Pengajuan::find($pengajuan->id)->update(['accept' => 1]);
+            RekapBayar::create([
+                'user_id' => $pengajuan->user_id,
+            ]);
     
             return back()->with('success', 'Data ruang berhasil diperbarui!');
         }

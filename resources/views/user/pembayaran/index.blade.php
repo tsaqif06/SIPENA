@@ -26,6 +26,7 @@
                                             </div>
                                             <form action="/pembayaran/checkout" method="post">
                                                 @csrf
+                                                <input type="hidden" name="id" value="{{ auth()->user()->id }}">
                                                 <div class="row mt-2">
                                                     <div class="col-md-12">
                                                         <label class="labels">Nama</label>

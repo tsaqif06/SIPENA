@@ -59,6 +59,7 @@ class PembayaranController extends Controller
     {
         $user = User::where('nama', $request->nama)
             ->where('notelp', $request->notelp)
+            ->where('id', $request->id)
             ->first();
 
         $rekapbayar = RekapBayar::where('user_id', $user->id)->first();
