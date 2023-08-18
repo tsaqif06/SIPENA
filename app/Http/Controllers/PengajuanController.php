@@ -99,7 +99,7 @@ class PengajuanController extends Controller
 
     public function getAllBerkas(Request $request)
     {
-        $dataBerkas = Pengajuan::where('id', $request->id)->first();
+        $dataBerkas = Pengajuan::where('user_id', $request->id)->first();
 
         if ($dataBerkas) {
             return response()->json($dataBerkas->makeHidden(['id', 'user_id', 'accept', 'lantai_id', 'created_at', 'updated_at', 'user']));

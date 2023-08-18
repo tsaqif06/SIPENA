@@ -56,7 +56,7 @@
                                         <td>{{ $item->user->jmlkeluarga }}</td>
                                         <td style="vertical-align: middle; text-align: center;">
                                           <button class="btn btn-sm btn-modal-berkas" data-bs-toggle="modal" data-bs-target="#modalberkas"
-                                            data-id="{{ $item->id }}"
+                                            data-id="{{ $item->user_id }}"
                                             style="color:white; background-color:#5CB874">
                                             Lihat Berkas
                                           </button>
