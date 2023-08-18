@@ -29,14 +29,14 @@ Route::post('/login', [LoginController::class, 'auth']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 // Login Penghuni //
-Route::get('/loginpenghuni', [LoginController::class, 'penghuni'])->name('loginpenghuni')->middleware('guest');
-Route::post('/loginpenghuni', [LoginController::class, 'authpenghuni']);
+Route::get('/login/penghuni', [LoginController::class, 'penghuni'])->name('loginpenghuni')->middleware('guest');
+Route::post('/login/penghuni', [LoginController::class, 'authpenghuni']);
 
 // Register //
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store']);
-Route::get('/registerulang', [RegisterController::class, 'edit'])->middleware('guest');
-Route::put('/registerulang/{user:uuid}', [RegisterController::class, 'update']);
+Route::get('/register/edit', [RegisterController::class, 'edit'])->middleware(['auth', 'can:user']);
+Route::put('/register/{user:uuid}', [RegisterController::class, 'update'])->middleware(['auth', 'can:user']);
 
 // Homepage //
 Route::get('/', function () {

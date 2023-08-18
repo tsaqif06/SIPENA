@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->boolean('accept')->default(0);
+            $table->string('lantai_id');
             $table->string('fotoktp_suami');
             $table->string('fotoktp_istri');
             $table->string('fotokk');

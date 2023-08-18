@@ -19,6 +19,9 @@ class DashboardController extends Controller
         // Inisialisasi belumBayar sebagai true
         $belumBayar = true;
 
+        // Cek apakah user yang sudah terdaftar telah regisrasi ulang
+        $registerulang = !$user->password;
+
         if ($rekapbayar) {
             // Mengambil semua nilai bulan dalam bentuk array
             $bulanValues = collect($rekapbayar->toArray())
@@ -37,7 +40,8 @@ class DashboardController extends Controller
             'user' => $user,
             'role' => $user->role,
             'koderuang' => $koderuang,
-            'belumBayar' => $belumBayar
+            'belumBayar' => $belumBayar,
+            'registerulang' => $registerulang
         ]);
     }
 }

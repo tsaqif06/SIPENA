@@ -161,6 +161,26 @@
                                                 name="surat_rekomendasi" accept=".jpg , .pdf" required />
                                         </div>
                                     </div>
+
+                                    <hr><br>
+
+                                    <h4 class="text-right mb-3">Pilihan Lantai Ruang Sewa</h4>
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <select class="form-select form-control" aria-label="Default select example" name="lantai_id" required>
+                                                <option value="1" selected>Lantai 1</option>
+                                                <option value="2">Lantai 2</option>
+                                                <option value="3">Lantai 3</option>
+                                                <option value="4">Lantai 4</option>
+                                                <option value="5">Lantai 5</option>
+                                                <option value="6">Sewa Komersil</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <p class="text-end">*Lokasi rusunawa dan kode ruang ditentukan oleh <b>Admin</b></p>
+
                                     {{-- END FOR POST --}}
 
                                     <div class="mt-5 text-center d-grid gap-2">

@@ -47,11 +47,12 @@ class LoginController extends Controller
 
         $auth = $ruang ? ($ruang->user->nama === $request->nama && $ruang->user->password === null) : false;
 
-
         if ($auth) {
-            return redirect('/registerulang')->with('uuid', $ruang->user->uuid);
+            Auth::login($ruang->user);
+            $request->session()->regenerate();
+            return redirect('/register/edit');
         }
-
+        
         return back()->with('failed', 'Login Gagal! User tidak ditemukan atau user telah te-registrasi!');
     }
 
