@@ -41,7 +41,11 @@ class PembayaranController extends Controller
             'pdam' => 20000,
         ];
         $bayarBuatan['totalbayar'] = ($ruang->lantai->harga ?? 0) + $bayarBuatan['pdam'];
-        $bayar = array_merge($bayarRekap->toArray(), $bayarBuatan);
+        if ($bayarRekap != null) {
+            $bayar = array_merge($bayarRekap->toArray(), $bayarBuatan);
+        } else {
+            $bayar = $bayarBuatan;
+        }
         return view('user.pembayaran.index', [
             'title' => 'Pembayaran',
             'ruang' => $ruang ?? null,
