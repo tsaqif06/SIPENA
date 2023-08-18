@@ -74,7 +74,9 @@
                                                             value="{{ isset($ruang->lantai->harga) ? 'Rp.' . number_format($bayar['totalbayar'], 0, ',', '.') : 'Rp.0' }}"
                                                             name="totalbayar" readonly>
                                                     </div>
-                                                    <button class="btn btn-success my-3" type="submit">Checkout</button>
+                                                    @if ($ruang == null)
+                                                        <button class="btn btn-success my-3" type="submit">Checkout</button>
+                                                    @endif
                                                 </div>
                                             </form>
                                         </div>
