@@ -206,8 +206,6 @@
         </section>
         {{--  <!-- End Services Section -->  --}}
 
-
-
         <section id="lokasi" class="contact">
             <div class="container">
                 <div class="row justify-content-center">
