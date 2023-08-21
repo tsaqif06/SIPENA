@@ -12,6 +12,8 @@
         rel="stylesheet" />
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
 
     <link rel="stylesheet" href="/assets/css/login.css">
 
@@ -59,7 +61,15 @@
                             </div>
                             <div class="form-group d-flex">
                                 <input type="password" class="form-control @error('password') is-invalid @enderror"
-                                    name="password" placeholder="Password" required>
+                                    name="password" placeholder="Password" id="password" required>
+                                <i class="bi bi-eye position-absolute"
+                                    style="
+						right: 10px;
+						top: 50%;
+						transform: translateY(-50%);
+						cursor: pointer;
+					"
+                                    id="password-toggle"></i>
                                 @error('password')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -94,7 +104,23 @@
     <script src="/assets/js/popper.js"></script>
     <script src="/assets/js/bootstrap.min.js"></script>
     <script src="/assets/js/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const passwordInput = document.querySelector('input[name="password"]');
+        const passwordToggle = document.querySelector("#password-toggle");
 
+        passwordToggle.addEventListener("click", function() {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                passwordToggle.classList.remove("bi-eye");
+                passwordToggle.classList.add("bi-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                passwordToggle.classList.remove("bi-eye-slash");
+                passwordToggle.classList.add("bi-eye");
+            }
+        });
+    </script>
 </body>
 
 </html>

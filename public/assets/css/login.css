@@ -10882,3 +10882,19 @@ h5,
         top: 0;
     }
 }
+
+.password-toggle {
+    position: relative;
+    margin-left: -35px; /* Atur margin sesuai kebutuhan */
+}
+
+.password-toggle label {
+    cursor: pointer;
+}
+
+.password-toggle i {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    transform: translateY(-50%);
+}

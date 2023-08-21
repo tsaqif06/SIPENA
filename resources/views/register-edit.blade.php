@@ -22,6 +22,9 @@
     <link href="/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
     <link href="/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
     <link href="/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" />
+
 
     <!-- Template Main CSS File -->
     <link href="/assets/css/style.css" rel="stylesheet" />
@@ -59,7 +62,8 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <h4 class="text-right">Registrasi Ulang</h4>
                                     </div>
-                                    <p class="d-block mb-3">Segera perbarui biodata anda dengan melengkapi formulir di bawah ini!</p>
+                                    <p class="d-block mb-3">Segera perbarui biodata anda dengan melengkapi formulir di
+                                        bawah ini!</p>
                                     <hr>
                                     <form action="/register/{{ $user->uuid }}" method="post">
                                         @method('PUT')
@@ -153,11 +157,14 @@
                                                 </div>
                                             @enderror
                                         </div>
-                                        <div class="col-md-12">
+                                        <div class="col-md-12 position-relative">
                                             <label class="labels">Password</label>
                                             <input required type="password"
                                                 class="form-control @error('password') is-invalid @enderror"
                                                 placeholder="Password" name="password">
+                                            <i class="bi bi-eye position-absolute"
+                                                style="right: 10px; top: 70%; transform: translateY(-50%); cursor: pointer;"
+                                                id="password-toggle"></i>
                                             @error('password')
                                                 <div class="invalid-feedback">
                                                     {{ $message }}
@@ -165,7 +172,8 @@
                                             @enderror
                                         </div>
                                         <div class="mt-5 text-center d-grid gap-2">
-                                            <button class="btn" type="submit" onclick="return confirm('Setelah ini anda harus login menggunakan email dan password.\n\nSimpan perubahan?')"
+                                            <button class="btn" type="submit"
+                                                onclick="return confirm('Setelah ini anda harus login menggunakan email dan password.\n\nSimpan perubahan?')"
                                                 style="color:white; background-color:#5CB874">Simpan Perubahan</button>
                                         </div>
                                     </form>
@@ -215,6 +223,24 @@
     <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
     <script src="/assets/js/main.js"></script>
     <script src="/assets/js/datatable.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        const passwordInput = document.querySelector('input[name="password"]');
+        const passwordToggle = document.querySelector("#password-toggle");
+
+        passwordToggle.addEventListener("click", function() {
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                passwordToggle.classList.remove("bi-eye");
+                passwordToggle.classList.add("bi-eye-slash");
+            } else {
+                passwordInput.type = "password";
+                passwordToggle.classList.remove("bi-eye-slash");
+                passwordToggle.classList.add("bi-eye");
+            }
+        });
+    </script>
 </body>
 
 </html>
