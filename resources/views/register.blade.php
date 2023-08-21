@@ -192,7 +192,7 @@
                 Sistem Informasi Pembayaran Sewa Rusunawa Kota Malang
             </p>
             <div class="copyright">
-                &copy; Copyright <strong><span>SIPENA</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>PT. Tiga Pilar Garuda</span></strong>. All Rights Reserved
             </div>
             <div class="credits"></div>
         </div>
