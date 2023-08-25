@@ -6,6 +6,7 @@ use App\Models\Ruang;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\RekapBayar;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\session;
 
@@ -45,9 +46,9 @@ class RuangController extends Controller
     public function store(Request $request)
     {
         $request['user_id'] = User::where('nama', "{$request['nama']}")->pluck('id')->first();
-        if (!$request['user_id']){
+        if (!$request['user_id']) {
             return back()->with('error', 'Nama user tidak ditemukan. Coba lagi!');
-        } 
+        }
         unset($request['nama']);
         // return $request
         $validatedData = $request->validate([
@@ -61,7 +62,7 @@ class RuangController extends Controller
         // dd($validatedData);
 
         $tambah = Ruang::create($validatedData);
-        if ( $tambah ) {
+        if ($tambah) {
             Session::flash('status', 'success');
             Session::flash('message', 'Berhasil menambahkan ruang!');
         } else {
@@ -105,13 +106,15 @@ class RuangController extends Controller
             "rusunawa" => "required",
             "lantai_id" => "required",
         ]);
-        if($validatedData['is_dipakai'] == 0 ){
+
+        if ($validatedData['is_dipakai'] == 0) {
+            RekapBayar::where('user_id', $request['user_id'])->delete();
             $validatedData['user_id'] = null;
         }
         $edit = Ruang::where('id', $request->id)
             ->update($validatedData);
 
-        if ( $edit ) {
+        if ($edit) {
             Session::flash('status', 'success');
             Session::flash('message', 'Berhasil Mengedit ruang!');
         } else {
@@ -119,7 +122,6 @@ class RuangController extends Controller
             Session::flash('message', 'Gagal Mengedit ruang!');
         }
         return redirect('/ruang');
-        
     }
 
 
@@ -140,7 +142,7 @@ class RuangController extends Controller
     public function destroy(Ruang $ruangs, $id)
     {
         $deleteruangs = DB::table('ruangs')->where('id', $id)->delete();
-        if($id){
+        if ($id) {
             Session::flash('status', 'success');
             Session::flash('message', 'Berhasil menghapus ruang!');
         }
