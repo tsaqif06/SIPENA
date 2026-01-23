@@ -96,6 +96,10 @@ SIPENA - sipena108@gmail.com
 
 Project Link: [https://sipena.site](https://sipena.site)
 
+⚠️ Project Status: Concluded
+
+The live production site at sipena.site is currently offline as the project development phase has been successfully completed and the hosting period has ended. However, the source code remains available here for review to demonstrate the backend architecture and implementation.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- MARKDOWN LINKS & IMAGES -->
